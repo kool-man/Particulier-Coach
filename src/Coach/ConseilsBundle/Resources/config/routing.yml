@@ -1,0 +1,3 @@
+coach_conseils_homepage:
+    path:     /vendre-sans-agence-immobiliere
+    defaults: { _controller: CoachConseilsBundle:Conseil:index }

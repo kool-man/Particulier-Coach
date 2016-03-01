@@ -1,0 +1,383 @@
+{% extends '::layout.html.twig' %}
+{% block title %}Déposer une annonce{% endblock%}
+{% block body %}
+<div class="row">
+    <div class="col-md-12">
+
+        <h3 class="title-page">Déposer une annonce</h3>
+
+        <div class="col-md-12 alert alert-success">
+            <i class="fa fa-home"></i>&nbsp;&nbsp;<strong>Vendre en quelques minutes votre immobilier</strong>
+            <p>File Upload widget with multiple file selection, drag&drop support, progress bar, validation and preview images, audio and video for jQuery. Supports ...</p>
+        </div>
+         <div class="col-md-12">
+            <!--bs-wizard-->
+            <div class="row bs-wizard" style="border-bottom:0;">
+
+                <div class="col-xs-4 bs-wizard-step disabled">
+                    <div class="text-center bs-wizard-stepnum">Informations</div>
+                    <div class="progress"><div class="progress-bar"></div></div>
+                    <a href="#" class="bs-wizard-dot"></a>
+                </div>
+
+                <div class="col-xs-4 bs-wizard-step disabled"><!-- complete -->
+                    <div class="text-center bs-wizard-stepnum">Package</div>
+                    <div class="progress"><div class="progress-bar"></div></div>
+                    <a href="#" class="bs-wizard-dot"></a>
+                </div>
+
+
+
+                <div class="col-xs-4 bs-wizard-step disabled"><!-- active -->
+                    <div class="text-center bs-wizard-stepnum">Publication</div>
+                    <div class="progress"><div class="progress-bar"></div></div>
+                    <a href="#" class="bs-wizard-dot"></a>
+                </div>
+            </div>
+            <!--bs-wizard-->
+        </div>
+        <form>
+        <div id="step-1-form">
+            <!--ligne-->
+            <div class="wells col-md-12">
+                <p><strong>Caractéristique du bien (*)</strong></p>
+                <div class="row">
+                    <!--colone-1-->
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option value="">Type du bien</option>
+                                <option value="">Type du bien</option>
+                                <option value="">Type du bien</option>
+                                <option value="">Type du bien</option>
+                                <option value="">Type du bien</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option value="">Pièces</option>
+                                <option value="">Pièces</option>
+                                <option value="">Pièces</option>
+                                <option value="">Pièces</option>
+                                <option value="">Pièces</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--End colone-1-->
+
+                    <!--colone-2-->
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option value="">GES</option>
+                                <option value="">GES</option>
+                                <option value="">GES</option>
+                                <option value="">GES</option>
+                                <option value="">GES</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option value="">Chambres</option>
+                                <option value="">Chambres</option>
+                                <option value="">Chambres</option>
+                                <option value="">Chambres</option>
+                                <option value="">Chambres</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--End colone-2-->
+
+                    <!--colone-3-->
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option value="">Classe energie</option>
+                                <option value="">Classe energie</option>
+                                <option value="">Classe energie</option>
+                                <option value="">Classe energie</option>
+                                <option value="">Classe energie</option>
+
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option value="">Parking</option>
+                                <option value="">Parking</option>
+                                <option value="">Parking</option>
+                                <option value="">Parking</option>
+                                <option value="">Parking</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--End colone-3-->
+                </div>
+            </div>
+            <!--End ligne-->
+
+            <!--ligne-->
+            <div class="wells col-md-12" id="transport-check">
+                <p><strong>Proximité de transport </strong></p>
+
+                <a class="icheck"><i class="fa fa-circle-o"></i>Bus</a>
+                <a class="icheck"><i class="fa fa-circle-o"></i>Metro</a>
+                <a class="icheck"><i class="fa fa-circle-o"></i>Tramway</a>
+                <a class="icheck"><i class="fa fa-circle-o"></i>Train</a>
+                <a class="icheck"><i class="fa fa-circle-o"></i>Rer</a>
+                <input type="hidden" id="transport" value="">
+                <!--ATTENTION cest realisé au main js avec le titre //ICHECK data-->
+                
+                <div class="clearfix"></div>
+            </div>
+            <!--End ligne-->
+			
+              <!--ligne-->
+            <div class="wells col-md-12" id="options-check">
+                <p><strong>Avez-vous ?</strong></p>
+
+                <a class="icheck"><i class="fa fa-circle-o"></i>Parking</a>
+                <a class="icheck"><i class="fa fa-circle-o"></i>Cave</a>
+                <a class="icheck"><i class="fa fa-circle-o"></i>Piscine</a>
+                <a class="icheck"><i class="fa fa-circle-o"></i>Jardin</a>
+                <a class="icheck"><i class="fa fa-circle-o"></i>Terrasse</a>
+                <a class="icheck"><i class="fa fa-circle-o"></i>Garage</a>
+                <input type="hidden" id="transport" value="">
+                <!--ATTENTION cest realisé au main js avec le titre //ICHECK data-->
+                
+                <div class="clearfix"></div>
+            </div>
+            <!--End ligne-->
+            
+            <!--ligne-->
+            <div class="wells col-md-12">
+                <p><strong>Adresse (*)</strong></p>
+                <div class="row">
+                    <div class="col-md-3">
+                         <div class="form-group">
+                            <label>
+                                <span class="input-tr-addon"><i class="fa fa-map-marker"></i></span>
+                                <input type="number" class="form-control" placeholder="Code postal" >
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                         <div class="form-group">
+                            <label>
+                                <span class="input-tr-addon"><i class="fa fa-map-marker"></i></span>
+                                <input type="text" class="form-control" placeholder="Adresse complète" >
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                          
+            </div>
+
+            <!--End ligne-->
+
+            <!--ligne-->
+            <div class="wells col-md-12">
+                <p><strong>Localisation et Description (*)</strong></p>
+                <div class="row">
+                                       <!--colone-1-->
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label>
+                                <span class="input-tr-addon"><i class="fa fa-flag"></i></span>
+                                <input type="text" class="form-control" placeholder="Titre de l'annonce" >
+                            </label>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>
+                                        <span class="input-tr-addon"><i class="fa fa-eur"></i></span>
+                                        <input type="number" class="form-control" placeholder="Prix" >
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>
+                                        <span class="input-tr-addon"><i class="fa fa-home"></i></span>
+                                        <input type="number" class="form-control" placeholder="Surface" >
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>
+                                        <span class="input-tr-addon"><i class="fa fa-phone"></i></span>
+                                        <input type="tel" class="form-control" placeholder="Tél 1 (*)" >
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                  <div class="form-group">
+                                    <label>
+                                        <span class="input-tr-addon"><i class="fa fa-phone"></i></span>
+                                        <input type="tel" class="form-control" placeholder="Tél 2 " >
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End colone-1-->
+
+                    <!--colone-2-->
+                    <div class="col-md-7">
+                        <div class="form-group">
+                            <label>
+                                <span class="input-tr-addon"><i class="fa fa-pencil-square-o"></i></span>
+                                <textarea class="form-control" placeholder="Description"></textarea>
+                            </label>
+                        </div>
+
+
+                    </div>
+                    <!--End colone-2-->   
+                </div>
+            </div>
+            <!--End ligne-->
+			
+            <!--ligne-->
+            <div class="row">
+                <div class="col-md-12 mrg-t-20">
+                    <a class="btn btn-success pull-right" type="submit" >Ajouter des photos</a>
+                </div>
+            </div>
+            <!--ligne-->
+            </div>
+            <!--end step1-->
+          	
+            <!--start step 2-->
+            <div class="display" id="step-2-form">
+                <!--ligne-->
+                <div class="wells col-md-12" id="upload">
+                    <p><strong>Télécharger des Photos (*)</strong></p>
+                    <p class="alert alert-warning alert-icon">
+                        <i class="fa fa-camera"></i> Contrary to popular belief. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur</p>
+                        
+                        <div class="col-md-12 packages">
+                        	<div class="col-sm-4  star">
+                            	<div class="title">Star</div>
+                                <div class="content-pack">
+                                    <p><strong>6 Photos</strong></p>
+                                    <p class="desactive">Validité 1 mois</p>
+                                    <p class="desactive">Annonce à la une - Pôle position</p>
+                                    <p>Guide de vente immobilière</p>
+                                    <p>Compte client - Suivi d'activité</p>
+                                    <p>Sans commission - Sans intermédiaire</p>
+                                </div>
+                                <a href="#">19.99 Euro</a>
+                            </div>
+                            
+                            <div class="col-sm-4 gold">
+                            	<div class="title">Gold</div>
+                                 <div class="content-pack">
+                                    <p><strong>9 Photos</strong></p>
+                                    <p class="desactive">Validité 1 mois</p>
+                                    <p>Annonce à la une - Pôle position</p>
+                                    <p>Guide de vente immobilière</p>
+                                    <p>Compte client - Suivi d'activité</p>
+                                    <p>Sans commission - Sans intermédiaire</p>
+                                </div>
+                                <a href="#">29.99 Euros</a>
+                            </div>
+                            
+                            <div class="col-sm-4  coaching">
+                            	<div class="title">Coaching</div>
+                                 <div class="content-pack">
+                                    <p><strong>illimité</strong></p>
+                                    <p>Validité 1 mois</p>
+                                    <p>Annonce à la une - Pôle position</p>
+                                    <p>Guide de vente immobilière</p>
+                                    <p>Compte client - Suivi d'activité</p>
+                                    <p>Sans commission - Sans intermédiaire</p>
+                                </div>
+                                <a href="#">499 Euros</a>
+                            </div>
+
+                        </div>
+                        <div class="clearfix mrg-tb-30"></div>
+                        
+                    <input id="file-1" type="file" multiple="" class="file" >
+                    
+                </div>
+                <!--End ligne-->
+                 <!--ligne-->
+                <div class="row">
+                    <div class="col-md-12 mrg-t-20">
+                        <a class="btn btn-success pull-right" type="submit" >Publier mon annonce</a>
+                    </div>
+                </div>
+                <!--ligne-->
+                <!--End step 2-->
+                </div>
+                
+                
+              
+           
+            
+              <!--start step 3-->
+                <div class="display" id="step-3-form">
+                <div class="wells col-md-12">
+                	Vendre en quelques minutes votre immobilier
+File Upload widget with multiple file selection, drag&drop support, progress bar, validation and preview images, audio and video for jQuery. Supports ...
+                </div>
+                <!--ligne-->
+                <div class="row">
+                    <div class="col-md-12 mrg-t-20">
+                        <a class="btn btn-success pull-right" type="submit" >Publier mon annonce</a>
+                    </div>
+                </div>
+                <!--ligne-->
+            
+           </div>
+        </form>
+    </div>
+
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}  
+{% block javascripts %}
+    {{ parent() }}
+        <!--fetech JS - JS  special for this page only-->
+        <script src="{{asset('bundles/coachfront/js/js-upload-master/js/fileinput.js')}}"></script>
+        <script>
+            $("#file-1").fileinput({
+        initialPreview: [],
+        initialPreviewConfig: [
+            {caption: 'Desert.jpg', width: '120px', url: '#'},
+            {caption: 'Jellyfish.jpg', width: '120px', url: '#'},
+        ],
+        uploadUrl: '#',
+        allowedFileExtensions : ['jpg', 'png','gif', 'jpeg'],
+        overwriteInitial: false,
+        maxFileSize: 1000,
+        maxFilesNum: 10,
+        allowedFileTypes: ['image'],
+        slugCallback: function(filename) {
+            return filename.replace('(', '_').replace(']', '_');
+        }
+		
+		
+		
+	});
+        $('#upload .fileinput-upload-button').addClass('btn-danger');
+        $('.file-drop-zone-title').text('Glisser vos photos ici')
+        </script>
+{% endblock %}  
+{% block stylesheets %}
+    {{ parent() }}
+<link href="{{asset('bundles/coachfront/js/js-upload-master/css/fileinput.min.css')}}" media="all" rel="stylesheet" type="text/css" />
+{% endblock %}    

@@ -1,0 +1,6 @@
+services:
+    application_sonata_user.admin.contact_person:
+        class: Application\Sonata\UserBundle\Admin\ContactPersonAdmin
+        arguments: [~, Application\Sonata\UserBundle\Entity\ContactPerson, ApplicationSonataUserBundle:ContactPersonAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Utilisateurs, label: Liste des Contacts}

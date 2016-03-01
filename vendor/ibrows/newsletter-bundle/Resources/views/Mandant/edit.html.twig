@@ -1,0 +1,26 @@
+{% extends basetemplate %}
+{% trans_default_domain "IbrowsNewsletterBundle" %}
+{% block layout_class %}mandant-edit{% endblock layout_class %}
+
+{% import "IbrowsNewsletterBundle::macros.html.twig" as macros %}
+
+{% block newsletter_content %}
+<h1>{{ 'mandant.edit'|trans({'%name%': mandant.name}) }}</h1>
+
+<form method="post">
+<fieldset>
+<legend>{{ 'mandant.general'|trans }}</legend>
+{{ form_rest(mandantForm) }}
+</fieldset>
+
+<fieldset>
+<legend>{{ 'mandant.settings'|trans }}</legend>
+{{ form_rest(settingsForm) }}
+</fieldset>
+
+<div class="form-actions">
+	<input type="submit" class="btn btn-primary" name="send" value="{{ 'form.save'|trans }}">
+</div>
+</form>
+
+{% endblock %}

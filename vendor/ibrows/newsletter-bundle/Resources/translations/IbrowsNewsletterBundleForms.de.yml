@@ -1,0 +1,39 @@
+Subject: Betreff
+Sendermail: Absender E-Mail
+Sendername: Absender Name
+Returnmail: Antwort E-Mail
+Subscribers: Empfänger
+Content: Inhalt
+Name: Name
+Subscriber: Empfänger
+Email: E-Mail
+Groups: Gruppen
+Default: Standard
+
+Username: Benutzername
+Password: Passwort
+Host: Mailserver
+Port: Mailport
+Encryption: Verschlüsselung
+Authmode: Authentifizierung
+Interval: Intervall (Anzahl Newsletter/Minute)
+Starttime: Startzeit
+
+Renderername: Renderer Name (Service-Id)
+
+form:
+  save: Speichern
+  continue: Weiter
+
+newsletter:
+  continue: Weiter
+  block:
+    clone: Kopieren
+    provider:
+      'ibrows_newsletter.block.provider.textareaandimage':
+        textwidth: Textbreite
+        imagewidth: Bildbreite
+    name: Name
+    new: Neuer Block
+  blocks:
+    save: Speichern

@@ -1,0 +1,9 @@
+services:
+#    coach_panneau.example:
+#        class: Coach\PanneauBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+    coach_panneau.admin.panneau:
+        class: Coach\PanneauBundle\Admin\PanneauAdmin
+        arguments: [~, Coach\PanneauBundle\Entity\Panneau, CoachPanneauBundle:PanneauAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Panneaux, label: Liste}

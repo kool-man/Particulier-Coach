@@ -1,0 +1,311 @@
+{% extends '::layout.html.twig' %}
+{% block stylesheets %}
+{{parent()}}   
+    <link href="http://www.ziedbouhejba.com/css/styles.css" rel="stylesheet">
+    <link href="http://www.ziedbouhejba.com/css/responsive.css" rel="stylesheet">
+   <link href="{{ asset('bundles/coachannonce/js/js-upload-master/css/fileinput.min.css')}}" media="all" rel="stylesheet" type="text/css" />
+
+      		
+        <!--Animation plugin-->
+      
+{% endblock %}
+{% block javascripts %}
+{{parent()}}
+   <script src="{{ asset('bundles/coachannonce/js/js-upload-master/js/fileinput.min.js')}}"></script>
+        <script>
+		//alert('fff');
+		var proximity=[];
+		$("#bus").click(function() {
+		
+        proximity[proximity.length++]='bus'; 
+	   });
+	   $("#metro").click(function() {
+        proximity[proximity.length++]='metro'; 
+	 
+		});
+	   $("#tramway").click(function() {
+          proximity[proximity.length++]='tramway'; 
+	 
+		 });
+ 	   $("#train").click(function() {
+          proximity[proximity.length++]='train'; 
+	         
+		 });
+	  $("#rer").click(function() {
+         proximity[proximity.length++]='rer'; 
+	     
+	   });
+	 $("#annonceForm").bind("submit", function(){
+      $('#transport').val(proximity);
+	  alert($('#transport').val());
+	  });	 
+	   
+            $("#file-1").fileinput({
+        initialPreview: [],
+        initialPreviewConfig: [
+            {caption: 'Desert.jpg', width: '120px', url: '#'},
+            {caption: 'Jellyfish.jpg', width: '120px', url: '#'},
+        ],
+        
+	});
+        //$('#upload .fileinput-upload-button').addClass('btn-danger');
+        $('.file-drop-zone-title').text('Glisser vos photos ici')
+        </script>
+{%endblock%}
+
+{% block body %}
+		
+		<div class="row">
+    <div class="col-md-12">
+
+        <ol class="breadcrumb">
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">Annonces</a></li>
+            <li class="active">Déposer une annonce</li>
+        </ol>
+
+
+        <h3 class="title-page">Déposer une annonce</h3>
+
+        <div class="col-md-12 alert alert-success">
+            <i class="fa fa-home"></i>&nbsp;&nbsp;<strong>Vendre en quelques minutes votre immobilier</strong>
+            <p>File Upload widget with multiple file selection, drag&drop support, progress bar, validation and preview images, audio and video for jQuery. Supports ...</p>
+        </div>
+        <form id="annonceForm" action="" method="post" {{ form_enctype(form) }} >
+            <!--ligne-->
+            <div class="wells col-md-12">
+                <p><strong>Caractéristique du bien (*)</strong></p>
+                <div class="row">
+                    <!--colone-1-->
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            {{form_widget(form.typeAnnonce,{'attr': {'class': 'form-control'}})}}
+							<!--<select class="form-control">
+                                <option value="">Type du bien</option>
+                                <option value="">Type du bien</option>
+                                <option value="">Type du bien</option>
+                                <option value="">Type du bien</option>
+                                <option value="">Type du bien</option>
+                            </select!-->
+                        </div>
+
+                        <div class="form-group">
+						    {{form_widget(form.nbPieces,{'attr': {'class': 'form-control'}})}}
+                            <!--<select class="form-control">
+                                <option value="">Pièces</option>
+                                <option value="">Pièces</option>
+                                <option value="">Pièces</option>
+                                <option value="">Pièces</option>
+                                <option value="">Pièces</option>
+                            </select!-->
+                        </div>
+                    </div>
+                    <!--End colone-1-->
+
+                    <!--colone-2-->
+                    <div class="col-md-4">
+                        <div class="form-group">
+						{{form_widget(form.optionAnnonce,{'attr': {'class': 'form-control'}})}}
+                            <!--<select class="form-control">
+                                <option value="">GES</option>
+                                <option value="">GES</option>
+                                <option value="">GES</option>
+                                <option value="">GES</option>
+                                <option value="">GES</option>
+                            </select!-->
+                        </div>
+
+                        <div class="form-group">
+                        {{form_widget(form.nbChambre,{'attr': {'class': 'form-control'}})}}
+                            
+							<!--<select class="form-control">
+                                <option value="">Chambres</option>
+                                <option value="">Chambres</option>
+                                <option value="">Chambres</option>
+                                <option value="">Chambres</option>
+                                <option value="">Chambres</option>
+                            </select!-->
+							
+                        </div>
+                    </div>
+                    <!--End colone-2-->
+
+                    <!--colone-3-->
+                    <div class="col-md-4">
+                        <div class="form-group">
+						 {{form_widget(form.classAnnonce,{'attr': {'class': 'form-control'}})}}
+                        
+                          <!--  <select class="form-control">
+                                <option value="">Classe energie</option>
+                                <option value="">Classe energie</option>
+                                <option value="">Classe energie</option>
+                                <option value="">Classe energie</option>
+                                <option value="">Classe energie</option>
+
+                            </select!-->
+                        </div>
+
+                        <div class="form-group">
+                          {{form_widget(form.nbParking,{'attr': {'class': 'form-control'}})}}
+                            
+							<!--<select class="form-control">
+                                <option value="">Parking</option>
+                                <option value="">Parking</option>
+                                <option value="">Parking</option>
+                                <option value="">Parking</option>
+                                <option value="">Parking</option>
+                            </select!-->
+							
+                        </div>
+                    </div>
+                    <!--End colone-3-->
+                </div>
+            </div>
+            <!--End ligne-->
+
+            <!--ligne-->
+            <div class="wells col-md-12" id="transport-check">
+                <p><strong>Proximité de transport (*)</strong></p>
+
+                <a class="icheck" id="bus"><i class="fa fa-circle-o"></i>Bus</a>
+                <a class="icheck" id="metro"><i class="fa fa-circle-o"></i>Metro</a>
+                <a class="icheck" id="tramway"><i class="fa fa-circle-o"></i>Tramway</a>
+                <a class="icheck" id="train"><i class="fa fa-circle-o"></i>Train</a>
+                <a class="icheck" id="rer"><i class="fa fa-circle-o"></i>Rer</a>
+                <input type="hidden" id="transport" value="">
+                <!--ATTENTION cest realisé au main js avec le titre //ICHECK data-->
+                
+                <div class="clearfix"></div>
+            </div>
+            <!--End ligne-->
+
+            <!--ligne-->
+            <div class="wells col-md-12">
+                <p><strong>Adresse (*)</strong></p>
+                <div class="row">
+                    <div class="col-md-3">
+                         <div class="form-group">
+                            <label>
+                                <span class="input-tr-addon"><i class="fa fa-map-marker"></i></span>
+                                <!--<input type="number" class="form-control" placeholder="Code postal" !-->
+								{{form_widget(form.cp,{'attr': {'class': 'form-control','placeholder':'Code postal'}})}}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                         <div class="form-group">
+                            <label>
+                                <span class="input-tr-addon"><i class="fa fa-map-marker"></i></span>
+                                <!--input type="text" class="form-control" placeholder="Adresse complète" !-->
+						       {{form_widget(form.ville,{'attr': {'class': 'form-control','placeholder':'Adresse complète'}})}}
+                         		
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                          
+            </div>
+
+            <!--End ligne-->
+
+            <!--ligne-->
+            <div class="wells col-md-12">
+                <p><strong>Localisation et Description (*)</strong></p>
+                <div class="row">
+                                       <!--colone-1-->
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label>
+                                <span class="input-tr-addon"><i class="fa fa-flag"></i></span>
+                                <!--input type="text" class="form-control" placeholder="Titre de l'annonce" !-->
+								{{form_widget(form.titre,{'attr': {'class': 'form-control','placeholder':'Titre de l" annonce'}})}}
+                            </label>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>
+                                        <span class="input-tr-addon"><i class="fa fa-eur"></i></span>
+                                        <!--input type="number" class="form-control" placeholder="Prix" -->
+                                         {{form_widget(form.prix,{'attr': {'class': 'form-control','placeholder':'Prix'}})}}									    	
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>
+                                        <span class="input-tr-addon"><i class="fa fa-home"></i></span>
+                                        <!--input type="number" class="form-control" placeholder="Surface" -->
+										 {{form_widget(form.surface,{'attr': {'class': 'form-control','placeholder':'Surface'}})}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>
+                                        <span class="input-tr-addon"><i class="fa fa-phone"></i></span>
+                                        <!--input type="tel" class="form-control" placeholder="Tél 1 (*)" -->
+                      				 {{form_widget(form.tel1,{'attr': {'class': 'form-control','placeholder':'Tél 1 (*)'}})}}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                  <div class="form-group">
+                                    <label>
+                                        <span class="input-tr-addon"><i class="fa fa-phone"></i></span>
+                                        <!--input type="tel" class="form-control" placeholder="Tél 2 " -->
+                                        {{form_widget(form.tel2,{'attr': {'class': 'form-control','placeholder':'Tél 2 (*)'}})}}
+										
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End colone-1-->
+
+                    <!--colone-2-->
+                    <div class="col-md-7">
+                        <div class="form-group">
+                            <label>
+                                <span class="input-tr-addon"><i class="fa fa-pencil-square-o"></i></span>
+                                <!--textarea class="form-control" placeholder="Description"></textarea>-->
+								        {{form_widget(form.description,{'attr': {'class':'form-control','placeholder':'Description'}})}}
+								
+                            </label>
+                        </div>
+
+
+                    </div>
+                    <!--End colone-2-->   
+                </div>
+            </div>
+            <!--End ligne-->
+
+            <!--ligne-->
+            <div class="wells col-md-12" id="upload">
+                <p><strong>Télécharger des Photos (*)</strong></p>
+                <p class="alert alert-warning alert-icon">
+                    <i class="fa fa-camera"></i> Contrary to popular belief. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur</p>
+                 {{form_widget(form.file,{'attr': {'class':'file','id':'file-1'}})}}
+            </div>
+            <!--End ligne-->
+            
+            
+            <div class="col-md-4 col-md-offset-4 mrg-t-20">
+                <input class="btn btn-success btn-block btn-lg" type="submit" value="Publier mon annonce">
+            </div>
+			{{form_rest(form)}}
+        </form>
+    </div>
+
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+		
+{%endblock%}

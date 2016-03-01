@@ -1,0 +1,294 @@
+{% extends '::layout.html.twig' %}
+{% block body %}
+<div class="row">
+    <div class="col-md-12">
+        <h3 class="title-page">Chercher une annonce</h3>
+    </div>
+<div class=" col-md-8">
+{{ form_start(form) }}
+            <div class="wells search-form">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <p><span>{{ form_label(form.ville, 'Ville(s)') }}</span></p>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="form-group">
+                            {{ form_widget(form.ville, {'attr': {'class':'form-control select-2', 'data-placeholder': 'Selectionner Plusiers villes'},}) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!--colone-1-->
+                        <div class="col-sm-3">
+                            <p><span>Prix</span> entre</p>
+                        </div>
+                        <div class="col-sm-4 col-xs-6">
+                            <div class="form-group">
+                            {{ form_widget(form.prixMin, {'attr': {'class': 'form-control'},})}}
+                                </div>
+                            </div>
+                            <div class="col-xs-1">
+                                <p>et</p>
+                            </div>
+                            <div class="col-md-4 col-xs-6">
+                                <div class="form-group">
+                            {{ form_widget(form.prixMax, {'attr': {'class': 'form-control'},})}}
+                            </div>
+                            </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p><span>Surface</span> entre</p>
+                                </div>
+                                <div class="col-sm-4 col-xs-6">
+                                    <div class="form-group">
+                                    {{ form_widget(form.surfaceMin, {'attr': {'class': 'form-control'},})}}
+                                    </div>
+                                    </div>
+                                    <div class="col-xs-1">
+                                    <p>et</p>
+                                    </div>
+                                    <!--colone-2-->
+                                    <div class="col-md-4 col-xs-6">
+                                    <div class="form-group">
+                                    {{ form_widget(form.surfaceMax, {'attr': {'class': 'form-control'},})}}
+                                    </div>
+                                    </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p><span>Pièces</span> entre</p>
+                                        </div>
+                                        <div class="col-sm-4 col-xs-6">
+                                            <div class="form-group">
+                                            {{ form_widget(form.nbPiecesMin, {'attr': {'class': 'form-control'},})}}
+                                            </div>
+                                            </div>
+                                            <div class="col-xs-1">
+                                                <p>et</p>
+                                            </div>
+                                            <div class="col-md-4 col-xs-6">
+                                                <div class="form-group">
+                                                {{ form_widget(form.nbPiecesMax, {'attr': {'class': 'form-control'},})}}
+                                                    </div>
+                                            </div>
+                                            </div>
+                                    <div class="row">
+									{% for key,value in types%}
+                                    <div class="col-md-3">
+                                    <div class="field-block"><strong>{{ value }}</strong>
+                                    {{ form_widget(form[value],{'attr':{'hidden':'hidden','style':'visibility: hidden'}})}}
+                                    <p class="field switch">
+                                     <label id="form_{{value}}" onclick="selectTypeAnnonce(this.id,this.htmlFor) ;" for="radio1" class="cb-enable selected"><span>Oui</span></label>
+                                     <label id="form_{{value}}" onclick="selectTypeAnnonce(this.id,this.htmlFor) ;" for="radio2" class="cb-disable"><span>Non</span></label>
+                                    </p>
+                                    </div>
+                            </div>
+                        {% endfor %}
+                        </div>
+                        <div class="row">
+                        <div class="col-md-4 col-md-offset-8 mrg-t-10">
+                        {{ form_widget(form.recherche, {'attr':{'value': 'Recherche','class': 'btn btn-success btn-block'},})}}
+                        </div>
+                        </div>
+                        </div>
+                        {{ form_end(form) }}
+                        </div>
+                        <div class="col-md-4">
+                        <div class="col-md-12 newsletter">
+                            <p class="center">Créer votre alerte mail pour recevoir les annonces</p>
+                                <div class="absolute wow fadeInUp">
+                                    <img src="{{asset('bundles/coachfront/images/pub/newsletter.png')}}" alt="Créer votre alerte mail pour recevoir les annonces" class="img-responsive">
+                                </div>
+                                <form class="form-inline wow fadeInDown">
+                                    <div class="form-group">
+                                        <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                                            <input type="email" class="form-control" id="mail" placeholder="Enter email">
+                                    </div>
+                                    <button type="submit" class="btn btn-success">envoyer</button>
+                                </form>
+                                </div>
+                                <div class="col-md-12 calculette">
+                                    <a href="{{path('coach_annonce_search')}}">
+                                        <p>Calculette de crédit et frais de notaire</p>
+                                    </a>
+                                </div>
+                                </div>
+                                <div class="a-la-une col-md-12">
+                                    <div class="container-a-la-une">
+                                                        <a href="{{path('coach_annonce_search')}}" class="img"><img src="{{asset('bundles/coachfront/images/biens/alaune.png')}}" alt="Villa 1200 m² à Paris, 6 chambres, 2 Salles de bain" class="wow fadeIn" data-wow-duration="2s"></a>
+                                                        <h4 class="wow fadeInLeft" data-wow-delay="0.2s"><a href="{{path('coach_annonce_search')}}"><i class="fa fa-tags"></i>A LA UNE</a></h4>
+                                                        <h5 class="wow fadeInLeft" data-wow-delay="0.5s"><a href="{{path('coach_annonce_search')}}">Villa 1200 m² à Paris, 6 chambres, 2 Salles de bain</a></h5>
+                                                        <h6 class="wow fadeInLeft" data-wow-delay="0.7s"><a href="{{path('coach_annonce_search')}}">Prix : 200.000</a> </h6>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <div class="results">
+                                                        <div class="results-bar col-md-12">
+                                                            <div class="col-md-7">
+                                                                <p> Resultat de la recherche</p>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <p> Filtrer par</p>
+                                                            </div>
+                                                            <div class="col-md-3">
+
+                                                                <div class="form-group">
+                                                                    <select id="filtre" class="form-control">
+                                                                        <option value="prix" selected="selected">Prix</option>
+                                                                        <option value="nbPieces">Nombre de pièces</option>
+                                                                        <option value="surface">Surface</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                         </div>               
+                                                        <div id="results" class="row">
+                                                            <div class="col-md-12">
+                                                             {% for e in pagerfanta.currentPageResults %}
+                                                                    <div class="media">
+                                                                        <a class="media-left" href="{{path('coach_annonce_details', {'id':e.id,'titre':e.titre|replace({ (' '): '-' })})}}" title="{{e.titre}}">
+                                                                          {%for image in e.mesImages |slice(0,1) %}
+																			<img src="{{asset('bundles/coachannonce/')~image.getWebPath() }}" width="100%" height="100%" alt="{{e.titre}}"> 
+																		  {%endfor%}
+                                                                        </a>
+                                                                        <div class="media-body">
+                                                                            <h4 class="media-heading"><a href="{{path('coach_annonce_details', {'id':e.id,'titre':e.titre|replace({ (' '): '-' })})}}" title="{{e.titre}}">{{e.titre}}</a></h4>
+                                                                            <p>{{e.description}}.</p>
+                                                                            <div class="divider">
+                                                                                <div class="row">
+                                                                                    <div class="col-md-4">
+                                                                                        <strong>Espace :</strong>{{ e.surface}} m²
+                                                                                    </div>
+                                                                                    <div class="col-md-4">
+                                                                                        <strong>Pièces :</strong> S + {{ e.nbChambre }}
+                                                                                    </div>
+                                                                                    <div class="col-md-4">
+                                                                                        <strong> Prix :</strong> {{ e.prix }} Euro
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                {% endfor %}
+                                                            </div>
+                                                            </div>
+                                                            <div class="pagerfanta">{{ pagerfanta(pagerfanta, 'twitter_bootstrap3') }}</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="title-bar">
+                                                                    <h3> Actualités Immobilières</h3>
+                                                                </div>
+                                                                <div id="actualite-slide" class="carousel slide" data-ride="carousel">
+                                                                   <div class="carousel-inner" role="listbox">
+                                                                        <div class="item active">
+                                                                            <div class="actualite">
+                                                                                <h4>Titre de l'actualité</h4>
+                                                                                <p>Villa 1200 m² à Paris, 6 chambres, 2 Salles de bain</p>
+                                                                            </div>
+
+                                                                            <div class="actualite">
+                                                                                <h4>Titre de l'actualité</h4>
+                                                                                <p>Villa 1200 m² à Paris, 6 chambres, 2 Salles de bain</p>
+                                                                            </div>
+
+                                                                            <div class="actualite">
+                                                                                <h4>Titre de l'actualité</h4>
+                                                                                <p>Villa 1200 m² à Paris, 6 chambres, 2 Salles de bain</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="item">
+                                                                            <div class="actualite">
+                                                                                <h4>Titre de l'actualité</h4>
+                                                                                <p>Villa 1200 m² à Paris, 6 chambres, 2 Salles de bain</p>
+                                                                            </div>
+
+                                                                            <div class="actualite">
+                                                                                <h4>Titre de l'actualité</h4>
+                                                                                <p>Villa 1200 m² à Paris, 6 chambres, 2 Salles de bain</p>
+                                                                            </div>
+
+                                                                            <div class="actualite">
+                                                                                <h4>Titre de l'actualité</h4>
+                                                                                <p>Villa 1200 m² à Paris, 6 chambres, 2 Salles de bain</p>
+                                                                            </div>
+                                                                        </div> 
+                                                                        <div class="item">
+                                                                            <div class="actualite">
+                                                                                <h4>Titre de l'actualité</h4>
+                                                                                <p>Villa 1200 m² à Paris, 6 chambres, 2 Salles de bain</p>
+                                                                            </div>
+
+                                                                            <div class="actualite">
+                                                                                <h4>Titre de l'actualité</h4>
+                                                                                <p>Villa 1200 m² à Paris, 6 chambres, 2 Salles de bain</p>
+                                                                            </div>
+
+                                                                            <div class="actualite">
+                                                                                <h4>Titre de l'actualité</h4>
+                                                                                <p>Villa 1200 m² à Paris, 6 chambres, 2 Salles de bain</p>
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                    </div>
+                                                                    <ol class="carousel-indicators">
+                                                                        <li data-target="#actualite-slide" data-slide-to="0" class="active"></li>
+                                                                        <li data-target="#actualite-slide" data-slide-to="1"></li>
+                                                                        <li data-target="#actualite-slide" data-slide-to="2"></li>
+                                                                    </ol>
+                                                                </div>
+                                                            </div>
+                                                        </div><!--row for carroussl-->
+                                                        <div class="right-pub">
+                                                            <img src="{{asset('bundles/coachfront/images/pub/pub-banner-optimum.jpg')}}" alt="" class="img-responsive">
+                                                            <img src="{{asset('bundles/coachfront/images/pub/tuni-architecte.png')}}" alt="" class="img-responsive">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <br>
+{% endblock %}    
+{% block javascripts %}
+    {{ parent() }}
+                                                <script src="{{asset('bundles/coachfront/js/js-select/select2.min.js')}}"></script>
+                                                <script>
+                                                    $(".select-2").select2(); 
+                                                    </script>
+                                                    <script>
+                                                        $(document).ready(function() {
+                                                            $("#filtre").change(function() {
+                                                                var selected = $("#filtre option:selected").val();
+                                                                var form = $("form[name='form']").serialize();
+                                                                $("#results").fadeOut('fast');
+                                                                $.ajax({
+                                                                    'method': 'POST',
+                                                                    'url': "{{ path('coach_annonce_search_result')}}-filter/"+selected,
+                                                                    'data': form,
+                                                                    success: function(data) {
+                                                                        $("#results").html(data).fadeIn(1000);
+                                                                    }
+                                                                });
+                                                            });
+                                                        });
+														function selectTypeAnnonce(id,varFor){
+														//var id = MyObject.id;
+														//var varFor = MyObject.htmlFor ;
+															if(varFor=="radio1"){
+																$(" div[id="+id+"] input[id="+id+"_0]").prop("checked", true);
+																$(" div[id="+id+"] input[id="+id+"_1]").prop("checked", false);
+															}else{
+																$(" div[id="+id+"] input[id="+id+"_1]").prop("checked", true);
+																$(" div[id="+id+"] input[id="+id+"_0]").prop("checked", false);
+																
+															}	
+														};
+                                                        </script>
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+                                                        <link href="{{asset('bundles/coachfront/js/js-select/css/select2-bootstrap.css')}}" rel="stylesheet">
+                                                        <link href="{{asset('bundles/coachfront/js/js-select/css/select2.css')}}" rel="stylesheet">
+{% endblock %}

@@ -1,0 +1,110 @@
+newsletter:
+  subscriber: Empfänger für Newsletter "%name%" editieren
+  unsubscribe: E-Mail "%email%" austragen
+  settings: Einstellungen für Newsletter "%name%" editieren
+  name: Name
+  created_at: Erstellt am
+  design: Design
+  testmail: Test Versand
+  overview: Übersicht
+  statistic: Statistik
+  design: Design
+  block:
+    clone: Kopieren
+    add: Hinzufügen
+    new: Neuer Block
+    provider:
+      'ibrows_newsletter.block.provider.textarea':
+        name: Text
+      'ibrows_newsletter.block.provider.image':
+        name: Bild
+      'ibrows_newsletter.block.provider.textareaandimage':
+        name: Text mit Bild
+        textwidth: Textbreite
+        imagewidth: Bildbreite
+  layout:
+    index:
+      title: Willkommen beim iBROWS NewsletterBundle
+  wizard:
+    meta:       Meta Daten
+    edit:       Editieren
+    subscriber: Empfänger
+    settings:   Einstellungen
+    summary:    Zusammenfassung
+  create: Neuer Newsletter
+  list: Newsletter
+  edit: Newsletter "%name%" editieren
+  summary: Newsletter "%name%" Zusammenfassung
+  blocks: Abschnitte
+  dialog:
+    abort: abbrechen
+  gendertitle:
+    male:
+      formal: Sehr geehrter Herr %subscriber.lastname%
+      informal: Hallo %subscriber.firstname%
+    female:
+      formal: Sehr geehrte Frau %subscriber.lastname%
+      informal: Hallo %subscriber.firstname%
+  error:
+    mail: "Der Versand war nicht möglich: %message%"
+  generate:
+    mail: Versand starten
+
+mandant:
+  admin: Einstellungen
+  edit: Mandant %name% editieren
+  general: Generelle Einstellungen
+  settings: Standard Maileinstellungen
+
+user:
+  logout: Abmelden
+
+subscriber:
+  list: Empfänger
+  firstname: Vorname
+  lastname: Nachname
+  company: Firma
+  email: E-Mail
+  groups: Gruppen
+  multiselect:
+    selectable: Vorhandene Empfänger
+    selected:   Ausgewählte Empfänger
+
+design:
+  create: Neues Design
+  list: Vorlagen
+  preview: Vorschau
+  name: Name
+  created_at: Erstellt am
+  edit: Design editieren
+
+email: E-Mail
+
+statistic:
+  title: Statistik zu Newsletter "%name%"
+  show: Statistik anzeigen
+  readpiechart:
+    read: Gelesen
+    unread: Ungelesen
+  jobpiechart:
+    status:
+      working: Wird versendet
+      onhold: Warten
+      ready: Bereit zum Versand
+      completed: Versendet
+      error: Fehler
+
+form:
+  save: Speichern
+  cancel: Abbrechen
+  send: Senden
+  testmail: Testversand
+
+security:
+  login:
+    mandant:  Mandant
+
+layout:
+  header:
+    title:
+      newsletterbundle: iBROWS NewsletterBundle

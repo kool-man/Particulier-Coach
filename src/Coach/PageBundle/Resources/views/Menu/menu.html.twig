@@ -1,0 +1,8 @@
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+        <li><a href="{{path('coach_annonce_homepage')}}" title="annonces immobilières" {% if(app.request.attributes.get('_route') == 'coach_annonce_homepage') %} class="active" {% endif %}><i class="fa fa-home"></i></a></li>
+        {% for menu in menus %}
+            <li><a href="{{ menu.lien }}" title="{{ menu.titre }}" {% if menu.titre == 'Blog' %}target="_blank"{% endif %}>{{ menu.titre }}</a></li>
+        {% endfor %}    
+    </ul>
+</div>

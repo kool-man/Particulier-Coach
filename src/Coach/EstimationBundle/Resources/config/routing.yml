@@ -1,0 +1,25 @@
+coach_estimation_json_villes:
+    pattern: /json/villes
+    defaults: { _controller: "CoachEstimationBundle:Json:villes"}
+ 
+coach_estimation_json_codesPostaux:
+    pattern: /json/codesPostaux
+    defaults: { _controller: "CoachEstimationBundle:Json:codesPostaux"}
+coach_estimation_homepage:
+    path:     /estimation-immobiliere/Prix-du-m2/prix-au-m2
+    defaults: { _controller: CoachEstimationBundle:Estimation:index }
+coach_estimation_departement:
+    path:     /prix-departement/{id}
+    defaults: { _controller: CoachEstimationBundle:Estimation:affiche }    
+coach_estimation_form:
+    path:     /evaluation-estimation-immobiliere-en-ligne
+    defaults: { _controller: CoachEstimationBundle:Estimation:estimer } 
+coach_estimation_update:
+    path:     /update-villes
+    defaults: { _controller: CoachEstimationBundle:Estimation:update }    
+coach_estimation_envoie_form:
+    path:     /envoie-estimation-immobilier
+    defaults: { _controller: CoachEstimationBundle:Estimation:envoie }  
+coach_estimation_cheque:
+    path:     /votre_estimation/estimation={cheque}
+    defaults: { _controller: CoachEstimationBundle:Estimation:cheque }    

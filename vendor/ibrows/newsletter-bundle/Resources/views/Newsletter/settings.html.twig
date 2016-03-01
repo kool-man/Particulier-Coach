@@ -1,0 +1,21 @@
+{% extends basetemplate %}
+{% trans_default_domain "IbrowsNewsletterBundle" %}
+{% block layout_class %}newsletter-settings{% endblock layout_class %}
+
+{% import "IbrowsNewsletterBundle::macros.html.twig" as macros %}
+{% block newsletter_wizard %}
+    {{ macros.displayWizard(wizard) }}
+{% endblock %}
+
+{% block newsletter_content %}
+    <h1>{{ 'newsletter.settings'|trans({'%name%': newsletter.name}) }}</h1>
+
+    <form action="" method="post" {{ form_enctype(form) }}>
+        {{ form_errors(form) }}
+        {{ form_rest(form) }}
+
+        <div class="form-actions">
+            <input type="submit" class="btn btn-primary" value="{{ 'form.save'|trans }}">
+        </div>
+    </form>
+{% endblock %}

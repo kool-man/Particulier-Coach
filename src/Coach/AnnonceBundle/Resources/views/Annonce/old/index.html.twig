@@ -1,0 +1,564 @@
+{% extends '::layout.html.twig' %}
+{% block body %}
+        <div class="container video-content">
+            <div class="col-sm-6">
+                <div class="logo-coach">
+                    <!--<iframe width="560" height="315" src="//www.youtube.com/embed/UemA5HPkjs8" frameborder="0" allowfullscreen></iframe>-->
+                    <iframe src="http://www.youtube.com/embed/UemA5HPkjs8?rel=0" height="315" width="560" allowfullscreen="" frameborder="0"></iframe>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <p class="video-text">
+                    Lorem ipsum dolor sit amet,consectetuer adipiscing elit.
+                    Aenean commodo ligula eget dolor. Aenean massa.
+                    Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                    Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+                    Nulla consequat massa quis enim. Donec pede justo,
+                    fringilla vel, aliquet nec, vulputate eget, arcu. vitae, eleifend ac
+                </p>
+            </div>
+        </div>
+        <div class="line-green"></div>
+        <!--
+        <section id="feature" >
+        <div class="container">
+        
+        <div class="row">
+        <div class="features">
+        <div class="col-md-4 col-sm-6">
+        <div class="feature-wrap">
+        <div class="img-table">
+        <div class="img-row">
+        <div class="img-cell">
+        <img src="images/1.jpg">
+        </div>
+        </div>
+        <div class="img-row">
+        <div class="img-cell">
+        <h2>LYON8</h2>
+        <h3>Appartment de 110m<sup>2</sup></h3>
+        <h3>493 000$</h3>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>/.col-md-4
+        
+        <div class="col-md-4 col-sm-6">
+        <div class="feature-wrap">
+        <div class="img-table">
+        <div class="img-row">
+        <div class="img-cell">
+        <img src="images/2.jpg">
+        </div>
+        </div>
+        <div class="img-row">
+        <div class="img-cell">
+        <h2>SAINTE-FOY-LES-LYON</h2>
+        <h3>Appartment de 110m<sup>2</sup></h3>
+        <h3>347 000$</h3>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>/.col-md-4
+        
+        <div class="col-md-4 col-sm-6">
+        <div class="feature-wrap">
+        <div class="img-table">
+        <div class="img-row">
+        <div class="img-cell">
+        <img src="images/3.jpg">
+        </div>
+        </div>
+        <div class="img-row">
+        <div class="img-cell">
+        <h2>CERNEX</h2>
+        <h3>Appartment de 110m<sup>2</sup></h3>
+        <h3>1 680 000 $</h3>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>/.col-md-4
+        </div>/.services
+        </div>/.row
+        </div>/.container
+        </section>/#feature
+        
+        -->
+        <section style="padding: 0px;" class="slide-vendu">
+            <div class="container" style="padding: 20px 0px 0px 0px;">
+                <div class="row">
+                    <div class="hot-items carousel-wrapper">
+                        <header class="content-title">
+                            <p class="title-desc">Biens immobiliers déjà vendus</p>
+                        </header>
+                        <div class="carousel-controls">
+                            <div class="hot-items-slider-prev carousel-btn carousel-btn-prev">
+                            </div>
+                            <div class="hot-items-slider-next carousel-btn carousel-btn-next carousel-space">
+                            </div>
+                        </div>
+                        <div class="hot-items-slider owl-carousel">
+                            <div class="item item-hover">
+                                <div class="item-image-wrapper">
+                                    <figure class="item-image-container">
+                                        <a href="#"><img src="{{ asset('bundles/coachfront/images/products/item2.jpg')}}" alt="item1" class="item-image">
+                                            <img src="{{ asset('bundles/coachfront/images/products/item2-hover.jpg')}}" alt="item1 Hover" class="item-image-hover"></a>
+                                    </figure>
+                                    <div class="item-price-container">
+                                        <span class="item-price">160$
+                                        </span>
+                                    </div>
+                                    <span class="discount-rect">Vendu</span>
+                                </div>
+                                <div class="item-meta-container">
+                                    <h3 class="item-name"><a href="#">
+                                            Vivamus suscipit tortor eget felis porttitor volutpat.
+                                            Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui</a></h3>
+                                    <div class="ratings-container">
+                                        <div class="ratings">
+                                            <div class="ratings-result" data-result="80">
+                                            </div>
+                                        </div>
+                                        <span class="ratings-amount">5 vue
+                                        </span>
+                                    </div>
+                                    <div class="item-action">
+                                        <!-- <a href="#" class="item-add-btn">
+                                        <span class="icon-cart-text">Voir l'annonce
+                                        </span>
+                                        </a>-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item item-hover">
+                                <div class="item-image-wrapper">
+                                    <figure class="item-image-container">
+                                        <a href="#">
+                                            <img src="{{ asset('bundles/coachfront/images/products/item3.jpg')}}" alt="item1" class="item-image">
+                                            <img src="{{ asset('bundles/coachfront/images/products/item3-hover.jpg')}}" alt="item1 Hover" class="item-image-hover">
+                                        </a>
+                                    </figure>
+                                    <div class="item-price-container">
+                                        <span class="item-price">100$
+                                        </span>
+                                    </div>
+                                    <span class="discount-rect">Vendu</span>
+                                </div>
+                                <div class="item-meta-container">
+                                    <h3 class="item-name"><a href="#">
+                                            Vivamus suscipit tortor eget felis porttitor volutpat.
+                                            Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui</a></h3>
+                                    <div class="ratings-container">
+                                        <div class="ratings">
+                                            <div class="ratings-result" data-result="99">
+                                            </div>
+                                        </div>
+                                        <span class="ratings-amount">4 Vue
+                                        </span>
+                                    </div>
+                                    <div class="item-action">
+                                        <!-- <a href="#" class="item-add-btn">
+                                        <span class="icon-cart-text">voir l'annonce
+                                        </span></a>-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item item-hover">
+                                <div class="item-image-wrapper">
+                                    <figure class="item-image-container"><a href="#"><img src="{{ asset('bundles/coachfront/images/products/item8.jpg')}}" alt="item1" class="item-image"> <img src="{{ asset('bundles/coachfront/images/products/item8-hover.jpg')}}" alt="item1 Hover" class="item-image-hover"></a></figure>
+                                    <div class="item-price-container">
+                                        <span class="old-price">100$
+                                        </span>
+                                        <span class="item-price">80$
+                                        </span>
+                                    </div>
+                                    <span class="discount-rect">Vendu</span>
+                                </div>
+                                <div class="item-meta-container">
+                                    <h3 class="item-name"><a href="#">
+                                            Vivamus suscipit tortor eget felis porttitor volutpat.
+                                            Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui</a></h3>
+                                    <div class="ratings-container">
+                                        <div class="ratings">
+                                            <div class="ratings-result" data-result="75">
+                                            </div>
+                                        </div>
+                                        <span class="ratings-amount">2 vue
+                                        </span>
+                                    </div>
+                                    <div class="item-action">
+                                        <!-- <a href="#" class="item-add-btn">
+                                        <span class="icon-cart-text">voir l'annonce
+                                        </span></a>-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item item-hover">
+                                <div class="item-image-wrapper">
+                                    <figure class="item-image-container"><a href="#"><img src="{{ asset('bundles/coachfront/images/products/item7.jpg')}}" alt="item1" class="item-image"> <img src="{{ asset('bundles/coachfront/images/products/item7-hover.jpg')}}" alt="item1 Hover" class="item-image-hover"></a></figure>
+                                    <div class="item-price-container">
+                                        <span class="item-price">280$
+                                        </span>
+                                    </div>
+                                    <span class="discount-rect">Vendu</span>
+                                </div>
+                                <div class="item-meta-container">
+                                    <h3 class="item-name"><a href="#">
+                                            Vivamus suscipit tortor eget felis porttitor volutpat.
+                                            Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui</a></h3>
+                                    <div class="ratings-container">
+                                        <div class="ratings">
+                                            <div class="ratings-result" data-result="75">
+                                            </div>
+                                        </div>
+                                        <span class="ratings-amount">2 vue
+                                        </span>
+                                    </div>
+                                    <div class="item-action">
+                                        <!-- <a href="#" class="item-add-btn">
+                                        <span class="icon-cart-text">voir l'annonce
+                                        </span></a>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lg-margin">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="line-green"></div>
+        <section id="recent-works">
+            <div class="container">
+                <div class="center">
+                    <h2>Vendre et acheter</h2>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p class="achat-text">
+                            <span>JE SUIS VENDEUR</span>
+                            Aprés une longue période d'euphorie, le marché immobilier s'est tendu une première fois en 2008 puis plus sérieusement en 2012. Vendre un bien immobilier est devenu plus compliqué. Dans ce contexte, chaque vendeur se doit de construire une stratégie efficace en adéquation avec son projet.
+
+                            Vous souhaitez vendre au meilleur prix dans un délai raisonnable ?
+                            Découvrez ce que notre équipe va vous apporter.
+                        </p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="achat-text">
+                            <span>JE SUIS ACQUEREUR</span>
+                            Dans vos recherches de biens immobiliers, vous cumulez les heures passées sur les sites d'annonces à  essayer de trouver la perle rare. Malheureusement, les annonces immobilières manquent de précision. Vos visites sont souvent décevantes et ne correspondent pas à ce que vous aviez imaginé.
+
+                            Vous voulez gagner du temps en étant plus efficace ?
+                            Découvrez ce que notre équipe va vous apporter.
+                        </p>
+                    </div>
+                </div><!--/.row-->
+            </div><!--/.container-->
+        </section><!--/#services-->
+        <section id="content-contact">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 prendre-contact">
+                        <p><a href="{{ path('coach_annonce_ajouter')}}">Déposer votre annonce</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="line-green"></div>
+        <section style="padding: 0px;">
+            <div class="container" style="background-color: #f2f2f2;padding: 20px 0px;">
+                <div class="row">
+                    <div class="features">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="feature-wrap">
+                                <p><i class="fa fa-group"></i></p>
+                                <h3>Maximum de client avec multi-diffision de votre annonce immobilier particulier</h3>
+                            </div>
+                        </div><!--/.col-md-4-->
+
+                        <div class="col-md-3 col-sm-6">
+                            <div class="feature-wrap">
+                                <p><i class="fa fa-comments"></i></p>
+                                <h3>Maximum de client avec multi-diffision de votre annonce immobilier particulier</h3>
+                            </div>
+                        </div><!--/.col-md-4-->
+
+                        <div class="col-md-3 col-sm-6">
+                            <div class="feature-wrap">
+                                <p><i class="fa fa-cloud-download"></i></p>
+                                <h3>Maximum de client avec multi-diffision de votre annonce immobilier particulier</h3>
+                            </div>
+                        </div><!--/.col-md-4-->
+                        <div class="col-md-3 col-sm-6">
+                            <div class="feature-wrap">
+                                <p><i class="fa fa-leaf"></i></p>
+                                <h3>Maximum de client avec multi-diffision de votre annonce immobilier particulier</h3>
+                            </div>
+                        </div><!--/.col-md-4-->
+
+                        <div class="col-md-3 col-sm-6">
+                            <div class="feature-wrap">
+                                <p><i class="fa fa-wrench"></i></p>
+                                <h3>Maximum de client avec multi-diffision de votre annonce immobilier particulier</h3>
+                            </div>
+                        </div><!--/.col-md-4-->
+
+                        <div class="col-md-3 col-sm-6">
+                            <div class="feature-wrap">
+                                <p><i class="fa fa-comment-o"></i></p>
+                                <h3>Maximum de client avec multi-diffision de votre annonce immobilier particulier</h3>
+                            </div>
+                        </div><!--/.col-md-4-->
+                        <div class="col-md-3 col-sm-6">
+                            <div class="feature-wrap">
+                                <p><i class="fa fa-heart"></i></p>
+                                <h3>Maximum de client avec multi-diffision de votre annonce immobilier particulier</h3>
+                            </div>
+                        </div><!--/.col-md-4-->
+                        <div class="col-md-3 col-sm-6">
+                            <div class="feature-wrap">
+                                <p><i class="fa fa-film"></i></p>
+                                <h3>Maximum de client avec multi-diffision de votre annonce immobilier particulier</h3>
+                            </div>
+                        </div><!--/.col-md-4-->
+                    </div><!--/.services-->
+                </div>
+            </div>
+        </section>
+        <div class="line-green"></div>
+        <section style="padding: 0px;">
+            <div class="container" style="background-color: #f2f2f2;padding: 20px 0px;">
+                <div class="row">
+                    <div class="hot-items carousel-wrapper">
+                        <header class="content-title">
+                            <p class="title-desc">Annonces immobilières de Particuliers</p>
+                        </header>
+                        <div class="carousel-controls">
+                            <div class="hot-items-slider-prev carousel-btn carousel-btn-prev">
+                            </div>
+                            <div class="hot-items-slider-next carousel-btn carousel-btn-next carousel-space">
+                            </div>
+                        </div>
+                        <div class="hot-items-slider owl-carousel">
+                            <div class="item item-hover">
+                                <div class="item-image-wrapper">
+                                    <figure class="item-image-container">
+                                        <a href="#"><img src="{{ asset('bundles/coachfront/images/products/item2.jpg')}}" alt="item1" class="item-image">
+                                            <img src="{{ asset('bundles/coachfront/images/products/item2-hover.jpg')}}" alt="item1 Hover" class="item-image-hover"></a>
+                                    </figure>
+                                    <div class="item-price-container">
+                                        <span class="item-price">160$
+                                        </span>
+                                    </div>
+                                    <span class="nouv-rect">Nouvelle
+                                    </span>
+                                </div>
+                                <div class="item-meta-container">
+                                    <div class="ratings-container">
+                                        <div class="ratings">
+                                            <div class="ratings-result" data-result="80">
+                                            </div>
+                                        </div>
+                                        <span class="ratings-amount">5 vue
+                                        </span>
+                                    </div>
+                                    <h3 class="item-name"><a href="#">Phasellus consequat</a></h3>
+                                    <div class="item-action">
+                                        <a href="#" class="item-add-btn">
+                                            <span class="icon-cart-text">Voir l'annonce
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item item-hover">
+                                <div class="item-image-wrapper">
+                                    <figure class="item-image-container">
+                                        <a href="#">
+                                            <img src="{{ asset('bundles/coachfront/images/products/item3.jpg')}}" alt="item1" class="item-image">
+                                            <img src="{{ asset('bundles/coachfront/images/products/item3-hover.jpg')}}" alt="item1 Hover" class="item-image-hover">
+                                        </a>
+                                    </figure>
+                                    <div class="item-price-container">
+                                        <span class="item-price">100$
+                                        </span>
+                                    </div>
+                                    <span class="nouv-rect">Nouvelle
+                                    </span>
+                                </div>
+                                <div class="item-meta-container">
+                                    <div class="ratings-container">
+                                        <div class="ratings">
+                                            <div class="ratings-result" data-result="99">
+                                            </div>
+                                        </div>
+                                        <span class="ratings-amount">4 Vue
+                                        </span>
+                                    </div>
+                                    <h3 class="item-name"><a href="#">Phasellus consequat</a></h3>
+                                    <div class="item-action">
+                                        <a href="#" class="item-add-btn">
+                                            <span class="icon-cart-text">voir l'annonce
+                                            </span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item item-hover">
+                                <div class="item-image-wrapper">
+                                    <figure class="item-image-container"><a href="#"><img src="{{ asset('bundles/coachfront/images/products/item8.jpg')}}" alt="item1" class="item-image"> <img src="{{ asset('bundles/coachfront/images/products/item8-hover.jpg')}}" alt="item1 Hover" class="item-image-hover"></a></figure>
+                                    <div class="item-price-container">
+                                        <span class="old-price">100$
+                                        </span>
+                                        <span class="item-price">80$
+                                        </span>
+                                    </div>
+                                    <span class="discount-rect">Vendu
+                                    </span>
+                                </div>
+                                <div class="item-meta-container">
+                                    <div class="ratings-container">
+                                        <div class="ratings">
+                                            <div class="ratings-result" data-result="75">
+                                            </div>
+                                        </div>
+                                        <span class="ratings-amount">2 vue
+                                        </span>
+                                    </div>
+                                    <h3 class="item-name"><a href="#">Phasellus consequat</a></h3>
+                                    <div class="item-action">
+                                        <a href="#" class="item-add-btn">
+                                            <span class="icon-cart-text">voir l'annonce
+                                            </span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item item-hover">
+                                <div class="item-image-wrapper">
+                                    <figure class="item-image-container"><a href="#"><img src="{{ asset('bundles/coachfront/images/products/item5.jpg')}}" alt="item1" class="item-image"> <img src="{{ asset('bundles/coachfront/images/products/item5-hover.jpg')}}" alt="item1 Hover" class="item-image-hover"></a></figure>
+                                    <div class="item-price-container">
+                                        <span class="item-price">99$
+                                        </span>
+                                    </div>
+                                    <span class="nouv-rect">Nouvelle
+                                    </span>
+                                </div>
+                                <div class="item-meta-container">
+                                    <div class="ratings-container">
+                                        <div class="ratings">
+                                            <div class="ratings-result" data-result="40">
+                                            </div>
+                                        </div>
+                                        <span class="ratings-amount">3 vue
+                                        </span>
+                                    </div>
+                                    <h3 class="item-name"><a href="#">Phasellus consequat</a></h3>
+                                    <div class="item-action">
+                                        <a href="#" class="item-add-btn">
+                                            <span class="icon-cart-text">voir l'annonce
+                                            </span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item item-hover">
+                                <div class="item-image-wrapper">
+                                    <figure class="item-image-container"><a href="#"><img src="{{ asset('bundles/coachfront/images/products/item7.jpg')}}" alt="item1" class="item-image"> <img src="{{ asset('bundles/coachfront/images/products/item7-hover.jpg')}}" alt="item1 Hover" class="item-image-hover"></a></figure>
+                                    <div class="item-price-container">
+                                        <span class="item-price">280$
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="item-meta-container">
+                                    <div class="ratings-container">
+                                    </div>
+                                    <h3 class="item-name"><a href="#">Phasellus consequat</a></h3>
+                                    <div class="item-action">
+                                        <a href="#" class="item-add-btn">
+                                            <span class="icon-cart-text">voir l'annonce
+                                            </span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lg-margin">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="line-green"></div>
+
+        <!-- <section id="content">
+        <div class="container">
+        <div class="row">
+        <div class="col-md-3 col-sm-6">
+        <div class="widget">
+        <ul>
+        <li><a href="">Annonces immobiliÃ¨res Paris</a></li>
+        <li>	<a href="">Annonces immobiliÃ¨res Caen</a></li>
+        <li>	<a href="">Annonces immobiliÃ¨res Lyon</a></li>
+        <li>	<a href="">Annonces immobiliÃ¨res Lille</a></li>
+        <li>	<a href="">Annonces immobiliÃ¨res Nice</a></li>
+        <li>	<a href="">Annonces immobiliÃ¨res Nantes</a></li>
+        <li>	<a href="">Annonces immobiliÃ¨res Reims</a></li>
+        <li>	<a href="">Annonces immobiliÃ¨res Brest</a></li>
+        <li>	<a href="">Annonces immobiliÃ¨res Rouen</a></li>
+        </ul>
+        </div>
+        </div>/.col-md-3
+        
+        <div class="col-md-3 col-sm-6">
+        <div class="widget">
+        <ul>
+        <li><a href="">Annonces immobiliÃ¨res Marseille</a></li>
+        <li>	<a href="">Annonces immobiliÃ¨res Strasbourg</a></li>
+        <li>	<a href="">Annonces immobiliÃ¨res Montpellier</a></li>
+        <li>	<a href="">Annonces immobiliÃ¨res Bourdeaux</a></li>
+        <li>	<a href="">Annonces immobiliÃ¨res Toulouse</a></li>
+        <li>	<a href="">Annonces immobiliÃ¨res Rennes</a></li>
+        <li>	<a href="">Annonces immobiliÃ¨res Grenoble</a></li>
+        <li>	<a href="">Annonces immobiliÃ¨res Limoge</a></li>
+        <li>	<a href="">Annonces immobiliÃ¨res Nancy</a></li>
+        </ul>
+        </div>
+        </div>/.col-md-3
+        
+        <div class="col-md-3 col-sm-6">
+        <div class="widget">
+        <ul>
+        <li><a href="">Annonces immobiliÃ¨res Perpignan</a></li>
+        <li><a href="">Annonces immobiliÃ¨res Villeurbanne</a></li>
+        <li><a href="">Annonces immobiliÃ¨res Besancon</a></li>
+        <li><a href="">Annonces immobiliÃ¨res Saint Etienne</a></li>
+        <li><a href="">Annonces immobiliÃ¨res Le Havre</a></li>
+        <li><a href="">Annonces immobiliÃ¨res Aix en provance</a></li>
+        <li><a href="">Annonces immobiliÃ¨res Clermont Ferrand</a></li>
+        <li><a href="">Annonces immobiliÃ¨res Mulhouse</a></li>
+        <li><a href="">Annonces immobiliÃ¨res Argenteuil</a></li>
+        </ul>
+        </div>
+        </div>/.col-md-3
+        
+        <div class="col-md-3 col-sm-6">
+        <div class="widget">
+        <ul>
+        <li><a href="">Annonces immobiliÃ¨res Metz</a></li>
+        <li><a href="">Annonces immobiliÃ¨res Dijon</a></li>
+        <li><a href="">Annonces immobiliÃ¨res Angers</a></li>
+        <li><a href="">Annonces immobiliÃ¨res Toulon</a></li>
+        <li><a href="">Annonces immobiliÃ¨res Nimes</a></li>
+        <li><a href="">Annonces immobiliÃ¨res Le Mans</a></li>
+        <li><a href="">Annonces immobiliÃ¨res Orleans</a></li>
+        <li><a href="">Annonces immobiliÃ¨res Tours</a></li>
+        <li><a href="">Annonces immobiliÃ¨res Pau</a></li>
+        </ul>
+        </div>
+        </div>/.col-md-3
+        </div>
+        </div>/.container
+        </section>/#content-->
+{% endblock %}

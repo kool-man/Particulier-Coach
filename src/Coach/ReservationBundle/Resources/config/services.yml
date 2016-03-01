@@ -1,0 +1,9 @@
+services:
+#    coach_reservation.example:
+#        class: Coach\ReservationBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+    coach_reservation.admin.reservation:
+        class: Coach\ReservationBundle\Admin\ReservationAdmin
+        arguments: [~, Coach\ReservationBundle\Entity\Reservation, CoachReservationBundle:ReservationAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Reservations, label: Reservation}

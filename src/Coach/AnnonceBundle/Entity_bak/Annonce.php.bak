@@ -1,0 +1,686 @@
+<?php
+
+namespace Coach\AnnonceBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Annonce
+ * @ORM\Table(name="Annonce")
+ * @ORM\HasLifecycleCallbacks()
+ * @ORM\Entity(repositoryClass="Coach\AnnonceBundle\Entity\AnnonceRepository")
+ */
+class Annonce
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_at", type="datetime")
+     */
+    private $updatedAt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="reference_annonce", type="string", length=255)
+     */
+    private $referenceAnnonce = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=255)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="titre", type="string", length=255)
+     */
+    private $titre;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="surface", type="string",length=255)
+     */
+    private $surface;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="prix", type="integer")
+     */
+    private $prix;
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="proximite", type="string",length=255)
+     */
+    private $proximite;
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cp", type="string",length=255)
+     */
+    private $cp;
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ville", type="string",length=255)
+     */
+    private $ville;
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nom", type="string",length=255)
+     */
+    private $nom;
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="email", type="string",length=255)
+     */
+    private $email;
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="civilite", type="string",length=255)
+     */
+    private $civilite;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nb_pieces", type="string",length=255)
+     */
+    private $nbPieces;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nb_chambre", type="string",length=255)
+     */
+    private $nbChambre;
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="vendu", type="integer")
+     */
+    private $vendu = 0;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nb_parking", type="string",length=255)
+     */
+    private $nbParking;
+
+     /**
+     * @var integer
+     *
+     * @ORM\ManyToOne(targetEntity="Coach\AnnonceBundle\Entity\OptionAnnonce", inversedBy="annonce")
+     */
+    private $optionAnnonce;
+    /**
+     * @var integer
+     *
+     * @ORM\ManyToOne(targetEntity="Coach\AnnonceBundle\Entity\ClassAnnonce", inversedBy="annonce")
+     */
+    private $classAnnonce;
+    /**
+     * @var integer
+     *
+     * @ORM\ManyToOne(targetEntity="Coach\AnnonceBundle\Entity\TypeAnnonce", inversedBy="annonce")
+     */
+    private $typeAnnonce;
+    /**
+     * @var integer
+     *
+     * @ORM\OneToMany(targetEntity="Coach\AnnonceBundle\Entity\MesImages", mappedBy="annonce")
+     */
+    private $mesImages;
+    
+    
+    public function __construct()
+    {
+        $this->setCreatedAt(new \DateTime());
+        $this->setUpdatedAt(new \DateTime());
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set createdAt
+     * @param \DateTime $createdAt
+     * @return Annonce
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     * @param \DateTime $updatedAt
+     * @return Annonce
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set referenceAnnonce
+     *
+     * @param string $referenceAnnonce
+     * @return Annonce
+     */
+    public function setReferenceAnnonce($referenceAnnonce)
+    {
+        $this->referenceAnnonce = $referenceAnnonce;
+
+        return $this;
+    }
+
+    /**
+     * Get referenceAnnonce
+     *
+     * @return string 
+     */
+    public function getReferenceAnnonce()
+    {
+        return $this->referenceAnnonce;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Annonce
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set titre
+     *
+     * @param string $titre
+     * @return Annonce
+     */
+    public function setTitre($titre)
+    {
+        $this->titre = $titre;
+
+        return $this;
+    }
+
+    /**
+     * Get titre
+     *
+     * @return string 
+     */
+    public function getTitre()
+    {
+        return $this->titre;
+    }
+
+    /**
+     * Set surface
+     *
+     * @param integer $surface
+     * @return Annonce
+     */
+    public function setSurface($surface)
+    {
+        $this->surface = $surface;
+
+        return $this;
+    }
+
+    /**
+     * Get surface
+     *
+     * @return integer 
+     */
+    public function getSurface()
+    {
+        return $this->surface;
+    }
+
+    /**
+     * Set nbPieces
+     *
+     * @param string $nbPieces
+     * @return Annonce
+     */
+    public function setNbPieces($nbPieces)
+    {
+        $this->nbPieces = $nbPieces;
+
+        return $this;
+    }
+
+    /**
+     * Get nbPieces
+     *
+     * @return string 
+     */
+    public function getNbPieces()
+    {
+        return $this->nbPieces;
+    }
+
+    /**
+     * Set nbChambre
+     *
+     * @param string $nbChambre
+     * @return Annonce
+     */
+    public function setNbChambre($nbChambre)
+    {
+        $this->nbChambre = $nbChambre;
+
+        return $this;
+    }
+
+    /**
+     * Get nbChambre
+     *
+     * @return string 
+     */
+    public function getNbChambre()
+    {
+        return $this->nbChambre;
+    }
+
+    /**
+     * Set nbParking
+     *
+     * @param string $nbParking
+     * @return Annonce
+     */
+    public function setNbParking($nbParking)
+    {
+        $this->nbParking = $nbParking;
+
+        return $this;
+    }
+
+    /**
+     * Get nbParking
+     *
+     * @return string 
+     */
+    public function getNbParking()
+    {
+        return $this->nbParking;
+    }
+    
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+        $this->createdAt = $this->updatedAt = new \DateTime('now');
+         
+         
+    }
+     
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdate()
+    {
+        $this->updatedAt = new \DateTime('now');
+    }
+   
+
+    /**
+     * Set optionAnnonce
+     *
+     * @param \Coach\AnnonceBundle\Entity\optionAnnonce $optionAnnonce
+     * @return Annonce
+     */
+    public function setOptionAnnonce(\Coach\AnnonceBundle\Entity\OptionAnnonce $optionAnnonce = null)
+    {
+        $this->optionAnnonce = $optionAnnonce;
+
+        return $this;
+    }
+
+    /**
+     * Get optionAnnonce
+     *
+     * @return \Coach\AnnonceBundle\Entity\optionAnnonce 
+     */
+    public function getOptionAnnonce()
+    {
+        return $this->optionAnnonce;
+    }
+
+    /**
+     * Set classAnnonce
+     *
+     * @param \Coach\AnnonceBundle\Entity\classAnnonce $classAnnonce
+     * @return Annonce
+     */
+    public function setClassAnnonce(\Coach\AnnonceBundle\Entity\ClassAnnonce $classAnnonce = null)
+    {
+        $this->classAnnonce = $classAnnonce;
+
+        return $this;
+    }
+
+    /**
+     * Get classAnnonce
+     *
+     * @return \Coach\AnnonceBundle\Entity\classAnnonce 
+     */
+    public function getClassAnnonce()
+    {
+        return $this->classAnnonce;
+    }
+
+    /**
+     * Set typeAnnonce
+     *
+     * @param \Coach\AnnonceBundle\Entity\typeAnnonce $typeAnnonce
+     * @return Annonce
+     */
+    public function setTypeAnnonce(\Coach\AnnonceBundle\Entity\TypeAnnonce $typeAnnonce = null)
+    {
+        $this->typeAnnonce = $typeAnnonce;
+
+        return $this;
+    }
+
+    /**
+     * Get typeAnnonce
+     *
+     * @return \Coach\AnnonceBundle\Entity\typeAnnonce 
+     */
+    public function getTypeAnnonce()
+    {
+        return $this->typeAnnonce;
+    }
+
+    /**
+     * Add mesImages
+     *
+     * @param \Coach\AnnonceBundle\Entity\Images $mesImages
+     * @return Annonce
+     */
+    public function addMesImage(\Coach\AnnonceBundle\Entity\Images $mesImages)
+    {
+        $this->mesImages[] = $mesImages;
+
+        return $this;
+    }
+
+    /**
+     * Remove mesImages
+     *
+     * @param \Coach\AnnonceBundle\Entity\Images $mesImages
+     */
+    public function removeMesImage(\Coach\AnnonceBundle\Entity\Images $mesImages)
+    {
+        $this->mesImages->removeElement($mesImages);
+    }
+
+    /**
+     * Get mesImages
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMesImages()
+    {
+        return $this->mesImages;
+    }
+
+    /**
+     * Set prix
+     *
+     * @param integer $prix
+     * @return Annonce
+     */
+    public function setPrix($prix)
+    {
+        $this->prix = $prix;
+
+        return $this;
+    }
+
+    /**
+     * Get prix
+     *
+     * @return integer 
+     */
+    public function getPrix()
+    {
+        return $this->prix;
+    }
+
+    /**
+     * Set proximite
+     *
+     * @param string $proximite
+     * @return Annonce
+     */
+    public function setProximite($proximite)
+    {
+        $this->proximite = $proximite;
+
+        return $this;
+    }
+
+    /**
+     * Get proximite
+     *
+     * @return string 
+     */
+    public function getProximite()
+    {
+        return $this->proximite;
+    }
+
+    /**
+     * Set cp
+     *
+     * @param string $cp
+     * @return Annonce
+     */
+    public function setCp($cp)
+    {
+        $this->cp = $cp;
+
+        return $this;
+    }
+
+    /**
+     * Get cp
+     *
+     * @return string 
+     */
+    public function getCp()
+    {
+        return $this->cp;
+    }
+
+    /**
+     * Set ville
+     *
+     * @param string $ville
+     * @return Annonce
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * Get ville
+     *
+     * @return string 
+     */
+    public function getVille()
+    {
+        return $this->ville;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     * @return Annonce
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string 
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return Annonce
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set civilite
+     *
+     * @param string $civilite
+     * @return Annonce
+     */
+    public function setCivilite($civilite)
+    {
+        $this->civilite = $civilite;
+
+        return $this;
+    }
+
+    /**
+     * Get civilite
+     *
+     * @return string 
+     */
+    public function getCivilite()
+    {
+        return $this->civilite;
+    }
+
+    /**
+     * Set vendu
+     *
+     * @param integer $vendu
+     * @return Annonce
+     */
+    public function setVendu($vendu)
+    {
+        $this->vendu = $vendu;
+
+        return $this;
+    }
+
+    /**
+     * Get vendu
+     *
+     * @return integer 
+     */
+    public function getVendu()
+    {
+        return $this->vendu;
+    }
+}

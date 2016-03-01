@@ -1,0 +1,215 @@
+<?php
+
+/**
+ * This file is part of the <name> project.
+ *
+ * (c) <yourname> <youremail>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Application\Sonata\UserBundle\Entity;
+
+use Sonata\UserBundle\Entity\BaseUser as BaseUser;
+use Doctrine\ORM\Mapping as ORM;
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="fos_user_user")
+ */
+class User extends BaseUser
+{
+    /**
+    * @ORM\Id
+    * @ORM\Column(type="integer")
+    * @ORM\GeneratedValue(strategy="AUTO")
+    */
+    protected $id;
+    /**
+     * Get id
+     *
+     * @return integer $id
+     */
+    public function getId()
+    {
+        return $this->id;
+    }        
+    /**
+     * @var text
+     *
+     * @ORM\Column(name="adresse_postale", type="text")
+     */
+    private $adresse_postale;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cp", type="integer")
+     */
+    private $cp;
+    /**
+    * @ORM\OneToMany(targetEntity="Application\Sonata\NotificationBundle\Entity\Message",mappedBy="msguser")
+    */
+    private $messages;
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="Coach\AnnonceBundle\Entity\Annonce",mappedBy="annonceur")
+     */
+    private $annonces;
+    
+    /**
+     * @var integer
+     * @ORM\OneToOne(targetEntity="Application\Sonata\UserBundle\Entity\ContactPerson")
+     */
+    private $contactPerson;
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="Coach\ReservationBundle\Entity\Reservation",mappedBy="client",cascade={"persist"})
+     */
+    private $reservations;
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->messages = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Set cp
+     *
+     * @param string $cp
+     * @return User
+     */
+    public function setCp($cp)
+    {
+        $this->cp = $cp;
+
+        return $this;
+    }
+
+    /**
+     * Get cp
+     *
+     * @return string 
+     */
+    public function getCp()
+    {
+        return $this->cp;
+    }
+    /**
+     * Add messages
+     *
+     * @param \Application\Sonata\NotificationBundle\Entity\Message $messages
+     * @return User
+     */
+    public function addMessage(\Application\Sonata\NotificationBundle\Entity\Message $messages)
+    {
+        $this->messages[] = $messages;
+
+        return $this;
+    }
+
+    /**
+     * Remove messages
+     *
+     * @param \Application\Sonata\NotificationBundle\Entity\Message $messages
+     */
+    public function removeMessage(\Application\Sonata\NotificationBundle\Entity\Message $messages)
+    {
+        $this->messages->removeElement($messages);
+    }
+
+    /**
+     * Get messages
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMessages()
+    {
+        return $this->messages;
+    }
+    
+
+    /**
+     * Add annonces
+     *
+     * @param \Coach\AnnonceBundle\Entity\Annonce $annonces
+     * @return User
+     */
+    public function addAnnonce(\Coach\AnnonceBundle\Entity\Annonce $annonces)
+    {
+        $this->annonces[] = $annonces;
+
+        return $this;
+    }
+
+    /**
+     * Remove annonces
+     *
+     * @param \Coach\AnnonceBundle\Entity\Annonce $annonces
+     */
+    public function removeAnnonce(\Coach\AnnonceBundle\Entity\Annonce $annonces)
+    {
+        $this->annonces->removeElement($annonces);
+    }
+
+    /**
+     * Get annonces
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAnnonces()
+    {
+        return $this->annonces;
+    }
+    /**
+     * Set adresse_postale
+     *
+     * @param string $adressePostale
+     * @return User
+     */
+    public function setAdressePostale($adressePostale)
+    {
+        $this->adresse_postale = $adressePostale;
+
+        return $this;
+    }
+
+    /**
+     * Get adresse_postale
+     *
+     * @return string 
+     */
+    public function getAdressePostale()
+    {
+        return $this->adresse_postale;
+    }
+   
+        
+    /**
+     * Set contactPerson
+     *
+     * @param \Application\Sonata\UserBundle\Entity\ContactPerson $contactPerson
+     * @return User
+     */
+    public function setContactPerson(\Application\Sonata\UserBundle\Entity\ContactPerson $contactPerson = null)
+    {
+        $this->contactPerson = $contactPerson;
+
+        return $this;
+    }
+
+    /**
+     * Get contactPerson
+     *
+     * @return \Application\Sonata\UserBundle\Entity\ContactPerson 
+     */
+    public function getContactPerson()
+    {
+        return $this->contactPerson;
+    }
+
+    
+}

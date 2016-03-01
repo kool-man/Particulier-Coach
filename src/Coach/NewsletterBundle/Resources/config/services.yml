@@ -1,0 +1,4 @@
+services:
+#    coach_newsletter.example:
+#        class: Coach\NewsletterBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

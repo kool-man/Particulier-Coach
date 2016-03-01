@@ -1,0 +1,9 @@
+services:
+#    coach_conseils.example:
+#        class: Coach\ConseilsBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+    coach_conseils.admin.conseil:
+        class: Coach\ConseilsBundle\Admin\ConseilAdmin
+        arguments: [~, Coach\ConseilsBundle\Entity\Conseil, CoachConseilsBundle:ConseilAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Conseil}

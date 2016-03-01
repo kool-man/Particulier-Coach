@@ -1,0 +1,97 @@
+<?php
+
+namespace Coach\AnnonceBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ville
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Coach\AnnonceBundle\Entity\villeRepository")
+ */
+class ville
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @var integer
+     *
+     * @ORM\ManyToOne(targetEntity="Coach\AnnonceBundle\Entity\departement", inversedBy="villes",cascade={"persist"})
+     */
+    private $departement;
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return ville
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+	
+	 public function __toString()
+    {
+      return $this->getName();
+    }
+
+    /**
+     * Set departement
+     *
+     * @param \Coach\AnnonceBundle\Entity\departement $departement
+     * @return ville
+     */
+    public function setDepartement(\Coach\AnnonceBundle\Entity\departement $departement = null)
+    {
+        $this->departement = $departement;
+
+        return $this;
+    }
+
+    /**
+     * Get departement
+     *
+     * @return \Coach\AnnonceBundle\Entity\departement 
+     */
+    public function getDepartement()
+    {
+        return $this->departement;
+    }
+}

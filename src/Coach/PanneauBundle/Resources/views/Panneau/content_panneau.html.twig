@@ -1,0 +1,19 @@
+{% for panneau in panneaux %}
+<h3 class="mrg-t-30 border">{{ panneau.titre }}</h3>
+<div class="row">
+    <div class="col-md-4">
+        <img src="{{asset('bundles/coachpanneau/images/uploads/')}}{{ panneau.image }}" alt="" class="img-responsive">
+    </div>
+    <div class="col-md-8">
+        <p><strong>Format : </strong>{{ panneau.format }}</p>
+        <p><strong>Oreilles : </strong> {{ panneau.oreillets }}</p>
+        <p><strong>Quantité : </strong> {{ panneau.quantite }}</p>
+        <p><strong>Prix : </strong> {{ panneau.prix }}</p>
+        <p><strong>Ligne 1 : </strong> {{ panneau.ligne1 }}</p>
+        <p><strong>Ligne 2 : </strong> {{ panneau.ligne2 }}</p>
+        <p>{{ panneau.description }}</p>
+        <a href="#" class="btn btn-success mrg-t-10 pull-right" data-toggle="modal" data-target="#panneau-modal">Créer mon panneau</a>
+    </div>
+
+</div>
+{% endfor %}

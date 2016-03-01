@@ -1,0 +1,18 @@
+{% macro displayWizard(wizard) %}
+    {% trans_default_domain "IbrowsNewsletterBundle" %}
+    <ul class="wizard">
+        {% for annotation in wizard.annotations %}
+            <li class="{% if(true == annotation.isCurrentMethod) %}active{% endif %} {% if(true == annotation.isValid()) %}valid{% endif %}">
+                <span>
+                    {% if(true == annotation.isValid()) %}
+                        <a href="{{ wizard.stepUrl(annotation) }}">
+                    {% endif %}
+                            {{ ('newsletter.wizard.'~annotation.name)|trans }}
+                    {% if(true == annotation.isValid()) %}
+                        </a>
+                    {% endif %}
+                </span>
+            </li>
+        {% endfor %}
+    </ul>
+{% endmacro displayWizard %}

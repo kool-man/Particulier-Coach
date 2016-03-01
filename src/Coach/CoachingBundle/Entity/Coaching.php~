@@ -1,0 +1,171 @@
+<?php
+
+namespace Coach\CoachingBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Coaching
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Coach\CoachingBundle\Entity\CoachingRepository")
+ */
+class Coaching
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createdAt", type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updatedAt", type="datetime")
+     */
+    private $updatedAt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="titre", type="string", length=255)
+     */
+    private $titre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="icone", type="string", length=255)
+     */
+    private $icone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text")
+     */
+    private $description;
+
+    /**
+     * @var integer
+     *
+     * @ORM\ManyToOne(targetEntity="Coach\PageBundle\Entity\Page", inversedBy="coaching")
+     */
+    private $page;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set titre
+     *
+     * @param string $titre
+     * @return Coaching
+     */
+    public function setTitre($titre)
+    {
+        $this->titre = $titre;
+
+        return $this;
+    }
+
+    /**
+     * Get titre
+     *
+     * @return string 
+     */
+    public function getTitre()
+    {
+        return $this->titre;
+    }
+
+    /**
+     * Set icone
+     *
+     * @param string $icone
+     * @return Coaching
+     */
+    public function setIcone($icone)
+    {
+        $this->icone = $icone;
+
+        return $this;
+    }
+
+    /**
+     * Get icone
+     *
+     * @return string 
+     */
+    public function getIcone()
+    {
+        return $this->icone;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Coaching
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+    
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+        $this->createdAt = $this->updatedAt = new \DateTime('now');         
+    }
+     
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdate()
+    {
+        $this->updatedAt = new \DateTime('now');
+    }
+    
+    public function __construct()
+    {
+        $this->setCreatedAt(new \DateTime());
+        $this->setUpdatedAt(new \DateTime());
+    }
+    
+    public function __toString()
+    {
+      return $this->getTitre();
+    }
+}

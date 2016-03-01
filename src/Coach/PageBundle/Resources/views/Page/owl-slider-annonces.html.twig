@@ -1,0 +1,33 @@
+    <div class="clearfix"></div>
+    <div id="owl-offres" class="owl-carousel owl-theme">        
+        {% for annonce in annonces %}
+        <div class="item">
+            <div class="item-content">
+                <div class="item-img-wrapper">
+                    <figure>
+                        <a href="{{path('coach_annonce_details', {'id':annonce.id,'titre':annonce.titre|replace({ (' '): '-' })})}}" title="{{annonce.titre}}">
+                                {% set s = 0 %}
+                                {%for image in annonce.mesImages |slice(0,1) %}
+                                <img src="{{asset('bundles/coachannonce/')~image.getWebPath() }}" alt="{{annonce.titre}}" class="img-responsive">
+                                    {% set s = s + 1 %}
+                                {%endfor%}       
+                                {% if s == 0 %}
+                                <img src="{{asset('bundles/coachfront/js/rectorpage/images/no.image.png') }}" alt="No image" class="img-responsive">
+                                {% endif %}    
+                        </a>
+                    </figure>
+                    <div class="item-price-container"><p>{{annonce.prix}} € </p></div>
+                    <span class="discount-rect nvl">Nouvelle</span>
+                </div>
+                <div class="item-meta-container">
+                    <p><a href="{{path('coach_annonce_details', {'id':annonce.id,'titre':annonce.titre|replace({ (' '): '-' })})}}" title="{{annonce.titre}}">{{annonce.description(50)}}...</a> </p>
+                    <div class="ratings-container">
+                        <span class="ratings-amount">{{annonce.nbvue}} vue</span>
+                    </div>
+                    <a href="{{path('coach_annonce_details', {'id':annonce.id,'titre':annonce.titre|replace({ (' '): '-' })})}}" title="{{annonce.titre}}" class="btn btn-black pull-right">Voir l'annonce</a>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}        
+    </div>

@@ -1,0 +1,132 @@
+{% extends '::layout.html.twig' %}
+{% block body %}
+<div class="row">
+    <div class="col-md-4">
+		<div id="carousel-package" class="carousel slide" data-ride="carousel">
+		<span class="vendue">Vendue</span>
+		  <div class="carousel-inner" role="listbox">
+			<div class="item active">
+			  <a href="{{path('coach_annonce_search')}}" title="vente immobilière"><img src="{{asset('bundles/coachfront/images/biens/annonce-ville-piscine.png')}}" alt="annonces immobilières"></a>
+			</div>
+			<div class="item">
+			  <img src="{{asset('bundles/coachfront/images/biens/maison-salon.png')}}" alt="particulier à particulier">
+			</div>
+			<div class="item">
+			  <a href="{{path('coach_annonce_search')}}"> <img src="{{asset('bundles/coachfront/images/pub/coach.jpg')}}" alt="coaching immobilière" class="img-responsive"></a>
+			</div>
+		</div>
+		<p>{{titres[1]}}</p>
+	</div>
+    </div>
+    <div class="col-md-8">
+        {% for coach in page.coaching%}
+        <h1 style="font-size:28px;" class="nmg-t">{{coach.titre}}</h1>
+        {% if coach.point1 %}<p>{{coach.point1}}</p>{% endif %}
+        {% if coach.point2 %}<p>{{coach.point2}}</p>{% endif %}
+        {% if coach.point3 %}<p>{{coach.point3}}</p>{% endif %}
+        {% if coach.point4 %}<p>{{coach.point4}}</p>{% endif %}
+        {% if coach.point5 %}<p>{{coach.point5}}</p>{% endif %}
+        {% if coach.point6 %}<p>{{coach.point6}}</p>{% endif %}
+        {% if coach.point7 %}<p>{{coach.point7}}</p>{% endif %}
+        {% if coach.point8 %}<p>{{coach.point8}}</p>{% endif %}
+        {% endfor %}
+    </div>
+    <div class="col-md-12">
+        <div class="table-responsive mrg-tb-30">
+            <table class="table" id="pack-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        {% set nbPack = 0 %}
+                        {%for p in packTitle %}
+                            {% if p.ordre > 2 %}
+                            <th><a href="{{path('coach_reservation_paiement',{'pack':'3'})}}" title="coaching en ligne"><div>{{p.title}}</div></a></th>
+                            {% else %}
+                            <th><a href="{{path('coach_annonce_deposez',{'ordre': p.ordre })}}" title="pack gratuit - pack star - pack gold"><div>{{p.title}}</div></a></th>
+                            {% endif %}
+                        {% set nbPack = nbPack + 1 %}
+                        {%endfor%}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key,value in packs %} 
+                    <tr>
+                        <td><div>{{key}}</div></td>
+                        {% for l in value %}
+                        {% if (l== "1") %}
+                        <td><div class="valign"><i class="fa fa-check-circle"></i></div></td>
+                        {%elseif (l== "0") %}
+                        <td><div class="valign"><i class="fa fa-times"></i></div></td>
+                        {%elseif (l== "-1") %}
+                        <td><div class="valign"><i class="fa fa-smile-o"></i></div></td>
+                        {%else%}
+                        <td><div class="valign">{{l}}</div></td>
+                        {%endif%}  
+                        {%endfor%}
+                    </tr>
+                    {%endfor%}                    
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td><div>* Tarif mensuel TTC</div></td>
+                        {% for p in packTitle %}
+                        {%if p.price == 0 %}
+                            <td><a href="{{path('coach_annonce_deposez',{'ordre': p.ordre })}}" title="pack gratuit"><div>Gratuit</div></a></td>
+                        {%elseif p.price < 30 and p.price > 0 %}
+                            <td><a href="{{path('coach_annonce_deposez',{'ordre': p.ordre })}}" title="pack star - pack gold"><div>{{p.price}} Euro *</div></a></td>
+                        {% else %}
+                            <td><a href="{{path('coach_reservation_paiement',{'pack':'3'})}}" title="coaching en ligne"><div>{{p.price}} Euro</div></a></td>
+                        {%endif%}
+                       {%endfor%}
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+<ul id="tooltip-text" style="display:none">
+	<li>Déposez votre annonce immobilière et présenter votre bien immobilier à vendre / à louer (descriptif, localisation, ville, atouts, potentiel, photos, prix, charges de copropriétés, taxe foncière, diagnostics, DPE, diagnostic énergétique, loi carrez</li>		
+	<li>Déposez plus de photos en choisissant une des 3 formules proposées</li>		
+	<li>Remontrez votre annonce immobilière en première position des listes de recherches immobilières</li>		
+	<li>Votre annonce sera diffusée à grande échelle pour un maximum de clients</li>		
+	<li>Imprimez votre dossier de présentation à remettre aux clients lors des visites.</li>		
+	<li>Le site immobilier de votre annonce immobilière permet de donner plus de visibilité par des acquéreur.</li>		
+	<li>Annonce immobilière vidéo - Youtube/Dailymotion donnes plus de visibilité sur google de votre annonce immobilière.</li>		
+	<li>Téléchargez le guide de vente immobilière (conseilles sur la gestion de votre vente)</li>		
+	<li>Le compte client est votre tableau de bord, permettant la gestion et suivi de votre activité</li>		
+	<li>Indique la durée de validité de votre annonce immobiliè</li>		
+	<li>Sans commission - Sans intermédiaire (aucune commission ou supplément sera demandée en cas de vente</li>			
+</ul>                    
+<br>
+<br>  
+{% endblock %}  
+{% block javascripts %}
+{{ parent() }}
+<script>
+    $('.carousel').carousel();
+    $('#pack-table tr td:first-child div button').attr({
+            "data-container":"body",
+            "data-toggle":"popover",
+            "data-placement":"right",
+            "data-trigger":"focus"
+    });
+    for(var i=0; i<12; i++){
+            var text= $('#tooltip-text li').eq(i).text();
+            $('#pack-table tr').eq(i+1).children('td').eq(0).children('div').children('button').attr('data-content', text);
+    }
+    $('#pack-table div button').popover('hide');
+    
+    $('#pack-table td:nth-child(2)').on('click', function(){
+		window.location.assign("{{path('coach_annonce_deposez',{'ordre': 0 })}}");
+    });
+    $('#pack-table td:nth-child(3)').on('click', function(){
+                  window.location.assign("{{path('coach_annonce_deposez',{'ordre': 1 })}}");
+    });
+    $('#pack-table td:nth-child(4)').on('click', function(){
+                  window.location.assign("{{path('coach_annonce_deposez',{'ordre': 2 })}}");
+    }); 
+    $('#pack-table td:nth-child(5)').on('click', function(){
+                  window.location.assign("{{path('coach_reservation_paiement',{'pack': 3 })}}");
+    });
+</script>
+{% endblock %}  

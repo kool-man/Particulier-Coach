@@ -1,0 +1,28 @@
+    <div class="col-md-12">
+        {% for e in pagerfanta.currentPageResults %}
+            <div class="media">
+                <a class="media-left" href="{{path('coach_annonce_details', {'id':e.id,'titre':e.titre|replace({ (' '): '-' })})}}" title="{{e.titre}}">
+				{%for image in e.mesImages |slice(0,1) %}
+					<img src="{{asset('bundles/coachannonce/')~image.getWebPath() }}" width="100%" height="100%" alt=""> 
+				{%endfor%}
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading"><a href="{{path('coach_annonce_details', {'id':e.id,'titre':e.titre|replace({ (' '): '-' })})}}" title="{{e.titre}}">{{e.titre}}</a></h4>
+                    <p>{{e.description}}.</p>
+                    <div class="divider">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <strong>Espace :</strong>{{ e.surface}} m²
+                            </div>
+                            <div class="col-md-4">
+                                <strong>Pièces :</strong> S + {{ e.nbChambre }}
+                            </div>
+                            <div class="col-md-4">
+                                <strong> Prix :</strong> {{ e.prix }} Eruro
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>

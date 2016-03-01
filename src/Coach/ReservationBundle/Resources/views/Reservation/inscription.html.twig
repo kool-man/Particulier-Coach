@@ -1,0 +1,148 @@
+{% extends '::layout.html.twig' %}
+{% block body %}
+<div class="row">
+    <div class="col-md-12">
+
+
+
+        <h3 class="title-page">Formulaire de réservation sécurisée</h3>
+
+    </div>
+  	
+    <div class="col-md-12">
+       
+        <div class="col-md-12 wells">
+
+            <!--bs-wizard-->
+            <div class="row bs-wizard" style="border-bottom:0;">
+
+                <div class="col-xs-3 bs-wizard-step disabled"><!-- complete -->
+                    <div class="text-center bs-wizard-stepnum">Paiement</div>
+                    <div class="progress"><div class="progress-bar"></div></div>
+                    <a href="#" class="bs-wizard-dot"></a>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step disabled"><!-- active -->
+                    <div class="text-center bs-wizard-stepnum">Réservation</div>
+                    <div class="progress"><div class="progress-bar"></div></div>
+                    <a href="#" class="bs-wizard-dot"></a>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step disabled"><!-- active -->
+                    <div class="text-center bs-wizard-stepnum">Validation</div>
+                    <div class="progress"><div class="progress-bar"></div></div>
+                    <a href="#" class="bs-wizard-dot"></a>
+                </div>
+            </div>
+            <!--bs-wizard-->
+
+            <div class="col-md-12 mrg-t-10"></div>
+            <div class="row">
+                <!--step-1-->
+                <div class="col-md-12" id="step-1-form" style="display: block;">
+                    <form action="{{ path('coach_reservation_inscription',{'pack':1}) }}" {{ form_enctype(form) }} method="POST">
+                    
+                        {% if not form.vars.valid %}
+                        <div class="alert alert-danger col-md-12" role="alert">
+                            {{ form_errors(form.nom) }}
+                            {{ form_errors(form.prenom) }}
+                            {{ form_errors(form.email) }}
+                             {{ form_errors(form.telephone) }}
+                            {{ form_errors(form.adresse) }}
+                            {{ form_errors(form.cp) }}
+                           
+                        </div>
+                        {% endif %}
+                   
+                    <div class="col-md-4">
+                        {{ form_errors(form) }}
+                        <div class="form-group">
+                            <label>
+                                <span class="input-tr-addon"><i class="fa fa-user"></i></span>
+                                {{ form_widget(form.nom, {'attr': {'placeholder': "Nom*",'class':'form-control'}}) }}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>
+                                <span class="input-tr-addon"><i class="fa fa-user"></i></span>
+                                {{ form_widget(form.prenom, {'attr': {'placeholder': "Prénom*",'class':'form-control'}}) }}
+                            </label>
+                        </div>
+                    </div>
+		    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>
+                                <span class="input-tr-addon"><i class="fa fa-envelope-o"></i></span>
+                                {{ form_widget(form.email, {'attr': {'placeholder': "Email*",'class':'form-control'}}) }}
+                            </label>
+                        </div>
+                    </div>		
+		    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>
+                                <span class="input-tr-addon"><i class="fa fa-user"></i></span>
+                                {{ form_widget(form.telephone, {'attr': {'placeholder': "Tél.",'class':'form-control'}}) }}
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>
+                                <span class="input-tr-addon"><i class="fa fa-map-marker"></i></span>
+                                {{ form_widget(form.adresse, {'attr': {'placeholder': "Adresse",'class':'form-control'}}) }}
+                            </label>
+                        </div>
+
+                    </div>
+					
+		    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>
+                                <span class="input-tr-addon"><i class="fa fa-map-marker"></i></span>
+                                {{ form_widget(form.cp, {'attr': {'placeholder': "Code Postal",'class':'form-control'}}) }}
+                            </label>
+                        </div>
+                    </div>				
+					
+                     
+                     <div class="col-md-4 col-md-offset-8">
+                        <div class="form-group">
+                            <button class="btn-success btn pull-right">Etape Suivante &nbsp;<i class="fa fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                    {{ form_rest(form) }}        
+                    </form>        
+                </div>
+                <!--step-1-->
+            </div>
+        </div>
+    </div>
+
+</div>
+<br>
+<br>
+{% endblock %}
+{% block stylesheets %}
+{{ parent() }}
+    <!--datetimepicker-->
+    <link rel="stylesheet" type="text/css" href="{{asset('bundles/coachfront/js/js-datetimepicker/jquery.datetimepicker.css')}}" />
+{% endblock %}       
+{% block javascripts %}
+{{ parent() }}
+        <script type="text/javascript" src="{{asset('bundles/coachfront/js/js-datetimepicker/jquery.datetimepicker.js')}}"></script>
+        <script type="text/javascript">
+		jQuery('#time').datetimepicker({
+			  datepicker:false,
+			  format:'H:i'
+			});
+        jQuery('#date').datetimepicker({
+		  startDate:'+1971/05/01',//or 1986/12/08
+		   timepicker:false,
+			format:'d.m.Y'
+		  
+		});
+        </script>
+{% endblock %}

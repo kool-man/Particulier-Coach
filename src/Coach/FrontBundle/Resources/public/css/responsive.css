@@ -1,0 +1,116 @@
+@charset "utf-8";
+/* green: #61af2a - vert light:  #87cf50;  noir background #525252  color #4e4e4e*/
+
+/*****LG*****/
+@media (max-width: 1200px) {
+    .pub-stephan {display:none;}
+}
+/*****MD*****/
+@media (max-width: 970px) {
+	.col-md-6>.form-control {
+		margin-top:15px;
+	}
+    header ul {
+        float: left;
+    }
+    header div.col-md-6:first-child {
+        margin-bottom: 10px;
+    }
+   .navbar-brand {
+        display: block;
+    }
+    .customNavigation {
+        margin: 10px auto;
+        width: 110px;
+        float: none !important;
+    }
+    header .contact {
+        float: left;
+        margin-bottom: 10px;
+        margin-left: 0;
+		margin-right: 20px;
+    }
+    .search-form .col-xs-1 {
+        display: none;
+    }
+	.banner-header-pub {
+		margin-bottom:20px
+	}
+
+	.navbar .navbar-header {display:none;}
+	.buy-and-sell .border-left {
+		border:0;
+	}
+}
+@media (max-width: 1200px) and (min-width: 768px) {
+
+.pub-stephan.mobile {
+		display:block
+	}
+}
+/*****SM*****/
+@media (min-width: 768px) {
+      
+    
+}
+/*****XS*****/
+@media (max-width: 768px) {
+	/***Header Banner****/
+	.banner-header-pub {
+		height: 175px;
+	}
+	.banner-header-pub .handmoney {
+		left: 0;
+		top: 78px;
+	}
+	.banner-header-pub .handkey {
+		top: 38px;
+	}
+	.banner-header-pub .handkey img {
+		height: 130px;
+	}
+	.banner-header-pub .handmoney img {
+		height: 84px;
+	}
+	.banner-header-pub .house {
+		right: 150px;
+		top: 69px;
+	}
+	.banner-header-pub .house img {
+		height: 90px;
+	}
+	/***End Header Banner****/
+	.panneau-creation {
+	
+		max-width: 390px;
+		margin: 20px auto;
+}
+    .packages .col-sm-4, .pack-choice>div {
+        margin-bottom: 20px;
+    }
+    
+    .navbar .navbar-header {display:block;}
+    label.btn.btn-default {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .presentation .btn.btn-success.pull-right {
+        width: 100%;
+    }
+    .form-offer {
+        padding: 0 10px;
+    }
+    .green-bar a {
+        width: 90%;
+        padding: 15px 5px;
+        font-size: 17px;
+    }
+    .catogories>div {
+        margin-bottom: 30px
+    }
+    footer .down-footer ul {
+        float: left;
+    }
+
+	.logo {text-align:center;}.logo img {display:initial}
+}

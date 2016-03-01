@@ -1,0 +1,63 @@
+<div class="row" id="form-1">
+        <div class="col-md-12 step-create">
+            <form class="form panneau-edit " id="form-panneau-1" action="{{ path('coach_panneau_homepage') }}" {{ form_enctype(form1) }} method="POST">
+					<div class="row">
+                        {{ form_errors(form1) }}
+						<div class="col-md-6">
+							 <div class="form-group">
+									<label>
+										<span class="input-tr-addon"><i class="fa fa-flag"></i></span>
+                                            {{ form_widget(form1.titre, {'attr': {'placeholder': "Titre de l'annonce",'class':'form-control annonce-titre-panneau'}}) }}
+										<small>Exemple: Appartement 3 pièces</small>
+									</label>
+								</div>
+						   </div>
+						   <div class="col-md-6">
+							  <div class="form-group">
+								<label>
+									<span class="input-tr-addon"><i class="fa fa-mobile"></i></span>
+                                        {{ form_widget(form1.telephone, {'attr': {'placeholder': "Numéro de téléphone",'class':'form-control annonce-num-panneau'}}) }}
+								</label>
+							</div>
+						</div>
+					</div>                   
+					<div class="row">
+						<div class="col-md-6">
+						{{ form_widget(form1.taille, {'attr': {'class':'form-control size'}}) }}
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+							   {{ form_widget(form1.oreillets, {'attr': {'class':'form-control oreillets'}}) }}
+						   </div>
+					   </div>
+					</div>					 
+					<div class="row">
+						<div class="col-md-6">
+						    <div class="form-group">
+                                {{ form_widget(form1.quantite, {'attr': {'placeholder': "Saisir la quantité",'class':'form-control quantity'}}) }}
+						    </div>
+					   </div>
+					    <div class="col-md-6">
+							  <div class="form-group">
+								<label>
+									<span class="input-tr-addon"><i class="fa fa-envelope"></i></span>
+                                    {{ form_widget(form1.email, {'attr': {'placeholder': "Mon mail",'class':'form-control mon-mail'}}) }}
+								</label>
+							</div>
+						</div>
+                    </div>
+                    <div class="display infos" data-quantity="1"  data-or="0" data-quality="5" data-size="40"></div>
+                    <div class="row">
+						<div class="col-md-12">
+							<div class="somme">
+								<span class="number">1</span>
+								<span>Panneau(x),</span>
+								<span class="price pull-right"><span>0</span> Euro</span>
+							</div>
+						</div>
+                    </div>
+					<button class="btn btn-success btn-block" type="submit">Créer mon panneau</button>
+                    {{ form_rest(form1) }}                        
+            </form>
+        </div>
+</div>

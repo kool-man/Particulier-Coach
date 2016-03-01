@@ -1,0 +1,21 @@
+coach_annonce_homepage:
+    path:     /
+    defaults: { _controller: CoachAnnonceBundle:Annonce:index }
+coach_annonce_ajouter:
+    path:     /annonce/add
+    defaults: { _controller: CoachAnnonceBundle:Annonce:add }    
+coach_annonce_delete:
+    path:     /annonce/delete/{id}
+    defaults: { _controller: CoachAnnonceBundle:Annonce:delete }    
+coach_message_delete:
+    path:     /message/delete/{id}
+    defaults: { _controller: SonataNotificationBundle:Notification:delete }    
+coach_annonce_search:
+    path:     /search/{page}
+    defaults: { _controller: CoachAnnonceBundle:Annonce:search,page: 1 }    
+coach_annonce_details:
+    path:     /details/{id}/{title}
+    defaults: { _controller: CoachAnnonceBundle:Annonce:details,page: 1 }    
+coach_annonce_package:
+    path:     /package
+    defaults: { _controller: CoachAnnonceBundle:Annonce:package}    

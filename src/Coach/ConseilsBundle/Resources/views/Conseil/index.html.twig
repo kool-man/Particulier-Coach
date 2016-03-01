@@ -1,0 +1,21 @@
+{% extends '::layout.html.twig' %}
+{% block body %}
+<div class="row conseil-immo">
+    <div class="col-md-12">
+        <h1 class="title-page">Conseil Immobilier</h1>
+    </div>
+    {% for conseil in conseils %}
+    <div class="col-md-6">
+        <i class="fa {{ conseil.icone }}"></i>
+        <h2>{{ conseil.titre }}</h2>
+        <p>
+            {{ conseil.description }}
+        </p>
+    </div>
+    {% endfor %}
+</div>
+<div class="clearfix"></div>
+<br>
+<br>
+<br> 
+{% endblock %}    

@@ -1,0 +1,72 @@
+{% extends '::layout.html.twig' %}
+{% block body %}
+<div class="row">
+    <div class="col-md-12">
+        <{{titres[1].balise}} class="title-page">{{titres[1].titre}}</{{titres[1].balise}}>
+    </div>
+    <div class="col-md-3">
+        <a href="{{path('coach_pack')}}" title="Publier vos annonces immobilières"><img src="{{asset('bundles/coachfront/images/pub/coach.jpg')}}" alt="panneaux immobilières" class="img-responsive"></a>
+        <a href="{{path('coach_pack')}}" title="Publier vos annonces immobilières"><img src="{{asset('bundles/coachfront/images/pub/annonces.jpg')}}" alt="panneaux immobilières" class="img-responsive mrg-tb-20"></a>
+        {% include 'CoachPanneauBundle:Panneau:pub-animated.html.twig' %}
+    </div>
+    <div class="col-md-9" id="panneau">
+        <{{titres[2].balise}} class="nmg-t border">{{titres[2].titre}}</{{titres[2].balise}}>
+        {% for coach in page.coaching%}
+            {% if coach.point1 %}<p>{{coach.point1}}</p>{% endif %}
+            {% if coach.point2 %}<p>{{coach.point2}}</p>{% endif %}
+            {% if coach.point3 %}<p>{{coach.point3}}</p>{% endif %}
+            {% if coach.point4 %}<p>{{coach.point4}}</p>{% endif %}
+            {% if coach.point5 %}<p>{{coach.point5}}</p>{% endif %}
+            {% if coach.point6 %}<p>{{coach.point6}}</p>{% endif %}
+            {% if coach.point7 %}<p>{{coach.point7}}</p>{% endif %}
+            {% if coach.point8 %}<p>{{coach.point8}}</p>{% endif %}
+        {% endfor %}
+        <{{titres[3].balise}} class="mrg-t-30 border">{{titres[3].titre}}</{{titres[3].balise}}>
+        <div class="row">
+            <div class="col-md-5">
+                {% include 'CoachPanneauBundle:Panneau:panneau-1.html.twig' %}
+            </div>
+            <div class="col-md-7">
+                {{ include('CoachPanneauBundle:Panneau:form-1.html.twig',{'form1':form1}) }}
+            </div>
+        </div>
+        <{{titres[4].balise}} class="mrg-t-30 border">{{titres[4].titre}}</{{titres[4].balise}}>
+        <div class="row">
+            <div class="col-md-5">
+                {% include 'CoachPanneauBundle:Panneau:panneau-2.html.twig' %}
+            </div>
+            <div class="col-md-7">
+                {{ include('CoachPanneauBundle:Panneau:form-2.html.twig',{'form2':form2}) }}
+            </div>
+        </div>
+        <{{titres[5].balise}} class="mrg-t-30 border">{{titres[5].titre}}</{{titres[5].balise}}>
+        <div class="row">
+            <div class="col-md-5">
+                {% include 'CoachPanneauBundle:Panneau:panneau-3.html.twig' %}
+            </div>
+            <div class="col-md-7">
+                {{ include('CoachPanneauBundle:Panneau:form-3.html.twig',{'form3':form3}) }}
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+		$('.steps').on('click', function(e){
+			e.preventDefault();
+			id= $(this).attr('data-form-id');
+			console.log(id);
+			$(id +' .step-create,.modal-footer .steps').hide();
+			$(id +' .step-pay,.modal-footer .btn-success.display').show();
+		});
+		$('.retour').on('click', function(e){
+			e.preventDefault();
+			id= $(this).attr('data-form-id');
+			$(id +' .step-create,.modal-footer .steps').show();
+			$(id +' .step-pay,.modal-footer .btn-success.display').hide();
+		});
+	</script>
+{% endblock %}

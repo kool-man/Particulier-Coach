@@ -1,0 +1,59 @@
+{% extends '::layout.html.twig' %}
+{% block body %}
+    <div class="row">
+    <div class="col-md-12">
+
+        <ol class="breadcrumb">
+            <li class="active">login</li>
+        </ol>
+        
+
+        <div class="col-md-6 col-md-offset-3">
+            <div class="col-md-12 alert alert-warning">
+            {% if error %}
+            {{ error|trans({}, 'FOSUserBundle') }}
+            {% else %}
+            Pour bénéficier de nos services en ligne. vous devez posséder un compte particulier-coach.com
+            {% endif %}
+            </div>
+        </div>
+        <form action="{{ path("coach_user_security_check") }}" method="post">    
+        <div class="col-md-6 col-md-offset-3 connexion">
+            <h3 class="center">Connexion</h3>
+            <div class="wells col-md-12">
+                <div class="form-group">
+                    <label>
+                        <span class="input-tr-addon"><i class="fa fa-user"></i></span>
+                        <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" class="form-control" placeholder="{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}" >
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <span class="input-tr-addon"><i class="fa fa-lock"></i></span>
+                        <input type="password" id="password" name="_password" required="required" class="form-control" placeholder="{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}" >
+                    </label>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                    <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>    
+                </div>
+                <input type="hidden" name="type" value="1" /> 
+                <div class="form-group">
+                    <input class="btn btn-success pull-right" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}"> 
+                </div>
+                <div class="links">
+                   
+                <a href="#">Mot de passe oublier ?</a>
+                <a href="{{path('coach_user_registration_register')}}">Inscription</a>
+                </div>
+            </div>
+           
+        </div>
+        </form>
+    </div>
+</div>
+
+<br>
+<br>
+<br>
+{% endblock %}

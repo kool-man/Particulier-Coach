@@ -1,0 +1,264 @@
+<?php
+
+namespace Coach\EstimationBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * estimation
+ *
+ * @ORM\Table()
+ * @ORM\Entity
+ */
+class estimation
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+	
+	 /**
+     * @var string
+     *
+     * @ORM\Column(name="nb_pieces", type="string",length=255)
+     */
+    private $nbPieces;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nb_chambre", type="string",length=255)
+     */
+    private $nbChambre;
+	
+	 /**
+     * @var string
+     *
+     * @ORM\Column(name="nb_parking", type="string",length=255)
+     */
+    private $nbParking;
+	
+	 /**
+	   * @ORM\ManyToMany(targetEntity="Coach\AnnonceBundle\Entity\Proximite")
+	   */
+    private $proximite;
+	
+	/**
+	   * @ORM\ManyToMany(targetEntity="Coach\EstimationBundle\Entity\loisirAnnonce")
+	   */
+    private $loisirAnnonce;
+	
+	/**
+     * @var integer
+     *
+     * @ORM\ManyToOne(targetEntity="Coach\AnnonceBundle\Entity\ClassAnnonce", inversedBy="annonce",cascade={"persist"})
+     */
+    private $classAnnonce;
+	
+	/**
+     * @var integer
+     *
+     * @ORM\ManyToOne(targetEntity="Coach\AnnonceBundle\Entity\TypeAnnonce", inversedBy="annonce",cascade={"persist"})
+     */
+    private $typeAnnonce;
+	
+	 /**
+     * @var integer
+     *
+     * @ORM\ManyToOne(targetEntity="Coach\AnnonceBundle\Entity\OptionAnnonce", inversedBy="annonce",cascade={"persist"})
+     */
+    private $optionAnnonce;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->proximite = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set nbPieces
+     *
+     * @param string $nbPieces
+     * @return estimation
+     */
+    public function setNbPieces($nbPieces)
+    {
+        $this->nbPieces = $nbPieces;
+
+        return $this;
+    }
+
+    /**
+     * Get nbPieces
+     *
+     * @return string 
+     */
+    public function getNbPieces()
+    {
+        return $this->nbPieces;
+    }
+
+    /**
+     * Set nbChambre
+     *
+     * @param string $nbChambre
+     * @return estimation
+     */
+    public function setNbChambre($nbChambre)
+    {
+        $this->nbChambre = $nbChambre;
+
+        return $this;
+    }
+
+    /**
+     * Get nbChambre
+     *
+     * @return string 
+     */
+    public function getNbChambre()
+    {
+        return $this->nbChambre;
+    }
+
+    /**
+     * Set nbParking
+     *
+     * @param string $nbParking
+     * @return estimation
+     */
+    public function setNbParking($nbParking)
+    {
+        $this->nbParking = $nbParking;
+
+        return $this;
+    }
+
+    /**
+     * Get nbParking
+     *
+     * @return string 
+     */
+    public function getNbParking()
+    {
+        return $this->nbParking;
+    }
+
+    /**
+     * Add proximite
+     *
+     * @param \Coach\AnnonceBundle\Entity\Proximite $proximite
+     * @return estimation
+     */
+    public function addProximite(\Coach\AnnonceBundle\Entity\Proximite $proximite)
+    {
+        $this->proximite[] = $proximite;
+
+        return $this;
+    }
+
+    /**
+     * Remove proximite
+     *
+     * @param \Coach\AnnonceBundle\Entity\Proximite $proximite
+     */
+    public function removeProximite(\Coach\AnnonceBundle\Entity\Proximite $proximite)
+    {
+        $this->proximite->removeElement($proximite);
+    }
+
+    /**
+     * Get proximite
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProximite()
+    {
+        return $this->proximite;
+    }
+
+    /**
+     * Set classAnnonce
+     *
+     * @param \Coach\AnnonceBundle\Entity\ClassAnnonce $classAnnonce
+     * @return estimation
+     */
+    public function setClassAnnonce(\Coach\AnnonceBundle\Entity\ClassAnnonce $classAnnonce = null)
+    {
+        $this->classAnnonce = $classAnnonce;
+
+        return $this;
+    }
+
+    /**
+     * Get classAnnonce
+     *
+     * @return \Coach\AnnonceBundle\Entity\ClassAnnonce 
+     */
+    public function getClassAnnonce()
+    {
+        return $this->classAnnonce;
+    }
+
+    /**
+     * Set typeAnnonce
+     *
+     * @param \Coach\AnnonceBundle\Entity\TypeAnnonce $typeAnnonce
+     * @return estimation
+     */
+    public function setTypeAnnonce(\Coach\AnnonceBundle\Entity\TypeAnnonce $typeAnnonce = null)
+    {
+        $this->typeAnnonce = $typeAnnonce;
+
+        return $this;
+    }
+
+    /**
+     * Get typeAnnonce
+     *
+     * @return \Coach\AnnonceBundle\Entity\TypeAnnonce 
+     */
+    public function getTypeAnnonce()
+    {
+        return $this->typeAnnonce;
+    }
+
+    /**
+     * Set optionAnnonce
+     *
+     * @param \Coach\AnnonceBundle\Entity\OptionAnnonce $optionAnnonce
+     * @return estimation
+     */
+    public function setOptionAnnonce(\Coach\AnnonceBundle\Entity\OptionAnnonce $optionAnnonce = null)
+    {
+        $this->optionAnnonce = $optionAnnonce;
+
+        return $this;
+    }
+
+    /**
+     * Get optionAnnonce
+     *
+     * @return \Coach\AnnonceBundle\Entity\OptionAnnonce 
+     */
+    public function getOptionAnnonce()
+    {
+        return $this->optionAnnonce;
+    }
+}

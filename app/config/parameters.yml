@@ -1,0 +1,14 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_host: particulhfcoach.mysql.db
+    database_port: '3306'
+    database_name: particulhfcoach
+    database_user: particulhfcoach
+    database_password: Coach2015
+    mailer_transport: mail
+    mailer_host: smtp.particulier-coach.com
+    mailer_user: webmaster@particulier-coach.com
+    mailer_password: particulier2015
+    locale: fr
+    secret: 5bd50cdd0c3355eb8ce661f010fbf5031

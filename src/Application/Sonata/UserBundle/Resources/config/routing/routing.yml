@@ -1,0 +1,37 @@
+coach_user_compte_security:
+    path:   /valider_compte/{username}
+    defaults: { _controller: ApplicationSonataUserBundle:User:validation }
+coach_user_security_login:
+    path:     /mon_compte/login
+    defaults: { _controller: ApplicationSonataUserBundle:Security:login }   
+coach_user_security_check:
+    path:     /mon_compte/login_check
+    defaults: { _controller: ApplicationSonataUserBundle:Security:check }
+coach_user_security_logout:
+    path:     /mon_compte/logout
+    defaults: { _controller: ApplicationSonataUserBundle:Security:logout }
+coach_user_security_profile:
+    path:     /mon_compte/profile
+    defaults: { _controller: ApplicationSonataUserBundle:Profile:show }
+coach_user_security_profile_edit:
+    path:     /mon_compte/edit
+    defaults: { _controller: ApplicationSonataUserBundle:Profile:edit }    
+coach_user_registration_register:
+    path:     /register
+    defaults: { _controller: ApplicationSonataUserBundle:Registration:register }  
+coach_user_contact:
+    path:     /contactez-nous
+    defaults: { _controller: ApplicationSonataUserBundle:Contact:index } 
+coach_user_contact_send:
+    path:     /send-email
+    defaults: { _controller: ApplicationSonataUserBundle:Contact:index }
+coach_user_registration_confirmed:  
+    path:     /register/confirmed
+    defaults: { _controller: ApplicationSonataUserBundle:Registration:confirmed }
+coach_user_registration_check_email:
+    path:     /register/check-email
+    defaults: { _controller: ApplicationSonataUserBundle:Registration:checkEmail }
+coach_message_delete:
+    path:     /message/delete/{id}
+    defaults: { _controller: ApplicationSonataUserBundle:Profile:deleteMessage }    
+    

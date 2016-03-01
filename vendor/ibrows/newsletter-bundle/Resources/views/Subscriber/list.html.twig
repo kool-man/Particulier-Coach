@@ -1,0 +1,32 @@
+{% extends basetemplate %}
+{% trans_default_domain "IbrowsNewsletterBundle" %}
+{% block layout_class %}subscriber-list{% endblock layout_class %}
+
+{% block newsletter_content %}
+    <h1>{{ 'subscriber.list'|trans }}</h1>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>{{ 'subscriber.firstname'|trans }}</th>
+            <th>{{ 'subscriber.lastname'|trans }}</th>
+            <th>{{ 'subscriber.company'|trans }}</th>
+            <th>{{ 'subscriber.email'|trans }}</th>
+            <th>{{ 'subscriber.groups'|trans }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for subscriber in subscribers %}
+            <tr>
+                <td>{{ subscriber.id }}</td>
+                <td>{{ subscriber.firstname }}</td>
+                <td>{{ subscriber.lastname }}</td>
+                <td>{{ subscriber.companyname }}</td>
+                <td>{{ subscriber.email }}</td>
+                <td>{{ subscriber.groups|join(',') }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock newsletter_content %}

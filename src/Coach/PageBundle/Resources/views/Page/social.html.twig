@@ -1,0 +1,10 @@
+<ul class="social-share">
+{% for social in socials %}
+    <li><a href="{{social.linkFacebook}}" target="_blank" title="Facebook - Particulier & Coach"><i class="fa fa-facebook"></i></a></li>
+    <li><a href="{{social.linkTwitter}}" target="_blank" title="Twitter - Particulier & Coach"><i class="fa fa-twitter"></i></a></li>
+    <li><a href="{{social.linkGoogle}}" target="_blank" title="Google - Particulier & Coach"><i class="fa fa-google-plus"></i></a></li>
+    <li><a href="{{social.linkLinkedin}}" target="_blank" title="Linkedin - Particulier & Coach"><i class="fa fa-linkedin"></i></a></li>
+    <li><a href="{{social.linkYoutube}}" target="_blank" title="Youtube - Particulier & Coach"><i class="fa fa-youtube"></i></a></li>
+    <li><a href="{{social.linkRss}}" target="_blank" title="Rss - Particulier & Coach"><i class="fa fa-rss"></i></a></li>
+{% endfor %}    
+</ul>

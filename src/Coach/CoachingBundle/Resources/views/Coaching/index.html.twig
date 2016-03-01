@@ -1,0 +1,193 @@
+{% extends '::layout.html.twig' %}
+{% block body %}
+    <div class="row">
+    <div class="col-md-12">
+        <{{titres[1].balise}} class="title-page">{%if titres[1].titre%}{{titres[1].titre}}{% endif %}</{{titres[1].balise}}>
+    </div>
+    <div class="col-md-8">
+	<div class="row">
+            <div class="wells col-md-12 nmrg">
+                   <p>{%if titres[2].titre%}{{titres[2].titre}}{% endif %}
+                   </p>			
+                   <a href="{{path('coach_reservation_paiement',{'pack':3})}}" class="btn btn-success wow fadeInRight pull-right" title="coaching en ligne">Accélérer ma vente maintenant</a>
+            </div>
+	</div>
+    {% for coach in page.coaching%}    
+        <div class="row mrg-t-20">
+            <div class="col-md-3 col-xs-3">
+                <img src="{{ asset('bundles/coachfront/images/autres/')}}{{coach.icone}}" alt="coaching immobilière" class="img-responsive mrg-t-10">
+            </div>
+            <div class="col-md-8 col-xs-9">
+                <h2><strong>{{coach.titre}}</strong></h2>
+                    <ul>
+                            {%if coach.point1 %}<li>{{coach.point1}}</li>{% endif %}
+                            {%if coach.point2 %}<li>{{coach.point2}}</li>{% endif %}
+                            {%if coach.point3 %}<li>{{coach.point3}}</li>{% endif %}
+                            {%if coach.point4 %}<li>{{coach.point4}}</li>{% endif %}
+                            {%if coach.point5 %}<li>{{coach.point5}}</li>{% endif %}
+                            {%if coach.point6 %}<li>{{coach.point6}}</li>{% endif %}
+                            {%if coach.point7 %}<li>{{coach.point7}}</li>{% endif %}
+                            {%if coach.point8 %}<li>{{coach.point8}}</li>{% endif %}
+                    </ul>
+            </div>
+        </div>
+    {% endfor %}
+    <div class="row mrg-t-30">
+			<div class="col-md-3 col-xs-3"></div>
+			<div class="col-md-8">
+				<a href="{{path('coach_reservation_paiement',{'pack':3})}}" class="btn btn-success wow fadeInRight mrg-tb-20" title="coaching en ligne">Accélérer ma vente maintenant</a>
+			</div>
+        </div>        
+    </div>
+    <div class="col-md-4">
+        <div class="title-bar nmrg">
+            <h3>Témoignges clients satisfaits</h3>
+        </div>
+        <div class="wells col-md-12 nmrg feedback js-carousel">
+            <ul id="carousel" >
+                <li>
+                    <div class="media">
+                        <a class="media-left" href="http://www.particulier-coach.com" title="coaching immobilière">
+                            <img src="{{ asset('bundles/coachfront/images/clients/client-1.jpg')}}" alt="coaching immobilière">
+                        </a>
+                        <div class="media-body">
+                            <h3 class="media-heading" style="font-size:14px;">Jonathan Abilit</h3>
+                            <p>J'ai pu vendre ma maison en une semaine sans commission</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="media">
+                        <a class="media-left" href="http://www.particulier-coach.com" title="coaching immobilière">
+                            <img src="{{ asset('bundles/coachfront/images/clients/client-3.jpg')}}" alt="coaching immobilière">
+                        </a>
+                        <div class="media-body">
+                            <h3 class="media-heading" style="font-size:14px;">Albert comby</h3>
+                            <p>J'ai pu vendre ma villa en 10 jours grace à coaching immobilier</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="media">
+                        <a class="media-left" href="http://www.particulier-coach.com" title="coaching immobilière">
+                            <img src="{{ asset('bundles/coachfront/images/clients/client-4.jpg')}}" alt="coaching immobilière">
+                        </a>
+                        <div class="media-body">
+                            <h3 class="media-heading" style="font-size:14px;">Albert comby</h3>
+                            <p>J'ai pu vendre ma villa en 10 jours grace à coaching immobilier</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="media">
+                        <a class="media-left" href="http://www.particulier-coach.com" title="coaching immobilière">
+                            <img src="{{ asset('bundles/coachfront/images/clients/client-5.jpg')}}" alt="coaching immobilière">
+                        </a>
+                        <div class="media-body">
+                            <h3 class="media-heading" style="font-size:14px;">Albert comby</h3>
+                            <p>J'ai pu vendre ma villa en 10 jours grace à coaching immobilier</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="media">
+                        <a class="media-left" href="http://www.particulier-coach.com" title="coaching immobilière">
+                            <img src="{{ asset('bundles/coachfront/images/clients/client-6.jpg')}}" alt="coaching immobilière">
+                        </a>
+                        <div class="media-body">
+                            <h3 class="media-heading" style="font-size:14px;">Albert comby</h3>
+                            <p>J'ai pu vendre ma villa en 10 jours grace à coaching immobilier</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="media">
+                        <a class="media-left" href="http://www.particulier-coach.com" title="coaching immobilière">
+                            <img src="{{ asset('bundles/coachfront/images/clients/client-1.jpg')}}" alt="coaching immobilière">
+                        </a>
+                        <div class="media-body">
+                            <h3 class="media-heading" style="font-size:14px;">Jonathan Abilit</h3>
+                            <p>J'ai pu vendre ma maison en une semaine sans commission</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="media">
+                        <a class="media-left" href="http://www.particulier-coach.com" title="coaching immobilière">
+                            <img src="{{ asset('bundles/coachfront/images/clients/client-3.jpg')}}" alt="coaching immobilière">
+                        </a>
+                        <div class="media-body">
+                            <h3 class="media-heading" style="font-size:14px;">Albert comby</h3>
+                            <p>J'ai pu vendre ma villa en 10 jours grace à coaching immobilier</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="media">
+                        <a class="media-left" href="http://www.particulier-coach.com" title="coaching immobilière">
+                            <img src="{{ asset('bundles/coachfront/images/clients/client-4.jpg')}}" alt="coaching immobilière">
+                        </a>
+                        <div class="media-body">
+                            <h3 class="media-heading" style="font-size:14px;">Albert comby</h3>
+                            <p>J'ai pu vendre ma villa en 10 jours grace à coaching immobilier</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="media">
+                        <a class="media-left" href="http://www.particulier-coach.com" title="coaching immobilière">
+                            <img src="{{ asset('bundles/coachfront/images/clients/client-5.jpg')}}" alt="coaching immobilière">
+                        </a>
+                        <div class="media-body">
+                            <h3 class="media-heading" style="font-size:14px;">Albert comby</h3>
+                            <p>J'ai pu vendre ma villa en 10 jours grace à coaching immobilier</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="media">
+                        <a class="media-left" href="http://www.particulier-coach.com" title="coaching immobilière">
+                            <img src="{{ asset('bundles/coachfront/images/clients/client-7.jpg')}}" alt="coaching immobilière">
+                        </a>
+                        <div class="media-body">
+                            <h3 class="media-heading" style="font-size:14px;">Albert comby</h3>
+                            <p>J'ai pu vendre ma villa en 10 jours grace à coaching immobilier</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="media">
+                        <a class="media-left" href="http://www.particulier-coach.com" title="coaching immobilière">
+                            <img src="{{ asset('bundles/coachfront/images/clients/client-2.jpg')}}" alt="coaching immobilière">
+                        </a>
+                        <div class="media-body">
+                            <h3 class="media-heading" style="font-size:14px;">Albert comby</h3>
+                            <p>Quand jai publié ma villa sur le site coaching immobilier, beaucoup de gens m'ont contacté, et jai trouvé toutes les procédures qu'il faut faire dans le site</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+{% endblock %}  
+{% block javascripts %}
+{{ parent() }}
+<script type="text/javascript" src="{{asset('bundles/coachfront/js/js-elastislide/js/modernizr.custom.17475.js')}}"></script>
+<script type="text/javascript" src="{{asset('bundles/coachfront/js/js-elastislide/js/jquerypp.custom.js')}}"></script>
+<script type="text/javascript" src="{{asset('bundles/coachfront/js/js-elastislide/js/jquery.elastislide.js')}}"></script>
+<script type="text/javascript">
+    $('#carousel').elastislide({
+        orientation : 'vertical'
+    });
+    $('#carousel li').removeAttr('style');
+    $('.elastislide-wrapper.elastislide-vertical').removeAttr('style');
+</script>
+{% endblock %}
+{% block stylesheets %}
+{{ parent() }}
+<link type="text/css" rel="stylesheet" href="{{asset('bundles/coachfront/js/js-elastislide/css/elastislide.css')}}" />
+<link type="text/css" rel="stylesheet" href="{{asset('bundles/coachfront/js/js-elastislide/css/custom.css')}}" />
+{% endblock %}

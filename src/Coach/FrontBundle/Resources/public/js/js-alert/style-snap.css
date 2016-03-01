@@ -1,0 +1,36 @@
+﻿/* notifS */
+/* inspired by Twitter Bootstrap */
+
+.notif {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #6A9F37;
+  border-radius: 4px;
+  position: absolute;
+  bottom: 0px;
+  right: 21px;
+  /* Each notif has its own width */
+  float: right; 
+  clear: right;
+}
+
+.notif-red {
+  color: white;
+  background-color: #DA4453;
+}
+.notif-green {
+  color: white;
+  background-color: #61AF2A;
+}
+.notif-blue {
+  color: white;
+  background-color: #4A89DC;
+}
+.notif-yellow {
+  color: white;
+  background-color: #F6BB42;
+}
+.notif-orange {
+  color:white;
+  background-color: #E9573F;
+}

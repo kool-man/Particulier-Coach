@@ -1,0 +1,204 @@
+<?php
+
+namespace Coach\PackBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * OptionPack
+ *
+ * @ORM\Table()
+ * @ORM\HasLifecycleCallbacks()
+ * @ORM\Entity
+ */
+class OptionPack
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * 
+     */
+    private $id;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_at", type="datetime")
+     */
+    private $updatedAt;
+    
+    /** @ORM\ManyToOne(targetEntity="Coach\PackBundle\Entity\OptionInfo", inversedBy="OptionPack")
+     * 
+     */
+    private $idOption;
+    
+    /** @ORM\ManyToOne(targetEntity="Coach\PackBundle\Entity\Pack", inversedBy="OptionPack")
+     * 
+     */
+    private $idPack;
+        
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="label", type="string")
+     */
+    private $label;
+
+    public function __construct()
+    {
+        $this->setCreatedAt(new \DateTime());
+        $this->setUpdatedAt(new \DateTime());
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set label
+     *
+     * @param string $label
+     * @return OptionPack
+     */
+    public function setLabel($label)
+    {
+        $this->label = $label;
+
+        return $this;
+    }
+
+    /**
+     * Get label
+     *
+     * @return string 
+     */
+    public function getLabel()
+    {
+        return $this->label;
+    }
+
+    /**
+     * Set idOption
+     *
+     * @param \Coach\PackBundle\Entity\OptionInfo $idOption
+     * @return OptionPack
+     */
+    public function setIdOption(\Coach\PackBundle\Entity\OptionInfo $idOption)
+    {
+        $this->idOption = $idOption;
+
+        return $this;
+    }
+
+    /**
+     * Get idOption
+     *
+     * @return \Coach\PackBundle\Entity\OptionInfo 
+     */
+    public function getIdOption()
+    {
+        return $this->idOption;
+    }
+
+    /**
+     * Set idPack
+     *
+     * @param \Coach\PackBundle\Entity\Pack $idPack
+     * @return OptionPack
+     */
+    public function setIdPack(\Coach\PackBundle\Entity\Pack $idPack)
+    {
+        $this->idPack = $idPack;
+
+        return $this;
+    }
+
+    /**
+     * Get idPack
+     *
+     * @return \Coach\PackBundle\Entity\Pack 
+     */
+    public function getIdPack()
+    {
+        return $this->idPack;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return OptionPack
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return OptionPack
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }    
+    
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+        $this->createdAt = $this->updatedAt = new \DateTime('now');        
+         
+    }
+     
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdate()
+    {
+        $this->updatedAt = new \DateTime('now');
+    }
+}

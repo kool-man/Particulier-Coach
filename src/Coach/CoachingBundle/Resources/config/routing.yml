@@ -1,0 +1,3 @@
+coach_coaching_homepage:
+    path:     /coaching-immobilier/coach-immobilier/chasseur-de-biens
+    defaults: { _controller: CoachCoachingBundle:Coaching:index }

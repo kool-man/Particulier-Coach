@@ -1,0 +1,48 @@
+{% extends '::layout.html.twig' %}
+{% block body %}
+        <div class="row">
+            <div class="wells col-md-12 nmrg">
+                   <p>Lorem Ipsum is simply dummy text of the printing. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. 
+                   </p>			
+                   <a href="{{path('coach_reservation_inscription',{'pack':3})}}" class="btn btn-success wow fadeInRight pull-right">Accélérer ma vente maintenant</a>
+            </div>
+	</div>     
+	<div class="row">
+            <div class="col-md-12">
+                <form id="vo_frm_vehicule" name="vo_frm_vehicule" method="post" action="#">                
+                <div  class="margin-bottom-20">
+                    <h3 class="title-page">Bonjour M. {{estimation.client.nom}}. Voici une estimation de votre immobilier</h3>                   
+                </div>                                
+                <div class="cheque">
+                    <div class="peugeot">Equipe Particulier & Coach</div>
+                    <div class="montant_lettres">M. {{estimation.client.nom}} {{estimation.client.prenom}}</div>
+                    <div class="encart_montant"><span class="montant_chiffres">{{ estimation.total|number_format(2, '.', ',') }} €</span> TTC</div>
+                    <div class="ordre"> {{bien}} - {{estimation.surface}} m²</div>
+                    <div class="ref_client">Année de construction : {{annee}}</div>
+                </div>                                
+                
+                
+                <div class="clear"></div>
+                
+                    <div>
+                        <input type="hidden" name="slide" id="slide" value="22">
+                        <input type="hidden" name="sid" id="sid" value="ic1q3fcem549nmu2gie1fcemk6">                        
+                        <input type="hidden" name="select_vo_rfid" id="select_vo_rfid" value="5862104">
+                        <input type="hidden" name="select_vo_update" id="select_vo_update" value="">
+                        <input type="hidden" name="select_vo_reseau" id="select_vo_reseau" value="">
+                        <input type="hidden" name="select_vo_horaire_code" id="select_vo_horaire_code" value="">
+                        <input type="hidden" name="select_vo_horaire_name" id="select_vo_horaire_name" value="">
+                        <input type="hidden" name="select_vo_tel" id="select_vo_tel" value="">
+                    </div>
+                
+                </form>
+            </div>
+	</div>    
+{% endblock %}
+{% block stylesheets %}
+{{ parent() }}
+<!--js-elastislide-->
+<link type="text/css" rel="stylesheet" href="{{asset('bundles/coachfront/js/js-elastislide/css/elastislide.css')}}" />
+<link type="text/css" rel="stylesheet" href="{{asset('bundles/coachfront/js/js-elastislide/css/custom.css')}}" />
+<link type="text/css" rel="stylesheet" href="{{asset('bundles/coachestimation/css/cheque.css')}}" />
+{% endblock %}

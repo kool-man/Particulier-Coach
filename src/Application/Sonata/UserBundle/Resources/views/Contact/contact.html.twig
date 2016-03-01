@@ -1,0 +1,69 @@
+{% extends '::layout.html.twig' %}
+{% block body %}
+<div class="row">
+    <div class="col-md-12">
+
+        <ol class="breadcrumb">
+            <li><a href="#">Contact</a></li>
+        </ol>
+        <div class="col-md-6 col-md-offset-3">
+          
+	    {% for flashMessage in app.session.flashbag.get('sent') %}
+
+                <div class="alert alert-info col-md-12" role="alert">
+                    {{ flashMessage }}             
+		</div>
+		
+            {% endfor %}
+            
+        </div>
+        <div class="col-md-6 col-md-offset-3 connexion">
+           <form action="{{path('coach_user_contact_send')}}" method="post">
+			<h3 class="center">Contacter nous</h3>
+            <div class="wells col-md-12">
+                <div class="form-group">
+                    <label>
+                        <span class="input-tr-addon"><i class="fa fa-user"></i></span>
+                        
+                         {{form_widget(form.nom,{'attr': {'class': 'form-control','id':'nom','placeholder':'Nom et prénom'}})}}   
+		    </label>
+                </div>
+                
+                <div class="form-group">
+                    <label>
+                        <span class="input-tr-addon"><i class="fa fa-envelope-o"></i></span>
+                       
+			{{form_widget(form.email,{'attr': {'class': 'form-control','placeholder':'Mail'}})}}   
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <span class="input-tr-addon"><i class="fa fa-pencil-square-o"></i></span>
+                        {{form_widget(form.txtMail,{'attr': {'class': 'form-control','placeholder':'Texte ici'}})}}
+		    </label>
+		    
+                </div>
+                <div class="form-group">
+                    <label>
+                        <span class="input-tr-addon"><i class="fa fa-pencil-square-o"></i></span>
+                        {{form_widget(form.captcha)}}
+		    </label>
+		    
+                </div>    
+                    
+                <div class="form-group">
+                    <input class="btn btn-success pull-right" value="envoyer" type="submit" name="envoyer"> 
+                </div>
+                
+            </div>
+			 {{ form_rest(form) }}
+          </form>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+<br>
+{% endblock %}

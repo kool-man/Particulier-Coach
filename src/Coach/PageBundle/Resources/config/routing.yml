@@ -1,0 +1,12 @@
+coach_page_homepage:
+    path:     /page/{name}
+    defaults: { _controller: CoachPageBundle:Page:index }
+coach_annonce_homepage:
+    path:     /
+    defaults: { _controller: CoachPageBundle:Page:index }
+coach_condition_general_utilisation:
+    path:     /conditions-generales-utilisation
+    defaults: { _controller: CoachPageBundle:Page:conditions }    
+coach_mentions_legales:
+    path:     /mentions-legales
+    defaults: { _controller: CoachPageBundle:Page:mentions}    

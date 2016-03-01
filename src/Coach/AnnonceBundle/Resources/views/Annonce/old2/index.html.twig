@@ -1,0 +1,19 @@
+{% extends '::layout.html.twig' %}
+{% block title %}Annonces immobilières{% endblock %}
+{% block body %}
+    <!-- presentation -->
+    {{ include('CoachAnnonceBundle:Annonce:video-and-form.html.twig') }}
+    <!-- END presentation -->
+    <!-- BIENS -->
+    {{ include('CoachAnnonceBundle:Annonce:owl-slider-biens.html.twig') }}
+    <!-- END BIENS -->
+    <!-- Vendre et acheter-->
+    {{ include('CoachAnnonceBundle:Annonce:acheter-et-vendre.html.twig') }}
+    <!-- END Vendre et acheter-->
+    <!-- catogories-->
+    {{ include('CoachAnnonceBundle:Annonce:categories.html.twig') }}
+    <!-- END catogories -->
+    <!-- OFFRES -->
+    {{ include('CoachAnnonceBundle:Annonce:owl-slider-annonces.html.twig') }}
+    <!-- END OFFRES -->
+{% endblock %}

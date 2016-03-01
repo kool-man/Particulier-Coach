@@ -1,0 +1,44 @@
+{% extends '::layout.html.twig' %}
+{% block body %}
+<div class="row">
+    <div class="col-md-8">
+        <!--ligne-1-->
+	<div class="row">
+            <div class="wells col-md-12 nmrg">
+                   <p>Nous avons bien enregistré votre demande, mais nous ne sommes pas en mesure de calculer votre demande automatiquement.
+Notre équipe vous recontactera dans les plus brefs délais afin de vous communiquer la valeur de votre immobilier.
+
+
+Bonne journée,
+
+L’équipe Particulier & Coach
+                   </p>			
+                   <a href="{{path('coach_estimation_form')}}" class="btn btn-success wow fadeInRight pull-right">Calculez le prix de votre bien en quelques clics</a>
+            </div>
+	</div>
+    </div><!--col-md-4-->
+</div>
+<br>
+<br>
+{% endblock %}
+  
+{% block javascripts %}
+{{ parent() }}
+<script type="text/javascript" src="{{asset('bundles/coachfront/js/js-elastislide/js/modernizr.custom.17475.js')}}"></script>
+<script type="text/javascript" src="{{asset('bundles/coachfront/js/js-elastislide/js/jquerypp.custom.js')}}"></script>
+<script type="text/javascript" src="{{asset('bundles/coachfront/js/js-elastislide/js/jquery.elastislide.js')}}"></script>
+<script type="text/javascript">
+
+    $('#carousel').elastislide({
+        orientation : 'vertical'
+    });
+    $('#carousel li').removeAttr('style');
+    $('.elastislide-wrapper.elastislide-vertical').removeAttr('style');
+</script>
+{% endblock %}
+{% block stylesheets %}
+{{ parent() }}
+<!--js-elastislide-->
+<link type="text/css" rel="stylesheet" href="{{asset('bundles/coachfront/js/js-elastislide/css/elastislide.css')}}" />
+<link type="text/css" rel="stylesheet" href="{{asset('bundles/coachfront/js/js-elastislide/css/custom.css')}}" />
+{% endblock %}

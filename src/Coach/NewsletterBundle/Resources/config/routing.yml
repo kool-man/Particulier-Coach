@@ -1,0 +1,3 @@
+coach_newsletter_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: CoachNewsletterBundle:Default:index }

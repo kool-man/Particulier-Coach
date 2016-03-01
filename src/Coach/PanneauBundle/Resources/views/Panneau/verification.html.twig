@@ -1,0 +1,32 @@
+{% extends '::layout.html.twig' %}
+{% block body %}
+<div class="row">
+    <div class="col-md-12">
+        <h3 class="title-page">Formulaire de réservation sécurisée</h3>
+    </div>
+  	
+    <div class="col-md-12">
+       
+        <div class="col-md-12 wells">
+
+            <div class="col-md-12 mrg-t-10"></div>
+            <div class="row">
+                <!--step-4-->
+                <div class="col-md-10 col-md-offset-1 display" id="step-4-form" style="display: block;">
+                    <div class="alert alert-success center-block" role="alert">Mail de confiramtion a été envoyé vers votre email. Merci d'aller vers votre boite e-mail pour terminer les instructions.</div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+<br>
+<br>
+{% endblock %}
+{% block stylesheets %}
+{{ parent() }}
+{% endblock %}       
+{% block javascripts %}
+{{ parent() }}
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends '::layout.html.twig' %}
+
+{% block title %}Réservation{% endblock%}
+{% block body %}
+<div class="row">
+    <div class="col-md-12">
+
+      <h3 class="title-page">Formulaire de réservation sécurisée</h3>
+
+    </div>
+  	
+    <div class="col-md-12">
+       
+        <div class="col-md-12 wells">
+
+            <div class="col-md-12 mrg-t-10"></div>
+            <div class="row">
+                <!--step-4-->
+                <div class="col-md-10 col-md-offset-1 display" id="step-4-form" style="display: block;">
+                    <div class="alert alert-success center-block" role="alert">l'opération de paiement a été annulé ...</div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+<br>
+<br>
+{% endblock %}
+{% block stylesheets %}
+{{ parent() }}
+    <!--datetimepicker-->
+    <link rel="stylesheet" type="text/css" href="{{asset('bundles/coachfront/js/js-datetimepicker/jquery.datetimepicker.css')}}" />
+{% endblock %}       
+{% block javascripts %}
+{{ parent() }}
+        <script type="text/javascript" src="{{asset('bundles/coachfront/js/js-datetimepicker/jquery.datetimepicker.js')}}"></script>
+        <script type="text/javascript">
+		jQuery('#time').datetimepicker({
+			  datepicker:false,
+			  format:'H:i'
+			});
+        jQuery('#date').datetimepicker({
+		  startDate:'+1971/05/01',//or 1986/12/08
+		   timepicker:false,
+			format:'d.m.Y'
+		  
+		});
+        </script>
+{% endblock %}

@@ -1,0 +1,602 @@
+{% extends '::layout.html.twig' %}
+
+{% block title %}Chercher une annonce{% endblock%}
+{% block body %}
+<div class="row">
+    <div class="col-md-12">
+
+        <h3 class="title-page">Chercher une annonce</h3>
+
+    </div>
+    <div class=" col-md-8">
+        <form>
+            <!--ligne-->
+            <div class="wells search-form">
+                <div class="row">
+                    <!--colone-1-->
+                    <div class="col-sm-3">
+                        <p><span>Ville(s)</span></p>
+                    </div>
+                    <!--End colone-1-->
+                    <!--colone-2-->
+                    <div class="col-sm-9">
+                        <div class="form-group">
+                            <select class="form-control select-2" multiple="multiple" data-placeholder="Selectionner plusieurs villes">
+                                <option value="Paris">Paris</option>
+                                <option value="Marseil">Marseil</option>
+                                <option value="1">Ville 1</option>
+                                <option value="2">Ville 2</option>
+                                <option value="3">Ville 3</option>
+                                <option value="4">Ville 4</option>
+                                <option value="5">Ville 5</option>
+                                <option value="6">Ville 6</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--End colone-2-->
+
+                </div>
+
+                <div class="row">
+                    <!--colone-1-->
+                    <div class="col-sm-3">
+                        <p><span>Prix</span> entre</p>
+                    </div>
+                    <!--End colone-1-->
+                    <!--colone-2-->
+                    <div class="col-sm-4 col-xs-6">
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option value="">Min</option>
+                                <option value="">40.000</option>
+                                <option value="">50.000</option>
+                                <option value="">60.000</option>
+                                <option value="">70.000</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--End colone-2-->
+                    <!--colone-1-->
+                    <div class="col-xs-1">
+                        <p>et</p>
+                    </div>
+                    <!--colone-2-->
+                    <div class="col-md-4 col-xs-6">
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option value="">Max</option>
+                                <option value="">140.000</option>
+                                <option value="">150.000</option>
+                                <option value="">160.000</option>
+                                <option value="">170.000</option>
+                                <option value="">270.000</option>
+                                <option value="">300.000</option>
+                                <option value="">400.000</option>
+                                <option value="">500.000</option>
+                                <option value="">1.000.000</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <!--End colone-2-->
+                    <!--End colone-1-->
+                </div>
+
+                <div class="row">
+                    <!--colone-1-->
+                    <div class="col-sm-3">
+                        <p><span>Surface</span> entre</p>
+                    </div>
+                    <!--End colone-1-->
+                    <!--colone-2-->
+                    <div class="col-sm-4 col-xs-6">
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option value="">Min</option>
+                                <option value="">40.000</option>
+                                <option value="">50.000</option>
+                                <option value="">60.000</option>
+                                <option value="">70.000</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--End colone-2-->
+                    <!--colone-1-->
+                    <div class="col-xs-1">
+                        <p>et</p>
+                    </div>
+                    <!--colone-2-->
+                    <div class="col-md-4 col-xs-6">
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option value="">Max</option>
+                                <option value="">140.000</option>
+                                <option value="">150.000</option>
+                                <option value="">160.000</option>
+                                <option value="">170.000</option>
+                                <option value="">270.000</option>
+                                <option value="">300.000</option>
+                                <option value="">400.000</option>
+                                <option value="">500.000</option>
+                                <option value="">1.000.000</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <!--End colone-2-->
+                    <!--End colone-1-->
+                </div>
+
+                <div class="row">
+                    <!--colone-1-->
+                    <div class="col-sm-3">
+                        <p><span>Pièces</span> entre</p>
+                    </div>
+                    <!--End colone-1-->
+                    <!--colone-2-->
+                    <div class="col-sm-4 col-xs-6">
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option value="">Min</option>
+                                <option value="">40.000</option>
+                                <option value="">50.000</option>
+                                <option value="">60.000</option>
+                                <option value="">70.000</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--End colone-2-->
+                    <!--colone-1-->
+                    <div class="col-xs-1">
+                        <p>et</p>
+                    </div>
+                    <!--colone-2-->
+                    <div class="col-md-4 col-xs-6">
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option value="">Max</option>
+                                <option value="">140.000</option>
+                                <option value="">150.000</option>
+                                <option value="">160.000</option>
+                                <option value="">170.000</option>
+                                <option value="">270.000</option>
+                                <option value="">300.000</option>
+                                <option value="">400.000</option>
+                                <option value="">500.000</option>
+                                <option value="">1.000.000</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <!--End colone-2-->
+                    <!--End colone-1-->
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="field-block"><strong>Appartement</strong>
+                            <p class="field switch">
+                                <input type="radio" id="radio1" name="field"  checked />
+                                <input type="radio" id="radio2" name="field" />
+                                <label for="radio1" class="cb-enable selected"><span>Oui</span></label>
+                                <label for="radio2" class="cb-disable"><span>Non</span></label>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="field-block"><strong>Maison</strong>
+                            <p class="field switch">
+                                <input type="radio" id="radio1" name="field"  checked />
+                                <input type="radio" id="radio2" name="field" />
+                                <label for="radio1" class="cb-enable selected"><span>Oui</span></label>
+                                <label for="radio2" class="cb-disable"><span>Non</span></label>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="field-block"><strong>Bureau</strong>
+                            <p class="field switch">
+                                <input type="radio" id="radio1" name="field"  checked />
+                                <input type="radio" id="radio2" name="field" />
+                                <label for="radio1" class="cb-enable selected"><span>Oui</span></label>
+                                <label for="radio2" class="cb-disable"><span>Non</span></label>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="field-block"><strong>Commerce</strong>
+                            <p class="field switch">
+                                <input type="radio" id="radio1" name="field"  checked />
+                                <input type="radio" id="radio2" name="field" />
+                                <label for="radio1" class="cb-enable selected"><span>Oui</span></label>
+                                <label for="radio2" class="cb-disable"><span>Non</span></label>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="field-block"><strong>Appartement</strong>
+                            <p class="field switch">
+                                <input type="radio" id="radio1" name="field"  checked />
+                                <input type="radio" id="radio2" name="field" />
+                                <label for="radio1" class="cb-enable selected"><span>Oui</span></label>
+                                <label for="radio2" class="cb-disable"><span>Non</span></label>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="field-block"><strong>Appartement</strong>
+                            <p class="field switch">
+                                <input type="radio" id="radio1" name="field"  checked />
+                                <input type="radio" id="radio2" name="field" />
+                                <label for="radio1" class="cb-enable selected"><span>Oui</span></label>
+                                <label for="radio2" class="cb-disable"><span>Non</span></label>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="field-block"><strong>Appartement</strong>
+                            <p class="field switch">
+                                <input type="radio" id="radio1" name="field"  checked />
+                                <input type="radio" id="radio2" name="field" />
+                                <label for="radio1" class="cb-enable selected"><span>Oui</span></label>
+                                <label for="radio2" class="cb-disable"><span>Non</span></label>
+                            </p>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-md-3">
+                        <div class="field-block"><strong>Appartement</strong>
+                            <p class="field switch">
+                                <input type="radio" id="radio1" name="field"  checked />
+                                <input type="radio" id="radio2" name="field" />
+                                <label for="radio1" class="cb-enable selected"><span>Oui</span></label>
+                                <label for="radio2" class="cb-disable"><span>Non</span></label>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-8 mrg-t-10">
+                        <input class="btn btn-success btn-block" type="submit" value="Chercher">
+                    </div>
+                </div>
+            </div>
+            <!--End ligne-->
+
+        </form>
+        <!--End forme-->
+
+
+
+
+    </div>
+
+    <!--Newsletter-->
+    <div class="col-md-4">
+        
+            <div class="col-md-12 newsletter">
+                
+                <p class="center">Créer votre alerte mail pour recevoir les annonces</p>
+                 <div class="absolute wow fadeInUp">
+                    <img src="{{asset('bundles/coachfront/images/pub/newsletter.png')}}" alt="" class="img-responsive">
+                </div>
+                <form class="form-inline wow fadeInDown">
+                <div class="form-group">
+                  <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                  <input type="email" class="form-control" id="mail" placeholder="Enter email">
+                </div>
+                <button type="submit" class="btn btn-success">envoyer</button>
+              </form>
+               
+            </div>
+        
+           <div class="col-md-12 calculette">
+               <a href="">
+                <p>Calculette de crédit et frais de notaire</p>
+               </a>
+            </div>
+        
+    </div>
+    <!--end Newsletter-->
+
+    <!--A la une-->
+    <div class="a-la-une col-md-12">
+        <div class="container-a-la-une">
+            <a href="{{path('coach_annonce_details')}}" class="img"><img src="{{asset('bundles/coachfront/images/biens/alaune.png')}}" alt="" class="wow fadeIn" data-wow-duration="2s"></a>
+            <h4 class="wow fadeInLeft" data-wow-delay="0.2s"><a href=""><i class="fa fa-tags"></i>A LA UNE</a></h4>
+            <h5 class="wow fadeInLeft" data-wow-delay="0.5s"><a href="">Villa 1200 m² à Paris, 6 chambres, 2 Salles de bain</a></h5>
+            <h6 class="wow fadeInLeft" data-wow-delay="0.7s"><a href="">Prix : 200.000</a> </h6>
+        </div>
+    </div>
+    <!-- end A la une-->
+
+    <!-- RESULTAT DUNE RECHERCHE-->
+    <div class="col-md-9">
+        <div class="results">
+
+            <div class="results-bar col-md-12">
+                <div class="col-md-7">
+                    <p> Resultat de la recherche</p>
+                </div>
+                <div class="col-md-2">
+                    <p> Filtrer par</p>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <select class="form-control">
+                            <option value="">Prix</option>
+                            <option value="">Région</option>
+                            <option value="">Nombre de pièces</option>
+                            <option value="">Espace</option>
+                            <option value="">Categorie</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!--ITEMS-->
+            <div class="row">
+                <div class="col-md-12">
+                    <!--ITEM-->
+                    <div class="media">
+                        <a class="media-left" href="#">
+                            <img src="{{asset('bundles/coachfront/images/biens/maison-1.png')}}" alt="">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading"><a href="{{path('coach_annonce_details')}}">Media heading</a></h4>
+                            <p>Bootstrap, a sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.</p>
+                            <div class="divider">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <strong>Espace :</strong>150 m²
+                                    </div>
+                                    <div class="col-md-4">
+                                        <strong>Pièces :</strong> S + 4
+                                    </div>
+                                    <div class="col-md-4">
+                                        <strong> Prix :</strong> 200.000 Eruro
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--ITEM-->
+                    <!--ITEM-->
+                    <div class="media">
+                        <a class="media-left" href="#">
+                            <img src="{{asset('bundles/coachfront/images/biens/maison-5.png')}}" alt="">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading"><a href="{{path('coach_annonce_details')}}">Media heading</a></h4>
+                            <p>Bootstrap, a sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.</p>
+                            <div class="divider">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <strong>Espace :</strong>150 m²
+                                    </div>
+                                    <div class="col-md-4">
+                                        <strong>Pièces :</strong> S + 4
+                                    </div>
+                                    <div class="col-md-4">
+                                        <strong> Prix :</strong> 200.000 Eruro
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--ITEM-->
+                    <!--ITEM-->
+                    <div class="media">
+                        <a class="media-left" href="#">
+                            <img src="{{asset('bundles/coachfront/images/biens/maison-3.png')}}" alt="">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading"><a href="{{path('coach_annonce_details')}}">Media heading</a></h4>
+                            <p>Bootstrap, a sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.</p>
+                            <div class="divider">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <strong>Espace :</strong>150 m²
+                                    </div>
+                                    <div class="col-md-4">
+                                        <strong>Pièces :</strong> S + 4
+                                    </div>
+                                    <div class="col-md-4">
+                                        <strong> Prix :</strong> 200.000 Eruro
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--ITEM-->
+
+                    <!--ITEM-->
+                    <div class="media">
+                        <a class="media-left" href="#">
+                            <img src="{{asset('bundles/coachfront/images/biens/maison-4.png')}}" alt="">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading"><a href="{{path('coach_annonce_details')}}">Media heading</a></h4>
+                            <p>Bootstrap, a sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.</p>
+                            <div class="divider">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <strong>Espace :</strong>150 m²
+                                    </div>
+                                    <div class="col-md-4">
+                                        <strong>Pièces :</strong> S + 4
+                                    </div>
+                                    <div class="col-md-4">
+                                        <strong> Prix :</strong> 200.000 Eruro
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--ITEM-->
+
+                    <!--ITEM-->
+                    <div class="media">
+                        <a class="media-left" href="#">
+                            <img src="{{asset('bundles/coachfront/images/biens/maison-6.png')}}" alt="">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading"><a href="{{path('coach_annonce_details')}}">Media heading</a></h4>
+                            <p>Bootstrap, a sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.</p>
+                            <div class="divider">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <strong>Espace :</strong>150 m²
+                                    </div>
+                                    <div class="col-md-4">
+                                        <strong>Pièces :</strong> S + 4
+                                    </div>
+                                    <div class="col-md-4">
+                                        <strong> Prix :</strong> 200.000 Eruro
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--ITEM-->
+                </div>
+            </div>
+            <!--ITEMS-->
+
+
+            <!--PAGINATION-->
+
+            <nav>
+                <ul class="pagination pull-right">
+                    <li>
+                        <a href="#" aria-label="Previous">
+                            <span aria-hidden="true"><i class="fa fa-angle-double-left"></i></span>
+                        </a>
+                    </li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li>
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true"><i class="fa fa-angle-double-right"></i></span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!--PAGINATION-->
+
+        </div>
+    </div>
+    <!--END RESULTAT DUNE RECHERCHE-->
+
+
+    <div class="col-md-3">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title-bar">
+                    <h3> Actualités Immobilières</h3>
+                </div>
+                <div id="actualite-slide" class="carousel slide" data-ride="carousel">
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <div class="actualite">
+                                <h4>Titre de l'actualité</h4>
+                                <p>Villa 1200 m² à Paris, 6 chambres, 2 Salles de bain</p>
+                            </div>
+
+                            <div class="actualite">
+                                <h4>Titre de l'actualité</h4>
+                                <p>Villa 1200 m² à Paris, 6 chambres, 2 Salles de bain</p>
+                            </div>
+
+                            <div class="actualite">
+                                <h4>Titre de l'actualité</h4>
+                                <p>Villa 1200 m² à Paris, 6 chambres, 2 Salles de bain</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="actualite">
+                                <h4>Titre de l'actualité</h4>
+                                <p>Villa 1200 m² à Paris, 6 chambres, 2 Salles de bain</p>
+                            </div>
+
+                            <div class="actualite">
+                                <h4>Titre de l'actualité</h4>
+                                <p>Villa 1200 m² à Paris, 6 chambres, 2 Salles de bain</p>
+                            </div>
+
+                            <div class="actualite">
+                                <h4>Titre de l'actualité</h4>
+                                <p>Villa 1200 m² à Paris, 6 chambres, 2 Salles de bain</p>
+                            </div>
+                        </div> 
+                        <div class="item">
+                            <div class="actualite">
+                                <h4>Titre de l'actualité</h4>
+                                <p>Villa 1200 m² à Paris, 6 chambres, 2 Salles de bain</p>
+                            </div>
+
+                            <div class="actualite">
+                                <h4>Titre de l'actualité</h4>
+                                <p>Villa 1200 m² à Paris, 6 chambres, 2 Salles de bain</p>
+                            </div>
+
+                            <div class="actualite">
+                                <h4>Titre de l'actualité</h4>
+                                <p>Villa 1200 m² à Paris, 6 chambres, 2 Salles de bain</p>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#actualite-slide" data-slide-to="0" class="active"></li>
+                        <li data-target="#actualite-slide" data-slide-to="1"></li>
+                        <li data-target="#actualite-slide" data-slide-to="2"></li>
+                    </ol>
+                </div>
+            </div>
+        </div><!--row for carroussl-->
+        <div class="right-pub">
+            <img src="{{asset('bundles/coachfront/images/pub/pub-banner-optimum.jpg')}}" alt="" class="img-responsive">
+            <img src="{{asset('bundles/coachfront/images/pub/tuni-architecte.png')}}" alt="" class="img-responsive">
+        </div>
+    </div>
+</div>
+<br>
+<br>
+{% endblock %}    
+
+{% block javascripts %}
+    {{ parent() }}
+        <!--fetech JS - JS  special for this page only-->
+        <!--Select 2 plugin-->
+        <script src="{{asset('bundles/coachfront/js/js-select/select2.min.js')}}"></script>
+
+        <!--init plugin-->
+        <script>
+        $(".select-2").select2();
+
+        </script>
+{% endblock %}
+  
+{% block stylesheets %}
+    {{ parent() }}
+ <!--Select 2 Plugin-->
+        <link href="{{asset('bundles/coachfront/js/js-select/css/select2-bootstrap.css')}}" rel="stylesheet">
+        <link href="{{asset('bundles/coachfront/js/js-select/css/select2.css')}}" rel="stylesheet">
+{% endblock %}

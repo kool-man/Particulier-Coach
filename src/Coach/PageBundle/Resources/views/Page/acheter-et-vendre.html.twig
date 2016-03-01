@@ -1,0 +1,12 @@
+    <div class="row">
+        {% for text in texts %}
+        <div class="col-md-6">
+            <div class="col-md-12">
+                <h3 class="center">{{text.titre}}</h3>
+                <p>
+                    {{text.description}}
+                </p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>

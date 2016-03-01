@@ -1,0 +1,277 @@
+<?php
+
+namespace Coach\PanneauBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Panneau
+ *
+ * @ORM\Table()
+ * @ORM\HasLifecycleCallbacks()
+ * @ORM\Entity(repositoryClass="Coach\PanneauBundle\Entity\PanneauRepository")
+ */
+class Panneau
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="taille", type="string", length=255)
+     */
+    private $taille;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="oreillets", type="string", length=255)
+     */
+    private $oreillets;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="quantite", type="integer")
+     */
+    private $quantite;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prix", type="decimal")
+     */
+    private $prix;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="titre", type="string", length=255)
+     */
+    private $titre;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_at", type="datetime")
+     */
+    private $updatedAt;
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\ContactPerson",inversedBy="panneaux")
+     */
+    private $client;
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set taille
+     *
+     * @param string $taille
+     * @return Panneau
+     */
+    public function setTaille($taille)
+    {
+        $this->taille = $taille;
+
+        return $this;
+    }
+
+    /**
+     * Get taille
+     *
+     * @return string 
+     */
+    public function getTaille()
+    {
+        return $this->taille;
+    }
+
+    /**
+     * Set oreillets
+     *
+     * @param string $oreillets
+     * @return Panneau
+     */
+    public function setOreillets($oreillets)
+    {
+        $this->oreillets = $oreillets;
+
+        return $this;
+    }
+
+    /**
+     * Get oreillets
+     *
+     * @return string 
+     */
+    public function getOreillets()
+    {
+        return $this->oreillets;
+    }
+
+    /**
+     * Set quantite
+     *
+     * @param integer $quantite
+     * @return Panneau
+     */
+    public function setQuantite($quantite)
+    {
+        $this->quantite = $quantite;
+
+        return $this;
+    }
+
+    /**
+     * Get quantite
+     *
+     * @return integer 
+     */
+    public function getQuantite()
+    {
+        return $this->quantite;
+    }
+
+    /**
+     * Set prix
+     *
+     * @param string $prix
+     * @return Panneau
+     */
+    public function setPrix($prix)
+    {
+        $this->prix = $prix;
+
+        return $this;
+    }
+
+    /**
+     * Get prix
+     *
+     * @return string 
+     */
+    public function getPrix()
+    {
+        return $this->prix;
+    }
+
+    /**
+     * Set titre
+     *
+     * @param string $titre
+     * @return Panneau
+     */
+    public function setTitre($titre)
+    {
+        $this->titre = $titre;
+
+        return $this;
+    }
+
+    /**
+     * Get titre
+     *
+     * @return string 
+     */
+    public function getTitre()
+    {
+        return $this->titre;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return Panneau
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return Panneau
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+    
+     public function __construct()
+    {
+        $this->setCreatedAt(new \DateTime());
+        $this->setUpdatedAt(new \DateTime());
+    }
+    
+    public function __toString()
+    {
+      return $this->getTitre();
+    }
+    
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+        $this->createdAt = $this->updatedAt = new \DateTime('now');
+         
+    }
+     
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdate()
+    {
+        $this->updatedAt = new \DateTime('now');
+    }
+}

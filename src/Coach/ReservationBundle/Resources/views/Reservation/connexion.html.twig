@@ -1,0 +1,94 @@
+{% extends '::layout.html.twig' %}
+{% block body %}
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="title-page" style="font-size:18px;">Formulaire de réservation sécurisée</h1>
+    </div>
+    <div class="col-md-12">
+       <div class="col-md-12 wells">
+            <div class="row bs-wizard" style="border-bottom:0;">
+                <div class="col-xs-4 bs-wizard-step">
+                    <div class="text-center bs-wizard-stepnum">Connexion</div>
+                    <div class="progress"><div class="progress-bar"></div></div>
+                    <a href="#" class="bs-wizard-dot"></a>
+                </div>
+                <div class="col-xs-4 bs-wizard-step disabled"><!-- complete -->
+                    <div class="text-center bs-wizard-stepnum">Paiement</div>
+                    <div class="progress"><div class="progress-bar"></div></div>
+                    <a href="#" class="bs-wizard-dot"></a>
+                </div>
+                <div class="col-xs-4 bs-wizard-step disabled"><!-- active -->
+                    <div class="text-center bs-wizard-stepnum">Réservation</div>
+                    <div class="progress"><div class="progress-bar"></div></div>
+                    <a href="#" class="bs-wizard-dot"></a>
+                </div>
+            </div>
+            <div class="col-md-12 mrg-t-10"></div>
+            <div class="row">
+                <div class="col-md-12" id="step-1-form" style="display: block;">
+                    <div class="col-md-8 alert alert-warning center" style="text-align: center;">
+                    {% if error %}
+                    {{ error|trans({}, 'FOSUserBundle') }}
+                    {% else %}
+                    Pour bénéficier de nos services en ligne. vous devez posséder un compte particulier-coach.com
+                    {% endif %}
+                    </div>
+                    <form action="{{ path("coach_user_security_login") }}" method="post">    
+                        <div class="col-md-6 col-md-offset-3 connexion">
+                            <h3 class="center">Connexion</h3>
+                            <div class="wells col-md-12">
+                                <div class="form-group">
+                                    <label>
+                                        <span class="input-tr-addon"><i class="fa fa-user"></i></span>
+                                        <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" class="form-control" placeholder="{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}" >
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label>
+                                        <span class="input-tr-addon"><i class="fa fa-lock"></i></span>
+                                        <input type="password" id="password" name="_password" required="required" class="form-control" placeholder="{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}" >
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                                    <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>    
+                                </div>
+                                <input type="hidden" name="type" value="2" />
+                                <div class="form-group">
+                                    <input class="btn btn-success pull-right" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}"> 
+                                </div>
+                                <div class="links">
+                                <a href="#">Mot de passe oublier ?</a>
+                                <a href="{{path('coach_reservation_inscription')}}">Inscription</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>       
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br>
+{% endblock %}
+{% block stylesheets %}
+{{ parent() }}
+    <!--datetimepicker-->
+    <link rel="stylesheet" type="text/css" href="{{asset('bundles/coachfront/js/js-datetimepicker/jquery.datetimepicker.css')}}" />
+{% endblock %}       
+{% block javascripts %}
+{{ parent() }}
+        <script type="text/javascript" src="{{asset('bundles/coachfront/js/js-datetimepicker/jquery.datetimepicker.js')}}"></script>
+        <script type="text/javascript">
+		jQuery('#time').datetimepicker({
+			  datepicker:false,
+			  format:'H:i'
+			});
+        jQuery('#date').datetimepicker({
+		  startDate:'+1971/05/01',//or 1986/12/08
+		   timepicker:false,
+			format:'d.m.Y'
+		  
+		});
+        </script>
+{% endblock %}

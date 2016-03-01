@@ -1,0 +1,32 @@
+services:
+    coach_annonce_annonce.admin.user:
+        class: Coach\AnnonceBundle\Admin\AnnonceAdmin
+        arguments: [~, Coach\AnnonceBundle\Entity\Annonce, CoachAnnonceBundle:AnnonceAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Annonces, label: List des annonces}
+    coach_annonce_type.admin.user:
+        class: Coach\AnnonceBundle\Admin\TypeAnnonceAdmin
+        arguments: [~, Coach\AnnonceBundle\Entity\TypeAnnonce, CoachAnnonceBundle:TypeAnnonceAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Annonces, label: Type de bien}
+    coach_annonce_option.admin.user:
+        class: Coach\AnnonceBundle\Admin\OptionAnnonceAdmin
+        arguments: [~, Coach\AnnonceBundle\Entity\OptionAnnonce, CoachAnnonceBundle:OptionAnnonceAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Annonces, label: GES}        
+    coach_annonce_class.admin.user:
+        class: Coach\AnnonceBundle\Admin\ClassAnnonceAdmin
+        arguments: [~, Coach\AnnonceBundle\Entity\ClassAnnonce, CoachAnnonceBundle:ClassAnnonceAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Annonces, label: Class Energie}
+    coach_annonce_proximite.admin.user:
+        class: Coach\AnnonceBundle\Admin\ProximiteAdmin
+        arguments: [~, Coach\AnnonceBundle\Entity\Proximite, CoachAnnonceBundle:ProximiteAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Annonces, label: Proximité de transport}
+
+    coach_annonce.admin.commande:
+        class: Coach\AnnonceBundle\Admin\CommandeAdmin
+        arguments: [~, Coach\AnnonceBundle\Entity\Commande, CoachAnnonceBundle:CommandeAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Commandes, label: Liste}

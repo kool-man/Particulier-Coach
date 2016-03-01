@@ -1,0 +1,49 @@
+{% extends '::layout.html.twig' %}
+{% block body %}
+    <div class="row">
+    <div class="col-md-12">
+
+        <ol class="breadcrumb">
+            <li class="active">Mon Compte</li>
+        </ol>
+        
+
+    <div class="col-md-12">
+            <div class="col-md-12 alert alert-warning">
+            <p>{{ 'registration.confirmed'|trans({'%username%': user.username}, 'FOSUserBundle') }}</p>
+            
+        </div>
+    </div>
+    <div class="col-md-12">    
+        <div class="row mrg-t-30">
+            <div class="col-md-2 col-xs-3">
+                <a href="{{path('coach_annonce_search')}}"><img src="{{asset('bundles/coachfront/images/autres/icon-1.jpg')}}" alt="Annonces" class="img-responsive"></a>
+                <h3 style="text-align: center">Annonces</h3>
+            </div>
+            <div class="col-md-2 col-xs-3">
+                <a href="{{path('coach_coaching_homepage')}}"><img src="{{asset('bundles/coachfront/images/autres/icon-7.jpg')}}" alt="Coaching" class="img-responsive"></a>
+                <h3 style="text-align: center">Coaching</h3>
+            </div>
+            <div class="col-md-2 col-xs-3">
+                <a href="{{path('coach_estimation_form')}}"><img src="{{asset('bundles/coachfront/images/autres/icon-4.jpg')}}" alt="Estimation" class="img-responsive"></a>
+                <h3 style="text-align: center">Estimation</h3>
+            </div>
+            <div class="col-md-2 col-xs-3">
+                <a href="{{path('coach_pack')}}"><img src="{{asset('bundles/coachfront/images/autres/icon-3.jpg')}}" alt="Déposez" class="img-responsive"></a>
+                <h3 style="text-align: center">Déposez</h3>
+            </div>
+            <div class="col-md-2 col-xs-3">
+                <a href="{{path('coach_user_security_profile')}}"><img src="{{asset('bundles/coachfront/images/autres/icon-5.jpg')}}" alt="Profile" class="img-responsive"></a>
+                <h3 style="text-align: center">Profile</h3>
+            </div>
+            <div class="col-md-2 col-xs-3">
+                <a href="{{path('coach_panneau_homepage')}}"><img src="{{asset('bundles/coachfront/images/autres/icon-6.jpg')}}" alt="Panneaux" class="img-responsive"></a>
+                <h3 style="text-align: center">Panneaux</h3>
+            </div>    
+        </div>
+        
+    </div>        
+<br>
+<br>
+<br>
+{% endblock %}  

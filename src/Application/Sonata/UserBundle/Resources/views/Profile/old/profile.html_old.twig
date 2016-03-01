@@ -1,0 +1,282 @@
+{% extends '::layout.html.twig' %}
+{% block title %}Mon Compte{% endblock %}
+{% block body %}
+    <div class="row">
+    <div class="col-md-12">
+
+        <ol class="breadcrumb">
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">Annonces</a></li>
+            <li class="active">Chercher une annonce</li>
+        </ol>
+
+
+        <h3 class="title-page">Mon compte</h3>
+
+    </div>
+    <!-- RESULTAT DUNE RECHERCHE-->
+    <div class="col-md-12">
+        <div role="tabpanel">
+
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-bullhorn"></i>&nbsp;&nbsp;Mes annonces</a></li>
+                <li role="presentation"><a href="#likes" aria-controls="likes" role="tab" data-toggle="tab"><i class="fa fa-thumbs-o-up"></i>&nbsp;&nbsp;Favoris</a></li>
+                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Informations</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="home">
+                    <div class="table-responsive mrg-t-20">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th width='25'>Num</th>
+                                    <th>Titre de l'annonce</th>
+                                    <th>Photos</th>
+                                    <th>Date de publication</th>
+                                    <th>Date d'expiration</th>
+                                    <th>Statut</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td><a href="">Villa 120 m² a Paris</a></td>
+                                    <td>2</td>
+                                    <td>12/03/2014</td>
+                                    <td>12/06/2014</td>
+                                    <td>Valide</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+                                                Actions
+                                                <span class="caret"></span>
+                                            </a>
+
+                                            <ul class="dropdown-menu icons" role="menu" aria-labelledby="dLabel">
+                                                <li><a href=""><i class="fa fa-pencil"></i>Editer</a></li>
+                                                <li><a href=""><i class="fa fa-refresh"></i>Renouveler</a></li>
+                                                <li><a href=""><i class="fa fa-times"></i>Supprimer</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td><a href="">Villa 120 m² a Paris</a></td>
+                                    <td>4</td>
+                                    <td>12/03/2014</td>
+                                    <td>12/06/2014</td>
+                                    <td>Valide</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+                                                Actions
+                                                <span class="caret"></span>
+                                            </a>
+
+                                            <ul class="dropdown-menu icons" role="menu" aria-labelledby="dLabel">
+                                                <li><a href=""><i class="fa fa-pencil"></i>Editer</a></li>
+                                                <li><a href=""><i class="fa fa-refresh"></i>Renouveler</a></li>
+                                                <li><a href=""><i class="fa fa-times"></i>Supprimer</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td><a href="">Villa 120 m² a Paris</a></td>
+                                    <td>6</td>
+                                    <td>12/03/2014</td>
+                                    <td>12/06/2014</td>
+                                    <td>Valide</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+                                                Actions
+                                                <span class="caret"></span>
+                                            </a>
+
+                                            <ul class="dropdown-menu icons" role="menu" aria-labelledby="dLabel">
+                                                <li><a href=""><i class="fa fa-pencil"></i>Editer</a></li>
+                                                <li><a href=""><i class="fa fa-refresh"></i>Renouveler</a></li>
+                                                <li><a href=""><i class="fa fa-times"></i>Supprimer</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="warning">
+                                    <td>4</td>
+                                    <td><a href="">Villa 120 m² a Paris</a></td>
+                                    <td>1</td>
+                                    <td>12/03/2014</td>
+                                    <td>12/06/2014</td>
+                                    <td>Expirée</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+                                                Actions
+                                                <span class="caret"></span>
+                                            </a>
+
+                                            <ul class="dropdown-menu icons" role="menu" aria-labelledby="dLabel">
+                                                <li><a href=""><i class="fa fa-pencil"></i>Editer</a></li>
+                                                <li><a href=""><i class="fa fa-refresh"></i>Renouveler</a></li>
+                                                <li><a href=""><i class="fa fa-times"></i>Supprimer</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td><a href="">Villa 120 m² a Paris</a></td>
+                                    <td>1</td>
+                                    <td>12/03/2014</td>
+                                    <td>12/06/2014</td>
+                                    <td>Valide</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+                                                Actions
+                                                <span class="caret"></span>
+                                            </a>
+
+                                            <ul class="dropdown-menu icons" role="menu" aria-labelledby="dLabel">
+                                                <li><a href=""><i class="fa fa-pencil"></i>Editer</a></li>
+                                                <li><a href=""><i class="fa fa-refresh"></i>Renouveler</a></li>
+                                                <li><a href=""><i class="fa fa-times"></i>Supprimer</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td><a href="">Villa 120 m² a Paris</a></td>
+                                    <td>0</td>
+                                    <td>12/03/2014</td>
+                                    <td>12/06/2014</td>
+                                    <td>Valide</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+                                                Actions
+                                                <span class="caret"></span>
+                                            </a>
+
+                                            <ul class="dropdown-menu icons" role="menu" aria-labelledby="dLabel">
+                                                <li><a href=""><i class="fa fa-pencil"></i>Editer</a></li>
+                                                <li><a href=""><i class="fa fa-refresh"></i>Renouveler</a></li>
+                                                <li><a href=""><i class="fa fa-times"></i>Supprimer</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="mrg-t-20 row">
+                        <div class="col-md-4 col-md-offset-8">
+                            <a href="" class="btn btn-success pull-right">Publier une nouvelle annonce</a>
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="likes">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="table-responsive mrg-t-20">
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th width='25'>Num</th>
+                                            <th>Titre de l'annonce</th>
+                                            <th>Date de publication</th>
+                                            <th>Date d'expiration</th>
+                                            <th>Statut</th>                                    
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td><a href="">Villa 120 m² a Paris</a></td>
+                                            <td>12/03/2014</td>
+                                            <td>12/06/2014</td>
+                                            <td>Valide</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td><a href="">Villa 120 m² a Paris</a></td>
+                                            <td>12/03/2014</td>
+                                            <td>12/06/2014</td>
+                                            <td>Valide</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td><a href="">Villa 120 m² a Paris</a></td>
+                                            <td>12/03/2014</td>
+                                            <td>12/06/2014</td>
+                                            <td>Valide</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td><a href="">Villa 120 m² a Paris</a></td>
+                                            <td>12/03/2014</td>
+                                            <td>12/06/2014</td>
+                                            <td>Valide</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td><a href="">Villa 120 m² a Paris</a></td>
+                                            <td>12/03/2014</td>
+                                            <td>12/06/2014</td>
+                                            <td>Valide</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="messages">...</div>
+            </div>
+            
+        </div>
+        <div class="mrg-tb-20">
+                        <div class="col-md-12 ">
+                            <div class="row wells">
+                                <div class="col-md-6">
+                                    <a href=""><img src="{{ asset('bundles/coachfront/images/pub/annonces-banner.jpg')}}" class="img-responsive"></a>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="pub-img panneau nmrg">
+                                        <a href=""><img src="{{ asset('bundles/coachfront/images/pub/avendre-banner.jpg')}}" class="img-responsive"></a>
+                                        <img src="{{ asset('bundles/coachfront/images/pub/avendre-btn.jpg')}}" alt="" class="btn-img wow bounceIn" style="left:25px; bottom: 28px;">
+                                        <img src="{{ asset('bundles/coachfront/images/pub/avendre-btn.jpg')}}" alt="" class="btn-img wow bounceIn" data-wow-delay="0.5s" style="left:95px; bottom: 48px;">
+                                        <img src="{{ asset('bundles/coachfront/images/pub/avendre-btn.jpg')}}" alt="" class="btn-img wow bounceIn" data-wow-delay="1s" style="left:145px; bottom: 30px;">
+                                        <img src="{{ asset('bundles/coachfront/images/pub/avendre-btn.jpg')}}" alt="" class="btn-img wow bounceIn" data-wow-delay="1.5s" style="left:210px; bottom: 35px;">
+                                        <p class="center banner wow fadeInLeft" data-wow-delay="2s" >Je commande mon panneau</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    </div>
+    <!--END RESULTAT DUNE RECHERCHE-->
+
+
+
+</div>
+<br>
+<br>
+<!--Animation plugin-->
+<script src="{{ asset('bundles/coachfront/js/js-animation/wow.min.js')}}"></script>
+<!--init plugin-->
+<script>
+new WOW().init();
+</script>
+{% endblock %} 

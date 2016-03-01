@@ -1,0 +1,30 @@
+{% extends basetemplate %}
+{% trans_default_domain "IbrowsNewsletterBundle" %}
+{% block layout_class %}newsletter-summary{% endblock layout_class %}
+
+{% import "IbrowsNewsletterBundle::macros.html.twig" as macros %}
+{% block newsletter_wizard %}
+    {{ macros.displayWizard(wizard) }}
+{% endblock newsletter_wizard %}
+
+{% block newsletter_content %}
+    <div data-container="newsletter_summary">
+        <h1>{{ 'newsletter.summary'|trans({'%name%': newsletter.name}) }}</h1>
+
+        <h2>{{ 'newsletter.testmail'|trans }}</h2>
+        <form action="" method="post" {{ form_enctype(testmailform) }}>
+            {{ form_errors(testmailform) }}
+            {{ form_rest(testmailform) }}
+
+            <div class="form-actions">
+                <input type="submit" name="testmail" class="btn btn-primary" value="{{ 'form.testmail'|trans }}">
+                <a href="{{ url('ibrows_newsletter_generate_mail_jobs') }}" class="btn btn-danger pull-right">{{ 'newsletter.generate.mail'|trans }}</a>
+            </div>
+        </form>
+
+        <h2>{{ 'newsletter.overview'|trans }}</h2>
+        <div class="newsletter-overview">
+            <iframe data-iframe-auto-height="true" src="{{ url('ibrows_newsletter_render_overview', {mandantHash: mandantHash, newsletterHash: newsletter.hash, subscriberHash: subscriber.hash, context: 'preview'}) }}" />
+        </div>
+    </div>
+{% endblock newsletter_content %}

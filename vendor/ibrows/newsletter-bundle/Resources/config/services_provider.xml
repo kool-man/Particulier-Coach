@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+		<service id="ibrows_newsletter.block.provider.textarea" class="Ibrows\Bundle\NewsletterBundle\Block\Provider\TextAreaProvider">
+            <call method="setBlockProviderManager">
+                <argument type="service" id="ibrows_newsletter.block_provider_manager" />
+            </call>
+            <tag name="ibrows_newsletter.block.provider" />
+        </service>
+
+        <service id="ibrows_newsletter.block.provider.textareaandimage" class="Ibrows\Bundle\NewsletterBundle\Block\Provider\TextAreaAndImageProvider">
+            <call method="setBlockProviderManager">
+                <argument type="service" id="ibrows_newsletter.block_provider_manager" />
+            </call>
+            <tag name="ibrows_newsletter.block.provider" />
+        </service>
+
+        <service id="ibrows_newsletter.block.provider.image" class="Ibrows\Bundle\NewsletterBundle\Block\Provider\ImageProvider">
+            <argument type="service" id="request" strict="false" />
+            <argument>%ibrows_newsletter.filesystem.block.directory%</argument>
+            <argument>%ibrows_newsletter.filesystem.block.public%</argument>
+            <call method="setBlockProviderManager">
+                <argument type="service" id="ibrows_newsletter.block_provider_manager" />
+            </call>
+            <tag name="ibrows_newsletter.block.provider" />
+        </service>
+    </services>
+
+</container>

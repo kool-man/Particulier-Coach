@@ -1,0 +1,82 @@
+<?php
+
+/**
+ * This file is part of the <name> project.
+ *
+ * (c) <yourname> <youremail>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Application\Sonata\UserBundle\Entity;
+
+use Sonata\UserBundle\Entity\BaseUser as BaseUser;
+use Doctrine\ORM\Mapping as ORM;
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="fos_user_user")
+ */
+class User extends BaseUser
+{
+    /**
+    * @ORM\Id
+    * @ORM\Column(type="integer")
+    * @ORM\GeneratedValue(strategy="AUTO")
+    */
+    protected $id;
+    /**
+     * Get id
+     *
+     * @return integer $id
+     */
+    public function getId()
+    {
+        return $this->id;
+    }        
+    /**
+    * @ORM\OneToMany(targetEntity="Application\Sonata\NotificationBundle\Entity\Message",mappedBy="msguser")
+    */
+    private $messages;
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->messages = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add messages
+     *
+     * @param \Application\Sonata\NotificationBundle\Entity\Message $messages
+     * @return User
+     */
+    public function addMessage(\Application\Sonata\NotificationBundle\Entity\Message $messages)
+    {
+        $this->messages[] = $messages;
+
+        return $this;
+    }
+
+    /**
+     * Remove messages
+     *
+     * @param \Application\Sonata\NotificationBundle\Entity\Message $messages
+     */
+    public function removeMessage(\Application\Sonata\NotificationBundle\Entity\Message $messages)
+    {
+        $this->messages->removeElement($messages);
+    }
+
+    /**
+     * Get messages
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMessages()
+    {
+        return $this->messages;
+    }
+}

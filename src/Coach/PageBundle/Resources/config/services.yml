@@ -1,0 +1,63 @@
+services:
+#    coach_page.example:
+#        class: Coach\PageBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+    coach_page.admin.page:
+        class: Coach\PageBundle\Admin\PageAdmin
+        arguments: [~, Coach\PageBundle\Entity\Page, CoachPageBundle:PageAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Mon site, label: Pages}
+            
+    coach_page.admin.menu:
+        class: Coach\PageBundle\Admin\MenuAdmin
+        arguments: [~, Coach\PageBundle\Entity\Menu, CoachPageBundle:MenuAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Mon site, label: Menus}
+    coach_page.admin.titre_page:
+        class: Coach\PageBundle\Admin\TitrePageAdmin
+        arguments: [~, Coach\PageBundle\Entity\TitrePage, CoachPageBundle:TitrePageAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Mon site, label: Titres Pages} 
+    coach_coaching.admin.coaching:
+        class: Coach\CoachingBundle\Admin\CoachingAdmin
+        arguments: [~, Coach\CoachingBundle\Entity\Coaching, CoachCoachingBundle:CoachingAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Mon site, label: Paragraphes}       
+    coach_page.admin.block_social:
+        class: Coach\PageBundle\Admin\BlockSocialAdmin
+        arguments: [~, Coach\PageBundle\Entity\BlockSocial, CoachPageBundle:BlockSocialAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Mon site, label: Réseaux Sociaux}        
+    coach_page.admin.block_video:
+        class: Coach\PageBundle\Admin\BlockVideoAdmin
+        arguments: [~, Coach\PageBundle\Entity\BlockVideo, CoachPageBundle:BlockVideoAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Mon site, label: Changer Video}
+            
+    coach_page.admin.block_text:
+        class: Coach\PageBundle\Admin\BlockTextAdmin
+        arguments: [~, Coach\PageBundle\Entity\BlockText, CoachPageBundle:BlockTextAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Mon site, label: Vendre et acheter}
+    
+    coach_page.admin.block_lienmiddle:
+        class: Coach\PageBundle\Admin\BlockLienMiddleAdmin
+        arguments: [~, Coach\PageBundle\Entity\BlockLienMiddle, CoachPageBundle:BlockLienMiddleAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Mon site, label: Liste des Catégories}
+
+    coach_page.admin.email:
+        class: Coach\PageBundle\Admin\EmailAdmin
+        arguments: [~, Coach\PageBundle\Entity\Email, CoachPageBundle:EmailAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Expéditeur}
+    application_sonata_user.admin.contact:
+        class: Application\Sonata\UserBundle\Admin\ContactAdmin
+        arguments: [~, Application\Sonata\UserBundle\Entity\Contact, ApplicationSonataUserBundle:ContactAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Configuration, label: Messages} 
+    coach_user.registration.form.type:
+        class: Application\Sonata\UserBundle\Form\RegistrationFormType
+        tags:
+            - { name: form.type, alias: coach_user_registration }
+    

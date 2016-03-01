@@ -1,0 +1,194 @@
+{% extends '::layout.html.twig' %}
+{% block body %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="title-details"><span>{{annonce.titre}}</span><span>{{annonce.prix}} Euro</span></div>
+    </div>
+    <div class="col-md-3">
+        <div class=" wells list-options nmrg">
+            <ul>
+                <li><a type="submit" name="Publier" href="{{path('coach_annonce_activer',{'id':annonce.id})}}" title="publier votre annonce" class="btn btn-success">Publier mon annonce</a></li>
+                <li><a class="btn btn-warning" href="{{path('coach_annonce_editer',{'id':annonce.id})}}" title="modifier votre annonce">Modifier</a></li>
+            </ul>
+        </div>
+    </div>    
+    <div class="col-md-9">
+        <div id="owl-galerie" class="owl-carousel owl-theme">
+			 {%for image in annonce.mesImages  %}
+				<div class="item"><img src="{{asset('bundles/coachannonce/')~image.getWebPath() }}" > </div>
+			 {%endfor%}
+        </div>
+    </div>
+    <div class="col-md-12">
+        <h4 class="br-title">Description</h4>
+        <div class="row">
+            <div class="col-md-2">
+			{%for image in annonce.mesImages |slice(0,1) %}
+				<img src="{{asset('bundles/coachannonce/')~image.getWebPath() }}" width="100%" height="100%" alt=""> 
+			{%endfor%}
+            </div>
+            <div class="col-md-10">
+                <p>{{annonce.description}}. </p>
+            </div>
+        </div>
+    </div>
+	<div class="col-md-12 mrg-t-20">
+        <h4 class="br-title">Caractéristiques</h4>
+        <table class="table table-hover table-bordered caract">
+            <tbody>
+                <tr>
+                    <td>Date</td>
+                    <td>{{annonce.createdAt | localizeddate('full', 'none')}}</td>
+                    <td>Ville</td>
+                    <td>{{annonce.ville}}</td>
+                </tr>
+                <tr>
+                    <td>Prix</td>
+                    <td>{{annonce.prix}} Euro</td>                
+                    <td>Nature</td>
+                    <td>                           
+                    {% if annonce.typeAnnonce == "1" %}
+                        Maison
+                    {% elseif annonce.typeAnnonce == "2" %}
+                        Appartement
+                    {% elseif annonce.typeAnnonce == "3" %}
+                        Bureau
+                    {% elseif annonce.typeAnnonce == "4" %}
+                        Commerce
+                    {% endif %}
+                    </td>
+                </tr>
+                 <tr>
+                    <td>Pieces</td>
+                    <td>{{annonce.nbPieces}} pieces - {{annonce.nbChambre}} chambres</td>
+                    <td>Surface</td>
+                    <td>{{annonce.surface}} m2</td>
+                </tr>
+                 <tr>
+                    <td>Options</td>
+                    <td>
+                        {%for loisir in annonce.loisirAnnonce %}
+                            {{loisir.name ~' '}} 
+                        {%endfor%}
+                    </td>
+                       <td>Les services a proximité</td>
+                    <td>
+                        {%for proximite in annonce.proximite %}
+                            {{proximite.name ~' '}} 
+                        {%endfor%}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-12 mrg-t-20">
+        <h4 class="br-title">Consommation d'energie</h4>
+        <div class="row energie">
+            <div class="col-md-6">
+                <div class="energie-content">
+                    <img src="{{ asset('bundles/coachfront/images/autres/wenergie.jpg')}}" alt="">
+                    {% if annonce.classAnnonce == "1" %}
+                        {% set class,valeur = 'class-A','A - moins de 50' %}
+                    {% elseif annonce.classAnnonce == "2" %}
+                        {% set class,valeur = 'class-B','B - de 51 à 90' %}
+                    {% elseif annonce.classAnnonce == "3" %}
+                        {% set class,valeur = 'class-C','C - de 91 à 150' %}
+                    {% elseif annonce.classAnnonce == "4" %}
+                        {% set class,valeur = 'class-D','D - de 151 à 230' %}
+                    {% elseif annonce.classAnnonce == "5" %}
+                        {% set class,valeur = 'class-E','E - de 231 à 330' %}
+                    {% elseif annonce.classAnnonce == "6" %}
+                        {% set class,valeur = 'class-F','F - de 331 à 450' %}    
+                    {% else %}
+                        {% set class,valeur = 'class-G','G - 451 et plus' %}
+                    {% endif %}
+                    <div class="wow fadeInRight class-energie {{class}}">
+                        {{valeur}}
+                    </div>
+                </div>
+                <br>
+                <p><strong>Indice de mesure: kWhEp/m2.an</strong></p>
+                <p>Conommations énergitiques (en énergie primaire) pour le chauffage, la production d'eau chaude sanitaire et le refroidissement</p>
+            </div>
+            <div class="col-md-6">
+                 <div class="energie-content">
+                    <img src="{{ asset('bundles/coachfront/images/autres/genergie.jpg')}}" alt="">
+                    {% if annonce.optionAnnonce == "1" %}
+                        {% set class,valeur = 'class-A','A - moins de 5' %}
+                    {% elseif annonce.optionAnnonce == "2" %}
+                        {% set class,valeur = 'class-B','B - de 6 à 10' %}
+                    {% elseif annonce.optionAnnonce == "3" %}
+                        {% set class,valeur = 'class-C','C - de 11 à 20' %}
+                    {% elseif annonce.optionAnnonce == "4" %}
+                        {% set class,valeur = 'class-D','D - de 21 à 35' %}
+                    {% elseif annonce.optionAnnonce == "5" %}
+                        {% set class,valeur = 'class-E','E - de 36 à 55' %}
+                    {% elseif annonce.optionAnnonce == "6" %}
+                        {% set class,valeur = 'class-F','F - de 56 à 80' %}    
+                    {% else %}
+                        {% set class,valeur = 'class-G','G - plus de 80' %}
+                    {% endif %}
+                    <div class="wow fadeInRight class-energie {{class}}">
+                        {{valeur}}
+                    </div>
+                </div>
+                <br>
+                <p><strong>Indice de mesure: kgeqCO2/m2.an</strong></p>
+                <p>Emissions de gaz a effet de serre (GES) pour le chauffage, la production d'eau chaude sanitaire et le refroidissement</p>
+            </div>
+        </div>
+        <div class="col-md-12 mrg-t-20 map">
+            <h4 class="br-title">Google Map</h4>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d41989.2988051699!2d2.337355947168431!3d48.87096291946296!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis%2C+France!5e0!3m2!1sen!2stn!4v1421071048618" frameborder="0" style="border:0"></iframe>
+        </div>
+    </div>      
+</div>
+<br><br>
+<div id="ohsnap"></div>
+{% endblock %}    
+{% block javascripts %}
+        {{ parent() }}
+    	<script src="{{asset('bundles/coachfront/js/js-alert/ohsnap.js')}}"></script>
+        <script>
+			$('.print-page').click(function(e){
+				e.preventDefault();
+				 window.print();
+			});
+			$('.list-options, header .row:first-child,.br-title, footer,.img-responsive, .owl-buttons, .row.energie').addClass('hidden-print');
+			$('.list-options a.number').popover('hide');
+			
+			//add favorite
+			$('.favorite').on('click', function(e){
+				e.preventDefault();
+				ohSnap('<i class="fa fa-check-circle fa-4"></i>&nbsp;&nbsp;Ajout réussi a mes favoris', 'green');
+			});
+                        function submitForm(){                            
+                            var message = document.getElementById("application_sonata_userbundle_message_message");
+                            if(checkEmail()){
+                                if(message.value){
+                                    document.getElementById("myForm").submit();
+                                }else{
+                                    alert('Merci de remplir le champ message ...');
+                                }
+                            } 
+                        }
+                        function checkEmail() {
+                            var email = document.getElementById("application_sonata_userbundle_message_email");
+                            var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+                            if (!filter.test(email.value)) {
+                                alert('Merci de saisir un email valide');
+                                email.focus;
+                                return false;
+                            }
+                            return true;
+                        }
+        </script>
+{% endblock %}
+{% block stylesheets %}
+{{ parent() }}    
+<link href="{{asset('bundles/coachfront/js/js-alert/style-snap.css')}}" rel="stylesheet">
+{% endblock %} 
+{% block pub %}
+<div id="ohsnap"></div>
+{% endblock %} 

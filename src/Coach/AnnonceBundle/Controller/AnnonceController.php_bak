@@ -1,0 +1,58 @@
+<?php
+
+namespace Coach\AnnonceBundle\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Coach\AnnonceBundle\Entity\Annonce;
+use Coach\AnnonceBundle\Form\AnnonceType;
+use Symfony\Component\HttpFoundation\Request;
+class AnnonceController extends Controller
+{
+    public function indexAction()
+    {
+        
+        return $this->render('CoachAnnonceBundle:Annonce:index.html.twig');
+    }
+    public function addAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $form1 = $this->createForm(new AnnonceType(), new Annonce());
+        
+            if ($request->isMethod('POST')) {
+                $form1->handleRequest($request);
+                if ($form1->isValid()) {
+                    $annonce = $form1->getData();
+                    $em->persist($annonce);
+                    $em->flush();
+                    
+                }
+            
+            return $this->redirect($this->generateUrl('coach_annonce_homepage'));
+        }
+        return $this->render('CoachAnnonceBundle:Annonce:post_annonce.html.twig', array(
+            'form_annonce' => $form1->createView()
+        ));
+    }
+    
+    ///// go to search page
+     public function searchAction()
+    {
+        
+        return $this->render('CoachAnnonceBundle:Annonce:search.html.twig');
+    }
+    
+    ///// go to form page
+     public function deposerAction()
+    {
+        
+        return $this->render('CoachAnnonceBundle:Annonce:deposer.html.twig');
+    }
+    
+    ///// go to details page
+     public function detailsAction()
+    {
+        
+        return $this->render('CoachAnnonceBundle:Annonce:details.html.twig');
+    }
+    
+}

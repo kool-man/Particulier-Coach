@@ -1,0 +1,15 @@
+coach_panneau_homepage:
+    path:     /panneau
+    defaults: { _controller: CoachPanneauBundle:Panneau:index }
+coach_panneau_validation:
+    path:     /validation-panneau
+    defaults: { _controller: CoachPanneauBundle:Panneau:validation }    
+coach_panneau_paiement:
+    path:     /panneau-paiement/{id}
+    defaults: { _controller: CoachPanneauBundle:Panneau:paiement }    
+coach_panneau_success:
+    path:     /achat-panneau/success
+    defaults: { _controller: CoachPanneauBundle:Panneau:success }
+coach_panneau_failed:
+    path:     /achat-panneau/failed
+    defaults: { _controller: CoachPanneauBundle:Panneau:failed }    

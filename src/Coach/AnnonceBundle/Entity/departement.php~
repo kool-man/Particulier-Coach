@@ -1,0 +1,63 @@
+<?php
+
+namespace Coach\AnnonceBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * departement
+ *
+ * @ORM\Table()
+ * @ORM\Entity
+ */
+class departement
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+	
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    private $name;
+	
+	 /**
+     * @var string
+     *
+     * @ORM\Column(name="code", type="string", length=255)
+     */
+    private $code;
+
+    /**
+     * @var integer
+     *
+     * @ORM\ManyToOne(targetEntity="Coach\AnnonceBundle\Entity\region", inversedBy="departement",cascade={"persist"})
+     */
+    private $region;
+	/**
+     * @var integer
+     *
+     * @ORM\OneToMany(targetEntity="Coach\AnnonceBundle\Entity\ville", mappedBy="departement",cascade={"persist"})
+     */
+    private $villes;
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+	
+	public function __toString(){
+		return $this->getName();
+	}
+}

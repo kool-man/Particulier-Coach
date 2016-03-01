@@ -1,0 +1,378 @@
+{% extends '::layout.html.twig' %}
+{% block body %}
+<div class="row">
+    <div class="col-md-12">
+        <h3 class="title-page">Déposer une annonce</h3>
+        <div class="col-md-12 alert alert-success">
+            <i class="fa fa-home"></i>&nbsp;&nbsp;<strong>Vendre en quelques minutes votre immobilier</strong>
+         </div>
+         <div class="col-md-12">
+            <div class="row bs-wizard" style="border-bottom:0;">
+                <div class="col-xs-4 bs-wizard-step disabled">
+                    <div class="text-center bs-wizard-stepnum">Informations</div>
+                    <div class="progress"><div class="progress-bar"></div></div>
+                    <a href="#" class="bs-wizard-dot"></a>
+                </div>
+                <div class="col-xs-4 bs-wizard-step disabled"><!-- complete -->
+                    <div class="text-center bs-wizard-stepnum">Package</div>
+                    <div class="progress"><div class="progress-bar"></div></div>
+                    <a href="#" class="bs-wizard-dot"></a>
+                </div>
+                <div class="col-xs-4 bs-wizard-step disabled"><!-- active -->
+                    <div class="text-center bs-wizard-stepnum">Publication</div>
+                    <div class="progress"><div class="progress-bar"></div></div>
+                    <a href="#" class="bs-wizard-dot"></a>
+                </div>
+            </div>
+        </div>
+        <form name="myform" action="{{ path('coach_annonce_deposez_modifier',{'id':annonce.id}) }}"   method="post" {{ form_enctype(form) }} {{ form_enctype(image0) }} {{ form_enctype(image1) }} {{ form_enctype(image2) }} {{ form_enctype(image3) }} {{ form_enctype(image4) }} {{ form_enctype(image5) }} {{ form_enctype(image6) }} {{ form_enctype(image7) }} {{ form_enctype(image8) }}>
+	{{ form_errors(form) }}
+        <div id="step-1-form">
+            <div class="wells col-md-12">
+                <p><strong>Caractéristique du bien (*)</strong></p>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                        {{ form_widget(form['typeAnnonce'],{'attr' : {'class' : ' form-control'}}) }}
+                        </div>
+                        <div class="form-group">
+                        {{ form_widget(form['classAnnonce'],{'attr' : {'class' : ' form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">                        
+                        <div class="form-group">
+            			{{ form_widget(form['nbPieces'],{'attr' : {'class' : ' form-control'}}) }}
+                        </div>
+                        <div class="form-group">
+                        {{ form_widget(form['optionAnnonce'],{'attr' : {'class' : ' form-control'}}) }}
+                        </div>                       
+                    </div>
+                    <div class="col-md-4"> 
+                        <div class="form-group">
+			             {{ form_widget(form['nbChambre'],{'attr' : {'class' : ' form-control'}}) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="wells col-md-12" id="transport-check">
+                <p><strong>Proximité de transport </strong></p>
+		          {%for proximite in proximites%}
+			<a id="{{proximite.id}}" class="icheck{% if proximite.id in array_proximites_selected %} active{% endif %}" onclick="ajouterProximite(this.id) ;"><i class="fa fa-circle-o"></i>{{proximite.name}}</a>
+		{%endfor%}               
+		{{ form_widget(form['proximite'],{'attr':{'hidden':'hidden','style':'visibility: hidden'}}) }}
+                <div class="clearfix"></div>
+            </div>            
+		<div class="wells col-md-12" id="options-check">
+                <p><strong>Avez-vous ?</strong></p>
+                <div class="row">
+                    <div class="col-md-12">
+                {%for loisirAnnonce in loisirAnnonces%}
+		     <a id="{{loisirAnnonce.id}}" class="icheck{% if loisirAnnonce.id in array_loisirs_selected %} active{% endif %}" onclick="ajouterLoisirAnnonce(this.id) ;"><i class="fa fa-circle-o"></i>{{loisirAnnonce.name}}</a>
+		{%endfor%}
+        {{ form_widget(form['loisirAnnonce'],{'attr':{'hidden':'hidden','style':'visibility: hidden'}}) }}
+        </div>
+        </div>
+        <div class="clearfix"></div>
+        </div>
+        <div class="wells col-md-12">
+                <p><strong>Localisation (*)</strong></p>
+                <div class="row">
+                    <div class="col-md-6">
+                         <div class="form-group">
+                            <label>
+                                <span class="input-tr-addon"><i class="fa fa-map-marker"></i></span>
+                                {{ form_widget(form.cp, { 
+                                    'attr' : {
+                                            'maxlength' : '5', 
+                                            'data-id' : 'codePostal', 
+                                            'class': ' form-control', 
+                                            'placeholder' : 'Code postal',
+                                            'data-url' : path('coach_estimation_json_codesPostaux')
+                                    }} )
+                            }}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                         <div class="form-group">
+                            <label>
+                                <span class="input-tr-addon"><i class="fa fa-map-marker"></i></span>
+                                {{ form_widget(form.ville, { 
+                                        'attr' : {
+                                                'class' : ' form-control', 
+                                                'placeholder' : 'Ville',
+                                                'data-id' : 'ville', 
+                                                'data-url' : path('coach_estimation_json_villes')
+                                        }} ) 
+                                }}
+                            </label>
+                        </div>
+                    </div>        
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                         <div class="form-group">
+                            <label>
+                                <span class="input-tr-addon"><i class="fa fa-map-marker"></i></span>
+                                {{ form_widget(form.adresse,{'attr' : {'class' : ' form-control', 'placeholder' : 'Adresse complète'}}) }}
+                            </label>
+                        </div>
+                    </div>                    
+                </div>          
+            </div>
+    </div>
+    </div>
+    <div class="wells col-md-12">
+        <p><strong>Description (*)</strong></p>
+            <div class="row">
+                <div class="col-md-5">
+                        <div class="form-group">
+                            <label>
+                                <span class="input-tr-addon"><i class="fa fa-flag"></i></span>
+                                {{ form_widget(form['titre'],{'attr' : {'class' : 'form-control','placeholder' : "Titre de l'annonce" }}) }}
+                            </label>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>
+                                        <span class="input-tr-addon"><i class="fa fa-eur"></i></span>
+                                        {{ form_widget(form['prix'],{'attr' : {'class' : 'form-control', 'type' : 'number','placeholder': 'Prix (*)'}}) }}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>
+                                        <span class="input-tr-addon"><i class="fa fa-home"></i></span>
+                                      {{ form_widget(form['surface'],{'attr' : {'class' : 'form-control', 'type' : 'number','placeholder' : 'Surface (*)'}}) }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>
+                                        <span class="input-tr-addon"><i class="fa fa-phone"></i></span>
+                                        {{ form_widget(form['tel1'],{'attr' : {'class' : 'form-control', 'type' : 'tel','maxlength':'10','placeholder': 'Tél 1 (*)'}}) }}
+                                    </label>
+                                    <span id="coach_annoncebundle_annonce_tel1_message" class="">
+                                    </span>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="form-group">
+                            <label>
+                                <span class="input-tr-addon"><i class="fa fa-pencil-square-o"></i></span>
+				{{ form_widget(form['description'],{'attr' : {'class' : 'form-control', 'placeholder': 'Description'}}) }}	
+							   
+                            </label>
+                        </div>
+				
+                    </div>
+                </div>
+            </div>
+            <div class="wells col-md-12">
+                <p><strong>Ajouter des photos</strong></p>                    
+                    <div class="row">
+                        <div class="col-md-4">
+                                {{ form_widget(image0.file,{'id':'uploadfileselection0','attr' : {'class' : 'btn btn-success','onchange':'return ShowImagePreview( this, 0 );','style':'width:300px;'}}) }}
+                                <div class="clearfix"></div>
+                                <div class="previewcanvascontainer" style="width: 300px;">
+                                        <canvas id="previewcanvas0" class="previewcanvas" style="width: 280px;">
+                                        </canvas>
+                                </div> 
+                        </div>  
+                        <div class="col-md-4">
+                                {{ form_widget(image1.file,{'id':'uploadfileselection1','attr' : {'class' : 'btn btn-success','onchange':'return ShowImagePreview( this, 1 );','style':'width:300px;'}}) }}
+                                <div class="clearfix"></div>
+                                <div class="previewcanvascontainer" style="width: 300px;">
+                                        <canvas id="previewcanvas1" class="previewcanvas" style="width: 280px;">
+                                        </canvas>
+                                </div> 
+                        </div>
+                        <div class="col-md-4">
+                                {{ form_widget(image2.file,{'id':'uploadfileselection2','attr' : {'class' : 'btn btn-success','onchange':'return ShowImagePreview( this, 2 );','style':'width:300px;'}}) }}
+                                <div class="clearfix"></div>
+                                <div class="previewcanvascontainer" style="width: 300px;">
+                                        <canvas id="previewcanvas2" class="previewcanvas" style="width: 280px;">
+                                        </canvas>
+                                </div> 
+                         </div>                     
+                    </div>
+                    {% if annonce.pack > 0 %}
+                    <div class="row">
+                        <div class="col-md-4">
+                                {{ form_widget(image3.file,{'id':'uploadfileselection3','attr' : {'class' : 'btn btn-success','onchange':'return ShowImagePreview( this, 3 );','style':'width:300px;'}}) }}
+                                <div class="clearfix"></div>
+                                <div class="previewcanvascontainer" style="width: 300px;">
+                                        <canvas id="previewcanvas3" class="previewcanvas" style="width: 280px;">
+                                        </canvas>
+                                </div> 
+                        </div>  
+                        <div class="col-md-4">
+                                {{ form_widget(image4.file,{'id':'uploadfileselection4','attr' : {'class' : 'btn btn-success','onchange':'return ShowImagePreview( this, 4 );','style':'width:300px;'}}) }}
+                                <div class="clearfix"></div>
+                                <div class="previewcanvascontainer" style="width: 300px;">
+                                        <canvas id="previewcanvas4" class="previewcanvas" style="width: 280px;">
+                                        </canvas>
+                                </div> 
+                        </div>
+                        <div class="col-md-4">
+                                {{ form_widget(image5.file,{'id':'uploadfileselection5','attr' : {'class' : 'btn btn-success','onchange':'return ShowImagePreview( this, 5 );','style':'width:300px;'}}) }}
+                                <div class="clearfix"></div>
+                                <div class="previewcanvascontainer" style="width: 300px;">
+                                        <canvas id="previewcanvas5" class="previewcanvas" style="width: 280px;">
+                                        </canvas>
+                                </div> 
+                         </div>  
+                    </div>
+                    {% endif %}
+                    {% if annonce.pack > 1 %}
+                    <div class="row">
+                        <div class="col-md-4">
+                                {{ form_widget(image6.file,{'id':'uploadfileselection6','attr' : {'class' : 'btn btn-success','onchange':'return ShowImagePreview( this, 6 );','style':'width:300px;'}}) }}
+                                <div class="clearfix"></div>
+                                <div class="previewcanvascontainer" style="width: 300px;">
+                                        <canvas id="previewcanvas6" class="previewcanvas" style="width: 280px;">
+                                        </canvas>
+                                </div> 
+                        </div>  
+                        <div class="col-md-4">
+                                {{ form_widget(image7.file,{'id':'uploadfileselection7','attr' : {'class' : 'btn btn-success','onchange':'return ShowImagePreview( this, 7 );','style':'width:300px;'}}) }}
+                                <div class="clearfix"></div>
+                                <div class="previewcanvascontainer" style="width: 300px;">
+                                        <canvas id="previewcanvas7" class="previewcanvas" style="width: 280px;">
+                                        </canvas>
+                                </div> 
+                        </div>
+                        <div class="col-md-4">
+                                {{ form_widget(image8.file,{'id':'uploadfileselection8','attr' : {'class' : 'btn btn-success','onchange':'return ShowImagePreview( this, 8 );','style':'width:300px;'}}) }}
+                                <div class="clearfix"></div>
+                                <div class="previewcanvascontainer" style="width: 300px;">
+                                        <canvas id="previewcanvas8" class="previewcanvas" style="width: 280px;">
+                                        </canvas>
+                                </div> 
+                         </div>  
+                    </div>
+                    {% endif %}            
+            </div>        
+            <div class="wells col-md-12">
+                <div class="row">
+                    <div class="col-md-12 mrg-t-20">
+                        <button class="btn btn-success pull-right" onclick="submitform();" type="submit" >Modifier  <i class="fa fa-chevron-right"></i></button>
+                    </div>
+                </div>            
+                <div class="row">                    
+                    <input type="hidden" id="coach_annoncebundle_annonce_pack" name="coach_annoncebundle_annonce[pack]" value="{{ordre}}">        
+                </div>
+            </div>                    
+            
+            </div>         
+        </form>
+<br><br><br><br><br>
+{% endblock %}  
+{% block stylesheets %}
+    {{ parent() }}
+<link href="{{asset('bundles/coachfront/js/rectorpage/css/rectorpage.css')}}" media="all" rel="stylesheet" type="text/css" />    
+<link href="{{asset('bundles/coachfront/js/js-upload-master/css/fileinput.min.css')}}" media="all" rel="stylesheet" type="text/css" />
+<link href="{{asset('bundles/coachfront/js/js-select/css/select2-bootstrap.css')}}" rel="stylesheet" type="text/css">
+<link href="{{asset('bundles/coachfront/js/js-select/css/select2.css')}}" rel="stylesheet"  type="text/css">
+{% endblock %} 
+{% block javascripts %}
+    {{ parent() }}
+        <script src="{{asset('bundles/coachfront/js/js-select/select2.min.js')}}"></script>
+        <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>  
+        <script src="{{asset('bundles/coachestimation/js/autocomplete.js')}}"></script>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+        <script type="text/javascript" src="{{asset('bundles/coachfront/js/rectorpage/js/rectorpage.js')}}"></script>
+        <!--init plugin-->
+        <script>
+        function ajouterProximite(id){
+		var select_prox = $("#coach_annoncebundle_annonce_proximite  option[value="+id+"]").prop("selected");
+			if(select_prox == true){
+			 $("#coach_annoncebundle_annonce_proximite  option[value="+id+"]").attr("selected", false);
+			}else{
+			 $("#coach_annoncebundle_annonce_proximite  option[value="+id+"]").attr("selected", true);
+			}
+		};
+		function ajouterLoisirAnnonce(id){
+		var select_prox = $("#coach_annoncebundle_annonce_loisirAnnonce  option[value="+id+"]").prop("selected");
+			if(select_prox == true){
+			 $("#coach_annoncebundle_annonce_loisirAnnonce  option[value="+id+"]").attr("selected", false);
+			}else{
+			 $("#coach_annoncebundle_annonce_loisirAnnonce  option[value="+id+"]").attr("selected", true);
+			}		
+		};
+		$('input[type=file]').simpleFilePreview();
+                
+                function submitform()
+                {
+                    var typeAnnonce   = document.myform.coach_annoncebundle_annonce_typeAnnonce.value;
+                    var nbPieces      = document.myform.coach_annoncebundle_annonce_nbPieces.value;
+                    var nbChambre     = document.myform.coach_annoncebundle_annonce_nbChambre.value;
+                    var classAnnonce  = document.myform.coach_annoncebundle_annonce_classAnnonce.value;
+                    var optionAnnonce = document.myform.coach_annoncebundle_annonce_optionAnnonce.value;
+                    var cp            = document.myform.coach_annoncebundle_annonce_cp.value;
+                    var ville         = document.myform.coach_annoncebundle_annonce_ville.value;
+                    var adresse       = document.myform.coach_annoncebundle_annonce_adresse.value;
+                    var titre         = document.myform.coach_annoncebundle_annonce_titre.value;
+                    var prix          = document.myform.coach_annoncebundle_annonce_prix.value;
+                    var surface       = document.myform.coach_annoncebundle_annonce_surface.value;
+                    var tel1          = document.myform.coach_annoncebundle_annonce_tel1.value;
+                    var description   = document.myform.coach_annoncebundle_annonce_description.value;
+                    var email         = document.myform.coach_annoncebundle_annonce_annonceur_email.value;
+                    var password_clear= document.myform.coach_annoncebundle_annonce_annonceur_password_clear.value;
+                    if(!typeAnnonce){
+                        $('html,body').animate({scrollTop: 300 }, 'slow');
+                    }
+                    else if(!nbPieces){          
+                        $('html,body').animate({scrollTop: 300}, 'slow');
+                    }
+                    else if(!nbChambre){
+                        $('html,body').animate({scrollTop: 300}, 'slow');
+                    }
+                    else if(!classAnnonce){
+                        $('html,body').animate({scrollTop: 300}, 'slow');
+                    }
+                    else if(!optionAnnonce){
+                        $('html,body').animate({scrollTop: 300}, 'slow');
+                    }
+                    else if(!cp){
+                        $('html,body').animate({scrollTop: 700}, 'slow');
+                    }
+                    else if(!ville){
+                        $('html,body').animate({scrollTop: 700}, 'slow');
+                    }
+                    else if(!adresse){
+                        $('html,body').animate({scrollTop: 700}, 'slow');
+                    }
+                    else if(!titre){
+                        $('html,body').animate({scrollTop: 900}, 'slow');
+                    }
+                    else if(!prix){
+                        $('html,body').animate({scrollTop: 900}, 'slow');
+                    }
+                    else if(!surface){
+                        $('html,body').animate({scrollTop: 900}, 'slow');
+                    }
+                    else if(!tel1){
+                        $('html,body').animate({scrollTop: 900}, 'slow');
+                    }
+                    else if(!description){
+                        $('html,body').animate({scrollTop: 900}, 'slow');
+                    }
+                    else if(!email){
+                    }
+                    else if(!password_clear){
+                    }
+                    else{
+                        document.myform.submit();
+                    }
+                  
+                }
+        </script>
+{% endblock %}

@@ -1,0 +1,12 @@
+services:
+    coach_pack_optioninfo.admin.user:
+        class: Coach\PackBundle\Admin\OptionInfoAdmin
+        arguments: [~, Coach\PackBundle\Entity\OptionInfo, CoachPackBundle:OptionInfoAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Packs, label: Options pack}
+
+    coach_pack_pack.admin.user:
+        class: Coach\PackBundle\Admin\PackAdmin
+        arguments: [~, Coach\PackBundle\Entity\Pack, CoachPackBundle:PackAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Packs, label: Informations pack}

@@ -1,0 +1,57 @@
+.cheque{
+    background-image: url('cheque.png');
+    width: 100%;
+    height: 294px;
+    margin:20px 0;
+    position: relative;
+	padding-left: 60px;
+}
+
+.cheque .peugeot{
+    color: #38C5F2;
+    font-family: 'Peugeot';
+    font-size: 20px;
+    left: 47px;
+    position: absolute;
+    top: 40px;}
+
+.cheque .montant_lettres{
+    position: absolute;
+    top: 100px;
+    left: 47px;
+    color: #38C5F2;
+    font-family: 'Peugeot';
+    font-size: 20px;
+
+}
+.cheque .encart_montant {
+    border: 5px solid #ffffff;
+    padding: -1px 0 0 0;
+    position: absolute;
+    right: 45px;
+    text-align: center;
+    top: 55px;
+    width: 225px;
+}
+
+.cheque .montant_chiffres{
+    font-weight: bolder;
+    font-size:28px;
+}
+.cheque .ordre{
+    position: absolute;
+    top: 140px;
+    left: 47px;
+    color: #38C5F2;
+    font-family: 'Peugeot';
+    font-size: 20px;
+}
+.cheque .ref_client{
+    position: absolute;
+    top: 182px;
+    left: 47px;
+    color: #38C5F2;
+    font-family: 'Peugeot';
+    font-size: 20px;
+
+}

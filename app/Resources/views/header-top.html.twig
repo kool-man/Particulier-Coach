@@ -1,0 +1,33 @@
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 user">
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <a href="{{path('coach_user_security_profile')}}" style="color:#61af2a;" title="créer un compte particulier & coach"><i class="fa fa-user"></i> Mon Compte P&amp;C ></a> {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                <a href="{{ path('coach_user_security_logout') }}" title="créer un compte particulier & compte">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+                {% else %}
+                <a href="{{path('coach_user_security_profile')}}" style="color:#61af2a;" title="créer un compte particulier & coach"><i class="fa fa-user"></i> Mon Compte P&amp;C ></a>
+                {% endif %}
+            </div>
+            <div class="col-md-6">
+                <a href="{{path('coach_user_contact')}}" class="contact" title="contactez nous"><i class="fa fa-envelope-o"></i><span>Contactez nous</span></a>
+                {{ render(controller('CoachPageBundle:Page:social')) }}
+            </div>
+            <div class="col-md-12"><div class="divider"></div></div>
+        </div>
+        <div class="row">
+            <div class="col-md-5 logo mrg-tb-20">
+                <a href="http://www.particulier-coach.com" title="publier vos annonces immobilière chez particulier & coach"><img src="{{ asset('bundles/coachfront/images/particulier-coach.png')}}" alt="" class="img-responsive"></a>
+            </div>
+            <div class="col-md-7">
+            	<div class="banner-header-pub">
+                    <a href="http://www.particulier-coach.com" title="publier vos annonces immobilière chez particulier & coach"><div class="wow fadeInLeft title transition"></div>
+                    <div class="wow fadeInLeft slogan transition"></div></a>
+                    <a href="http://www.particulier-coach.com" title="publier vos annonces immobilière chez particulier & coach"><div class="handmoney fadeInLeft wow" data-wow-delay="1s"><img src="{{ asset('bundles/coachfront/images/pub/hand-money.png')}}" alt="vente immobilière" /></div>
+                    <div class="handkey fadeInRight wow" data-wow-delay="1.5s"><img src="{{ asset('bundles/coachfront/images/pub/hand-key.png')}}" alt="De particulier à particulier" /></div>
+                    <div class="house fadeInUp wow" data-wow-delay="2s"><img src="{{ asset('bundles/coachfront/images/pub/house.png')}}" alt="annonce immobilière"/></div></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

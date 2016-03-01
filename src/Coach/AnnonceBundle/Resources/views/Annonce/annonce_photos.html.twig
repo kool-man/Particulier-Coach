@@ -1,0 +1,297 @@
+{% extends '::layout.html.twig' %}
+{% block body %}
+<div class="row">
+    <div class="col-md-12">
+
+        <h3 class="title-page">Déposer une annonce</h3>
+
+        <div class="col-md-12 alert alert-success">
+            <i class="fa fa-home"></i>&nbsp;&nbsp;<strong>Vendre en quelques minutes votre immobilier</strong>
+            </div>
+         <div class="col-md-12">
+            <!--bs-wizard-->
+            <div class="row bs-wizard" style="border-bottom:0;">
+
+                <div class="col-xs-4 bs-wizard-step disabled">
+                    <div class="text-center bs-wizard-stepnum">Informations</div>
+                    <div class="progress"><div class="progress-bar"></div></div>
+                    <a href="#" class="bs-wizard-dot"></a>
+                </div>
+
+                <div class="col-xs-4 bs-wizard-step disabled"><!-- complete -->
+                    <div class="text-center bs-wizard-stepnum">Package</div>
+                    <div class="progress"><div class="progress-bar"></div></div>
+                    <a href="#" class="bs-wizard-dot"></a>
+                </div>
+
+
+
+                <div class="col-xs-4 bs-wizard-step disabled"><!-- active -->
+                    <div class="text-center bs-wizard-stepnum">Publication</div>
+                    <div class="progress"><div class="progress-bar"></div></div>
+                    <a href="#" class="bs-wizard-dot"></a>
+                </div>
+            </div>
+            <!--bs-wizard-->
+        </div>
+        
+        <!-- form 1 -->
+        <div id="photos3" {%if pack != 0 %} style="display:none;" {%endif%}>
+        <form action="{{ path('coach_annonce_photos',{'annonce':annonce,'pack':'0'}) }}"   method="post" {{ form_enctype(form1) }}>
+	{{ form_errors(form1) }}
+
+        <div id="step-2-form">               
+	    <div class="wells col-md-12" id="upload">
+                <p><strong>Choisir un Pack </strong></p>
+                    
+                    <div class="row pack-choice">
+			<div class="col-md-12" id="limit-info">
+                            <p class="center display">Félicitation vous avez choisis<strong> le Pack STAR</strong>, vous pouvez télécharger <strong>6 Photos</strong> et vous bénificiez des avantages de ce pack. </p>
+                            <p class="center display">Félicitation vous avez choisis<strong> le Pack GOLD</strong> vous pouvez télécharger <strong>9 Photos</strong> et vous bénificiez des avantages de ce pack. </p>
+                        </div>
+                        <div class="col-sm-2"></div>
+                        <div class="col-md-4">
+                            <a href="#" class="btn btn-star btn-block btn-lg opac"><i class="fa fa-times"></i>Je choisis STAR</a>
+                        </div>
+                        
+                         <div class="col-md-4">
+                            <a href="#" class="btn btn-gold btn-block btn-lg opac"><i class="fa fa-times"></i>Je choisis GOLD</a>
+                        </div>
+                        <div class="col-sm-2"></div>
+                       
+                    </div>
+		
+					
+		<div class="row mrg-tb-20">
+                        <div class="col-md-12 packages">
+                            <div class="row">
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-4  star">
+                                    <div class="title">Star</div>
+                                    <div class="content-pack">
+                                        <p><strong>6 Photos</strong></p>
+                                        <p class="desactive">Validité 1 mois</p>
+                                        <p class="desactive">Annonce à la une - Pôle position</p>
+                                        <p>Guide de vente immobilière</p>
+                                        <p>Compte client - Suivi d'activité</p>
+                                        <p>Sans commission - Sans intermédiaire</p>
+                                    </div>
+                                    <a href="#">19.99 Euro</a>
+                                </div>
+
+                                <div class="col-sm-4 gold">
+                                    <div class="title">Gold</div>
+                                    <div class="content-pack">
+                                        <p><strong>9 Photos</strong></p>
+                                        <p class="desactive">Validité 1 mois</p>
+                                        <p>Annonce à la une - Pôle position</p>
+                                        <p>Guide de vente immobilière</p>
+                                        <p>Compte client - Suivi d'activité</p>
+                                        <p>Sans commission - Sans intermédiaire</p>
+                                    </div>
+                                    <a href="#">29.99 Euros</a>
+                                </div>
+                                <div class="col-sm-2"></div>
+                            </div>
+                        </div>
+                    </div>
+                        {{ form_widget(form1.file,{'id':'file-1','attr' : {'class' : 'file'}}) }}
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-12 mrg-t-20">
+                        <a class="btn btn-warning pull-left" type="submit" ><i class="fa fa-chevron-left"></i>Retour</a>
+                        <button type="submit" name="Publier" class="btn btn-success pull-right"><i class="fa fa-chevron-rightt"></i>Publier mon annonce </button>
+                    </div>
+                </div>    
+                
+            </div>
+                       
+            <!--start step 3-->
+            <div id="step-3-form">
+                <div class="wells col-md-12">
+                	Vendre en quelques minutes votre immobilier
+                </div>
+               
+           </div>           
+        </form>
+        </div>
+        <!-- form 2 -->
+        <div id="photos6" {%if pack != 1 %} style="display:none;" {%endif%}>
+        <form action="{{ path('coach_annonce_photos',{'annonce':annonce,'pack':'1'}) }}"   method="post" {{ form_enctype(form2) }}>
+	{{ form_errors(form2) }}
+
+        <div id="step-2-form">               
+	    <div class="wells col-md-12" id="upload">
+                <p><strong>Choisir un Pack </strong></p>
+                    
+                    <div class="row pack-choice">
+			
+                        <div class="col-md-12" id="limit-info">
+                            <p class="center display">Félicitation vous avez choisis<strong> le Pack GOLD</strong> vous pouvez télécharger <strong>9 Photos</strong> et vous bénificiez des avantages de ce pack. </p>
+                        </div>
+                        <div class="col-sm-4"></div>
+                        <div class="col-md-4">
+                            <a href="#" class="btn btn-gold btn-block btn-lg opac"><i class="fa fa-times"></i>Je choisis GOLD</a>
+                        </div>
+                       <div class="col-sm-4"></div>
+                    </div>		
+					
+		<div class="row mrg-tb-20">
+                        <div class="col-md-12 packages">
+                            <div class="row">
+                                <div class="col-sm-4"></div>
+                                <div class="col-sm-4 gold">
+                                    <div class="title">Gold</div>
+                                    <div class="content-pack">
+                                        <p><strong>9 Photos</strong></p>
+                                        <p class="desactive">Validité 1 mois</p>
+                                        <p>Annonce à la une - Pôle position</p>
+                                        <p>Guide de vente immobilière</p>
+                                        <p>Compte client - Suivi d'activité</p>
+                                        <p>Sans commission - Sans intermédiaire</p>
+                                    </div>
+                                    <a href="#">29.99 Euros</a>
+                                </div>
+                                <div class="col-sm-4"></div>
+                            </div>
+                        </div>
+                    </div>
+                        {{ form_widget(form2.file,{'id':'file-2','attr' : {'class' : 'file'}}) }}
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-12 mrg-t-20">
+                        <a class="btn btn-warning pull-left" type="submit" ><i class="fa fa-chevron-left"></i>Retour</a>
+                        <button type="submit" name="Publier" class="btn btn-success pull-right"><i class="fa fa-chevron-rightt"></i>Publier mon annonce </button>
+                    </div>
+                </div>    
+                
+            </div>
+                       
+            <!--start step 3-->
+            <div id="step-3-form">
+                <div class="wells col-md-12">
+                	Vendre en quelques minutes votre immobilier
+                </div>
+               
+           </div>           
+        </form>
+        </div>
+        <!-- form 3 -->
+        <div id="photos9" {%if pack != 2 %} style="display:none;" {%endif%}>
+        <form action="{{ path('coach_annonce_photos',{'annonce':annonce,'pack':'2'}) }}"   method="post" {{ form_enctype(form3) }}>
+	{{ form_errors(form3) }}
+
+        <div id="step-2-form">               
+                <div class="wells col-md-12" id="upload">
+                    <div class="row pack-choice">
+			
+                        <div class="col-md-12" id="limit-info">
+                            <p class="center animated fadeInUp">Félicitation vous avez choisis<strong> le Pack GOLD</strong> vous pouvez télécharger <strong>9 Photos</strong> et vous bénificiez des avantages de ce pack. </p>
+                        </div>
+                        
+                    </div>
+                    {{ form_widget(form3.file,{'id':'file-3','attr' : {'class' : 'file'}}) }}
+                </div>
+                <div class="row">
+                    <div class="col-md-12 mrg-t-20">
+                        <a class="btn btn-warning pull-left" type="submit" ><i class="fa fa-chevron-left"></i>Retour</a>
+                        <button type="submit" name="Publier" class="btn btn-success pull-right"><i class="fa fa-chevron-rightt"></i>Publier mon annonce </button>
+                    </div>
+                </div>    
+                
+            </div>
+                       
+            <!--start step 3-->
+            <div id="step-3-form">
+                <div class="wells col-md-12">
+                	Vendre en quelques minutes votre immobilier
+                </div>
+               
+           </div>           
+        </form>
+        </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}  
+{% block stylesheets %}
+    {{ parent() }}
+<link href="{{asset('bundles/coachfront/js/js-upload-master/css/fileinput.min.css')}}" media="all" rel="stylesheet" type="text/css" />
+<link href="{{asset('bundles/coachfront/js/js-select/css/select2-bootstrap.css')}}" rel="stylesheet" type="text/css">
+<link href="{{asset('bundles/coachfront/js/js-select/css/select2.css')}}" rel="stylesheet"  type="text/css">
+{% endblock %} 
+{% block javascripts %}
+    {{ parent() }}
+        <!--fetech JS - JS  special for this page only-->
+        <script src="{{asset('bundles/coachfront/js/js-upload-master/js/fileinput.js')}}"></script>
+	<script src="{{asset('bundles/coachfront/js/js-select/select2.min.js')}}"></script>
+        <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>  
+        <!--init plugin-->
+        <script>
+        $("#file-1").fileinput({
+            initialPreview: [],
+            initialPreviewConfig: [
+            {caption: 'Desert.jpg', width: '120px', url: '#'},
+            {caption: 'Jellyfish.jpg', width: '120px', url: '#'},
+        ],
+        uploadUrl: '#',
+        allowedFileExtensions : ['jpg', 'png','gif', 'jpeg'],
+        overwriteInitial: false,
+        maxFileSize: 1000,
+        maxFilesNum: 3,
+        maxFileCount: 3,
+        allowedFileTypes: ['image'],
+        slugCallback: function(filename) {
+            return filename.replace('(', '_').replace(']', '_');
+        }		
+	});
+        
+        $("#file-2").fileinput({
+            initialPreview: [],
+            initialPreviewConfig: [
+            {caption: 'Desert.jpg', width: '120px', url: '#'},
+            {caption: 'Jellyfish.jpg', width: '120px', url: '#'},
+        ],
+        uploadUrl: '#',
+        allowedFileExtensions : ['jpg', 'png','gif', 'jpeg'],
+        overwriteInitial: false,
+        maxFileSize: 1000,
+        maxFilesNum: 6,
+        maxFileCount: 6,
+        allowedFileTypes: ['image'],
+        slugCallback: function(filename) {
+            return filename.replace('(', '_').replace(']', '_');
+        }		
+	});
+        
+        $("#file-3").fileinput({
+            initialPreview: [],
+            initialPreviewConfig: [
+            {caption: 'Desert.jpg', width: '120px', url: '#'},
+            {caption: 'Jellyfish.jpg', width: '120px', url: '#'},
+        ],
+        uploadUrl: '#',
+        allowedFileExtensions : ['jpg', 'png','gif', 'jpeg'],
+        overwriteInitial: false,
+        maxFileSize: 1000,
+        maxFilesNum: 9,
+        maxFileCount: 9,
+        allowedFileTypes: ['image'],
+        slugCallback: function(filename) {
+            return filename.replace('(', '_').replace(']', '_');
+        }		
+	});
+        $('#upload .fileinput-upload-button').addClass('btn-danger');
+        $('.file-drop-zone-title').text('Glisser vos photos ici');
+		
+        $(".select-2").select2();
+		
+        </script>
+        
+{% endblock %}
+  
+   

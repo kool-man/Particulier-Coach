@@ -1,0 +1,57 @@
+.previewcanvascontainer
+{
+    background: white;
+    width: 100%;
+    height: 100%;
+    border: 10px solid #555;
+}
+
+.previewcanvas
+{
+    background-image: url("no.image.png");
+    width: 175px;
+    height: 175px;
+}
+
+.previewfile
+{
+    position: relative;
+    width: 505px;
+    height: 360px;
+    padding-right: 155px;
+    overflow-y: scroll;
+}
+
+.previewfile canvas
+{
+    width: 175px;
+    height: 175px;
+}
+
+.previewfileinput
+{
+    position: relative;
+    bottom: 0;
+    width: 284px;
+    height: 49px;
+    border-bottom-color: #777;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    margin-bottom: 29px;
+    background: none repeat scroll 0 0 #61af2a;
+}
+
+.uploadfileselection
+{
+    height: 29px;
+    cursor: pointer;
+    padding-left: 8px;
+}
+input[type="file"] {
+  background-color:white; 
+  font:bold 14px Arial, Helvetica, sans-serif; 
+  color:#fff; 
+  border:0; 
+  cursor:pointer; 
+}

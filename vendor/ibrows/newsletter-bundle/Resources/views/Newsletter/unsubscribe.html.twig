@@ -1,0 +1,16 @@
+{% extends basetemplate %}
+{% trans_default_domain "IbrowsNewsletterBundle" %}
+{% block layout_class %}newsletter-unsubscribe{% endblock layout_class %}
+
+{% block newsletter_content %}
+    <h1>{{ 'newsletter.unsubscribe'|trans({'%email%': subscriber.email}) }}</h1>
+
+    <form action="" method="post" {{ form_enctype(form) }}>
+        {{ form_errors(form) }}
+        {{ form_rest(form) }}
+
+        <div class="form-actions">
+            <input type="submit" class="btn btn-primary" value="{{ 'form.save'|trans }}">
+        </div>
+    </form>
+{% endblock %}

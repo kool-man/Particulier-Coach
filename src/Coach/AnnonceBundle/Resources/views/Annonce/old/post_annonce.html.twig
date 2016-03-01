@@ -1,0 +1,182 @@
+{% extends '::layout.html.twig' %}
+{% block body %}
+<div class="line-green"></div>
+<div class="container-fluid">
+   <div class="container">
+   <div class="row-fluid">
+   <div class="span2">
+      <!--Sidebar content-->
+       </div>
+    <div class="span10 content-form">
+      <!--Body content-->
+      
+    <div class="row">
+    <div class="col-md-2">
+                
+                 <img src="{{ asset('bundles/coachfront/images/ESTIMOS_01.png')}}">
+                
+            </div>
+            <div class="col-md-10">
+                
+            
+            <h1>Vendre en quelques minutes votre bien immobilier</h1>
+            
+        <p class="vendu-text">
+       Vous envisager de vendre votre logement,
+       appartement ou maison. 
+       Particulier-coach vous ouvre les portes pour déposer votre annonce immobilière et présenter votre bien immobilier à vendre / à louer (descriptif,
+       localisation, ville, atouts, potentiel, photos, prix, charges de copropriétés, taxe foncière, diagnostics, DPE, diagnostic énergétique, loi carrez
+        </p>
+        </div>
+          </div>
+      
+      
+
+<form method="post" name="form_annonce" action="{{path('coach_annonce_ajouter')}}">
+<div class="row moyen-transp" style="background: #f2f2f2;text-align: center;">
+    <div class="row">
+      <h2>Caractéristiques du bien</h2>
+        <div class="col-md-4">
+
+        <div class="dropdown">
+          {{ form_errors(form_annonce.typeAnnonce) }}
+          {{ form_widget(form_annonce.typeAnnonce, {'attr': {'placeholder': 'Type de bien*','class':'btn btn-default dropdown-toggle form-control'}}) }}
+        </div>
+            
+
+        </div>
+        <div class="col-md-4">
+          {{ form_errors(form_annonce.optionAnnonce) }}
+          {{ form_widget(form_annonce.optionAnnonce, {'attr': {'placeholder': 'GES*','class':'btn btn-default dropdown-toggle form-control'}}) }}
+        </div>
+   
+       <div class="col-md-4">
+        <div class="dropdown">
+          {{ form_errors(form_annonce.classAnnonce) }}
+          {{ form_widget(form_annonce.classAnnonce, {'attr': {'placeholder': 'Class Energie*','class':'btn btn-default dropdown-toggle form-control'}}) }}
+        </div>
+         
+       </div>
+  </div>
+  <div class="row">
+        <div class="col-md-4">
+
+        <div class="dropdown">
+          {{ form_errors(form_annonce.nbPieces) }}
+          {{ form_widget(form_annonce.nbPieces, {'attr': {'placeholder': 'Pièces*','class':'btn btn-default dropdown-toggle form-control'}}) }}
+            
+        </div>
+        </div>
+        <div class="col-md-4">
+          <div class="dropdown">
+          {{ form_errors(form_annonce.nbChambre) }}
+          {{ form_widget(form_annonce.nbChambre, {'attr': {'placeholder': 'Pièces*','class':'btn btn-default dropdown-toggle form-control'}}) }}
+            
+        </div>
+        </div>
+   
+       <div class="col-md-4">
+        <div class="dropdown">
+          {{ form_errors(form_annonce.nbParking) }}
+          {{ form_widget(form_annonce.nbParking, {'attr': {'placeholder': 'Pièces*','class':'btn btn-default dropdown-toggle form-control'}}) }}
+            
+        </div>
+       </div>
+   
+    </div> 
+</div>          
+<div class="row moyen-transp" style="background: #f2f2f2;text-align: center;">
+    <div class="row">
+         <h2>Proximité de transport</h2>
+        <div class="col-md-8">
+        {{ form_errors(form_annonce.proximite) }}
+        {{ form_widget(form_annonce.proximite, {'attr': {'placeholder': "Proximite",'class':'form-inline'}}) }}
+        
+        </div>
+    </div>
+</div>      
+  <div class="row moyen-transp" style="background: #f2f2f2;text-align: center;">
+       <div class="row">
+        <h2>Adresse</h2>
+        <div class="col-md-4">
+        {{ form_errors(form_annonce.cp) }}
+        {{ form_widget(form_annonce.cp, {'attr': {'placeholder': "Code postal*",'class':'form-control'}}) }}
+            
+        </div>
+       
+        <div class="col-md-8">
+       {{ form_errors(form_annonce.ville) }}
+       {{ form_widget(form_annonce.ville, {'attr': {'placeholder': "Ville*",'class':'form-control'}}) }}
+            
+        </div>
+       
+   
+  </div>
+    
+  </div>
+  <div class="row localisation" style="background: #f2f2f2;text-align: center;">
+       <div class="row">
+         <h2>Coordonnées</h2>
+        <div class="col-md-6">
+        <!--<input type="text" placeholder="titre de l'annonce">-->
+         {{ form_errors(form_annonce.titre) }}
+         {{ form_widget(form_annonce.titre, {'attr': {'placeholder': "titre de l'annonce",'class':'form-control'}}) }}
+        <div class="col-md-12">
+            <div class="col-md-4">
+                {{ form_errors(form_annonce.prix) }}
+                {{ form_widget(form_annonce.prix, {'attr': {'placeholder': "Prix*",'class':'form-control'}}) }}
+            </div>
+            <div class="col-md-4">
+                {{ form_errors(form_annonce.surface) }}
+                {{ form_widget(form_annonce.surface, {'attr': {'placeholder': "Surface*",'class':'form-control'}}) }}
+            </div>
+            
+        </div>
+        </div>
+       
+        <div class="col-md-6 ville">
+            {{ form_errors(form_annonce.description) }}
+            {{ form_widget(form_annonce.description, {'attr': {'placeholder': "Description",'class':'form-control'}}) }}
+            
+        </div>
+       
+   
+  </div>
+    
+  </div>
+  <div class="row coordonnees" style="background: #f2f2f2;text-align: center;">
+       <div class="row">
+         <h2>Localisation & déscription</h2>
+         
+        <div class="col-md-12 inline">
+            <div class="col-md-12">
+            {{ form_errors(form_annonce.civilite) }}
+            {{ form_widget(form_annonce.civilite, {'attr': {'placeholder': "Civilite*",'class':'btn btn-default btn-large dropdown-toggle'}}) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_errors(form_annonce.nom) }}
+                {{ form_widget(form_annonce.nom, {'attr': {'placeholder': "Nom*",'class':'btn btn-default btn-large dropdown-toggle'}}) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_errors(form_annonce.email) }}
+                {{ form_widget(form_annonce.email, {'attr': {'placeholder': "Email*",'class':'btn btn-default btn-large dropdown-toggle'}}) }}
+            </div>   
+       </div>
+    </div>
+</div>
+<div class="row moyen-transp" style="background: #f2f2f2;text-align: center;">
+       <div class="row">
+           <div class="col-md-12">
+            <button type="submit" class="btn btn-success">
+                <i class="icon-user icon-white"></i> Publier
+            </button>
+        </div>
+       </div>
+</div>
+            {{ form_rest(form_annonce) }}
+</form>            
+</div>
+</div>
+</div>
+</div>    
+{% endblock %}    

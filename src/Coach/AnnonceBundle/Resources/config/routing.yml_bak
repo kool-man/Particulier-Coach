@@ -1,0 +1,12 @@
+coach_annonce_ajouter:
+    path:     /annonce/add
+    defaults: { _controller: CoachAnnonceBundle:Annonce:add }   
+coach_annonce_search:
+    path:     /annonce-immobilier
+    defaults: { _controller: CoachAnnonceBundle:Annonce:search }
+coach_annonce_deposez:
+    path:     /deposez-annonce
+    defaults: { _controller: CoachAnnonceBundle:Annonce:deposer }
+coach_annonce_details:
+    path:     /details
+    defaults: { _controller: CoachAnnonceBundle:Annonce:details }    

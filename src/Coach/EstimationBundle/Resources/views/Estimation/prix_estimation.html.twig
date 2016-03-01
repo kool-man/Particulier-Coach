@@ -1,0 +1,150 @@
+{% extends '::layout.html.twig' %}
+{% block body %}
+<div class="row">
+    <!--carte france-->
+    <div class="col-md-3">
+        <div class="wells nmrg price-bar">
+            <h1 style="font-size:18px;">Prix du m2 en France</h1>
+            <h5>Prix de vente - {{ depart.name }}</h5>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Maison</td>
+                        <td>{{ depart.venteMaison }} &#128;</td>
+                    </tr>
+                    <tr>
+                        <td>Appartement</td>
+                        <td>{{ depart.venteAppartement }} &#128;</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h5>Prix de La location</h5>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Maison</td>
+                        <td>{{ depart.locationMaison }} &#128;</td>
+                    </tr>
+                    <tr>
+                        <td>Appartement</td>
+                        <td>{{ depart.locationAppartement }} &#128;</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>Calculez le prix de votre bien en quelques clics. R&eacute;sultat personnalis&eacute;</p>
+            <p class="button"><a href="{{path('coach_estimation_form')}}" class="btn btn-success">Je calcule maintenant</a></p>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div id="francemap" class="carte-france"></div>
+    </div>
+    <div class="col-md-3 ville-list">
+        <div class="title-bar">
+            <h3>Villes de France</h3>
+        </div>
+        <div class="wells scrollbar-inner nmrg">
+
+            <ul class="villes permanent">
+		{% for departement in departements %}
+                    <li><a href="{{ path('coach_estimation_departement',{'id':departement.id})}}">{{ departement.name }}</a></li>
+		{% endfor %}		 
+            </ul>                
+        </div>
+    </div>
+    <div class="col-md-12"><div class="devider"></div></div>
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-4 col-sm-6">
+                <div class="pub-img">
+                    <a href=""><img src="{{asset('bundles/coachfront/images/pub/annonces.jpg')}}" alt=""></a>
+                    <p class="button">
+                        <a href="{{path('coach_pack')}}" class="btn btn-success">je despose mon annonce</a>
+                    </p>
+                </div>
+                
+                <div class="pub-img panneau">
+                    <p class="center">Je commande mon panneau<br>immobilier personnalisable</p>
+                    <a href=""><img src="{{asset('bundles/coachfront/images/pub/avendre.jpg')}}" alt=""></a>
+                    <img src="{{asset('bundles/coachfront/images/pub/avendre-btn.jpg')}}" alt="" class="btn-img wow bounceIn" style="left:25px; bottom: 68px;">
+                    <img src="{{asset('bundles/coachfront/images/pub/avendre-btn.jpg')}}" alt="" class="btn-img wow bounceIn" data-wow-delay="0.5s" style="left:95px; bottom: 98px;">
+                    <img src="{{asset('bundles/coachfront/images/pub/avendre-btn.jpg')}}" alt="" class="btn-img wow bounceIn" data-wow-delay="1s" style="left:145px; bottom: 80px;">
+                    <p class="button-gray">
+                        <a href="{{path('coach_panneau_homepage')}}" class="btn btn-success">je commande</a>
+                    </p>
+                </div>
+            </div>
+            {% for coach in page.coaching%}        
+            <div class="col-md-8">
+                <h3 class="title">{{coach.titre}}</h3>
+                <h4>{{coach.point1}}</h4>
+                <br>
+                {% if coach.point2 %}<p class="list">{{coach.point2}}</p>{% endif %}
+                {% if coach.point3 %}<p class="list">{{coach.point3}}</p>{% endif %}
+                {% if coach.point4 %}<p class="list">{{coach.point4}}</p>{% endif %}
+                {% if coach.point5 %}<p class="list">{{coach.point5}}</p>{% endif %}
+                {% if coach.point6 %}<p class="list">{{coach.point6}}</p>{% endif %}
+                {% if coach.point7 %}<p class="list">{{coach.point7}}</p>{% endif %}
+                {% if coach.point8 %}<p class="list">{{coach.point8}}</p>{% endif %}
+            </div>
+            {% endfor %}    
+        </div>
+
+
+
+    </div>
+</div>
+<br>
+<br>
+{% endblock %}
+{% block stylesheets %}
+{{ parent() }}
+        <!--FETCH CSS for this page -->
+        
+         <!--Scrollbar plugin-->
+         <link href="{{asset('bundles/coachfront/js/js-scrollbar/jquery.scrollbar.css')}}" rel="stylesheet">
+        <!--End Scrollbar plugin-->
+        
+        <!--GMAP CSS-->
+        <link href="{{asset('bundles/coachfront/js/js-map/styles/jqvmap.css')}}" rel="stylesheet">
+{% endblock %}       
+{% block javascripts %}
+{{ parent() }}
+<!--Scrollbar plugin-->
+        <script src="{{asset('bundles/coachfront/js/js-scrollbar/jquery.scrollbar.min.js')}}"></script>
+        <!--End Scrollbar plugin-->
+        
+        <script>
+            $('.scrollbar-inner').scrollbar();
+        </script>
+        <!--France MAP-->
+        <script src="{{asset('bundles/coachfront/js/js-map/jquery.vmap.js')}}"></script>
+        <script src="{{asset('bundles/coachfront/js/js-map/jquery.vmap.france.js')}}" ></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#francemap').vectorMap({
+                    map: 'france_fr',
+                    hoverOpacity: 0,
+                    hoverColor: "#88c462",
+                    backgroundColor: "#ffffff",
+                    color: "#9fa1a0",
+                    borderColor: "#fff",
+					borderOpacity: 1,
+					borderWidth: 3,
+                    selectedColor: "#88c462",
+                    enableZoom: false,
+					showTooltip: true,
+                    onRegionClick: function(element, code, region)
+                    {
+                        var message = 'Région : "'
+                        + region 
+                        + '" || Id : "'
+                        + code
+                        + '"';
+
+                        //alert(message);
+                    }
+                });
+            });
+        </script>
+{% endblock %}

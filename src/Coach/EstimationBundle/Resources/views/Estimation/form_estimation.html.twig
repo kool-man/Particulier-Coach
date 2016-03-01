@@ -1,0 +1,258 @@
+{% extends '::layout.html.twig' %}
+{% block body %}
+<div class="row">
+    <div class="col-md-12">
+
+        <h3 class="title-page nmrg">Estimation immobilière gratuite en ligne pour particulier</h3>
+
+        <div class="row">
+        <div class="col-md-8">
+        <form  action="{{ path('coach_estimation_form') }}"   method="post" {{ form_enctype(form) }}>
+				{{ form_errors(form) }}
+            
+            <div class="wells col-md-12">
+                <p><strong>Caractéristique du bien (*)</strong></p>
+                <div class="row">
+                    <!--colone-1-->
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            {{ form_widget(form['typeAnnonce'],{'attr' : {'class' : ' form-control'}}) }}
+                        </div>
+                        <div class="form-group">
+			{{ form_widget(form['nbPieces'],{'attr' : {'class' : ' form-control'}}) }}
+
+                        </div>
+                        
+                    </div>
+                    <!--End colone-1-->
+
+                    <!--colone-2-->
+                    <div class="col-md-4">
+                        <div class="form-group">
+			{{ form_widget(form['etatBien'],{'attr' : {'class' : ' form-control'}}) }}
+                        </div>                       
+
+                        <div class="form-group">
+			{{ form_widget(form['nbChambre'],{'attr' : {'class' : ' form-control'}}) }}
+                        </div>
+                    </div>
+                    <!--End colone-2-->
+
+                    <!--colone-3-->
+                    <div class="col-md-4">
+                        <div class="form-group">
+                        {{ form_widget(form['anneeConstruction'],{'attr' : {'class' : ' form-control'}}) }}
+                        </div>                        
+
+                        <div class="form-group">
+			{{ form_widget(form.surface,{'attr' : {'class' : ' form-control', 'placeholder' : 'Surface (m²)'}}) }}
+                        </div>
+                    </div>
+                    <!--End colone-3-->
+                </div>
+            </div>
+            <!--End ligne-->
+
+            <!--ligne-->
+            <div class="wells col-md-12" id="transport-check">
+                <p><strong>Proximité de transport (*)</strong></p>
+
+               {%for proximite in proximites%}
+		<a id="{{proximite.id}}" class="icheck" onclick="ajouterProximite(this.id) ;"><i class="fa fa-circle-o"></i>{{proximite.name}}</a>
+		{%endfor%}
+               
+		{{ form_widget(form['proximite'],{'attr':{'class':'form-control','hidden':'hidden','style':'visibility: hidden'}}) }}
+                <!--ATTENTION cest realisé au main js avec le titre //ICHECK data-->
+                
+                <div class="clearfix"></div>
+            </div>
+            <!--End ligne-->
+            
+            <!--ligne-->
+            <div class="wells col-md-12" id="options-check">
+                <p><strong>Avez-vous ? (*)</strong></p>
+
+               {%for loisirAnnonce in loisirAnnonces%}
+			<a id="{{loisirAnnonce.id}}" class="icheck" onclick="ajouterLoisirAnnonce(this.id) ;"><i class="fa fa-circle-o"></i>{{loisirAnnonce.name}}</a>
+		{%endfor%}
+               			   
+		{{ form_widget(form['loisirAnnonce'],{'attr':{'class':'form-control','hidden':'hidden','style':'visibility: hidden'}}) }}
+
+                <!--ATTENTION cest realisé au main js avec le titre //ICHECK data-->
+                
+                <div class="clearfix"></div>
+            </div>
+            <!--End ligne-->
+
+            <!--ligne-->
+            <div class="wells col-md-12">
+                <p><strong>Localisation & déscription (*)</strong></p>
+                <div class="row">
+                    <div class="col-md-6">
+                         <div class="form-group">
+                            <label>
+                                <span class="input-tr-addon"><i class="fa fa-map-marker"></i></span>
+                                {{ form_widget(form.ville, { 
+                                        'attr' : {
+                                                'class' : ' form-control', 
+                                                'placeholder' : 'Ville',
+                                                'data-id' : 'ville', 
+                                                'data-url' : path('coach_estimation_json_villes')
+                                        }} ) 
+                                }}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                         <div class="form-group">
+                            <label>
+                                <span class="input-tr-addon"><i class="fa fa-map-marker"></i></span>
+                                {{ form_widget(form.cp, { 
+                                    'attr' : {
+                                            'maxlength' : '5', 
+                                            'data-id' : 'codePostal', 
+                                            'class': ' form-control', 
+                                            'placeholder' : 'Code postal',
+                                            'data-url' : path('coach_estimation_json_codesPostaux')
+                                    }} )
+                            }}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                         <div class="form-group">
+                            <label>
+                                <span class="input-tr-addon"><i class="fa fa-map-marker"></i></span>
+                                {{ form_widget(form.adresse,{'attr' : {'class' : ' form-control', 'placeholder' : 'Adresse complète'}}) }}
+                            </label>
+                        </div>
+                    </div>                    
+                </div>          
+            </div>
+
+            <!--End ligne-->
+
+            <!--ligne-->
+            <div class="wells col-md-12">
+                <p><strong>Coordonnées (*)</strong></p>
+                <div class="row">
+                    <div class="col-md-6">
+                         <div class="form-group">
+                            <label>
+                                <span class="input-tr-addon"><i class="fa fa-map-marker"></i></span>
+                                {{ form_widget(form.client.profession,{'attr' : {'class' : ' form-control'}}) }}
+                            </label>
+                        </div>
+                    </div>
+                </div>            
+                <div class="row">            
+                    <div class="col-md-6">
+                         <div class="form-group">
+                            <label>
+                                <span class="input-tr-addon"><i class="fa fa-map-marker"></i></span>
+                                {{ form_widget(form.client.nom,{'attr' : {'class' : ' form-control', 'placeholder' : 'Nom'}}) }}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                         <div class="form-group">
+                            <label>
+                                <span class="input-tr-addon"><i class="fa fa-map-marker"></i></span>
+                                {{ form_widget(form.client.prenom,{'attr' : {'class' : ' form-control', 'placeholder' : 'Prénom'}}) }}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                         <div class="form-group">
+                            <label>
+                                <span class="input-tr-addon"><i class="fa fa-map-marker"></i></span>
+                                {{ form_widget(form.client.email,{'attr' : {'class' : ' form-control', 'placeholder' : 'Email'}}) }}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                         <div class="form-group">
+                            <label>
+                                <span class="input-tr-addon"><i class="fa fa-map-marker"></i></span>
+                                {{ form_widget(form.client.telephone,{'attr' : {'class' : ' form-control', 'placeholder' : 'Tel.'}}) }}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End ligne-->
+
+            <div class="row">            
+                <div class="col-md-12">            
+                    <div class="col-md-12 mrg-t-20">
+                        <button type="submit" value="Estimer Votre Bien" class="btn btn-success btn-block btn-lg">Estimer Votre Bien </button>
+                        <!-- <input class="btn btn-success btn-block btn-lg pull-right" type="submit" value="Estimer Votre Bien"> -->
+                    </div>
+                </div>
+            </div>    
+            {{form_rest(form)}}
+        </form>
+    </div>
+    
+    <div class="col-md-4">
+    	<div class="pub-img">
+            <a href=""><img src="{{asset('bundles/coachfront/images/pub/annonces.jpg')}}" alt=""></a>
+            <p class="button">
+                <a href="{{path('coach_pack')}}" class="btn btn-success">je despose mon annonce</a>
+            </p>
+        </div>
+        
+        <div class="pub-img panneau">
+            <p class="center">Je commande mon panneau<br>immobilier personnalisable</p>
+            <a href=""><img src="{{asset('bundles/coachfront/images/pub/avendre.jpg')}}" alt=""></a>
+            <img src="{{asset('bundles/coachfront/images/pub/avendre-btn.jpg')}}" alt="" class="btn-img wow bounceIn" style="left:25px; bottom: 68px;">
+            <img src="{{asset('bundles/coachfront/images/pub/avendre-btn.jpg')}}" alt="" class="btn-img wow bounceIn" data-wow-delay="0.5s" style="left:95px; bottom: 98px;">
+            <img src="{{asset('bundles/coachfront/images/pub/avendre-btn.jpg')}}" alt="" class="btn-img wow bounceIn" data-wow-delay="1s" style="left:145px; bottom: 80px;">
+            <p class="button-gray">
+                <a href="{{path('coach_panneau_homepage')}}" class="btn btn-success">je commande</a>
+            </p>
+        </div>
+
+    </div>
+    
+</div>
+</div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+        <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>  
+        <script src="{{asset('bundles/coachestimation/js/autocomplete.js')}}"></script>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+         <!--init plugin-->
+        <script>
+		function ajouterProximite(id){
+		var select_prox = $("#coach_estimationbundle_estimation_proximite  option[value="+id+"]").prop("selected");
+			if(select_prox == true){
+			 $("#coach_estimationbundle_estimation_proximite  option[value="+id+"]").attr("selected", false);
+			}else{
+			 $("#coach_estimationbundle_estimation_proximite  option[value="+id+"]").attr("selected", true);
+			}
+			
+		};
+		
+		function ajouterLoisirAnnonce(id){
+		var select_prox = $("#coach_estimationbundle_estimation_loisirAnnonce  option[value="+id+"]").prop("selected");
+			if(select_prox == true){
+			 $("#coach_estimationbundle_estimation_loisirAnnonce  option[value="+id+"]").attr("selected", false);
+			}else{
+			 $("#coach_estimationbundle_estimation_loisirAnnonce  option[value="+id+"]").attr("selected", true);
+			}		
+		};
+        </script>
+{% endblock %}  

@@ -1,0 +1,18 @@
+coach_reservation_paiement:
+    path:     /paiement/{pack}
+    defaults: { _controller: CoachReservationBundle:Reservation:paiement }
+coach_reservation_reservation:
+    path:     /reserver/{pack}&{contact}&{commande}
+    defaults: { _controller: CoachReservationBundle:Reservation:reservation }
+coach_reservation_validation:
+    path:     /validation/{pack}
+    defaults: { _controller: CoachReservationBundle:Reservation:validation } 
+coach_reservation_inscription:
+    path:     /inscription/{pack}
+    defaults: { _controller: CoachReservationBundle:Reservation:inscription } 
+coach_reservation_success:
+    path:     /reservation/success
+    defaults: { _controller: CoachReservationBundle:Reservation:success }
+coach_reservation_failed:
+    path:     /reservation/failed
+    defaults: { _controller: CoachReservationBundle:Reservation:failed }    

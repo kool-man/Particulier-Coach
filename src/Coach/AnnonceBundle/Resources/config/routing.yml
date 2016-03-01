@@ -1,0 +1,62 @@
+coach_annonce_preview:
+    path:     /annonce/preview/{id}-{titre}
+    defaults: { _controller: CoachAnnonceBundle:Annonce:preview }
+coach_annonce_activer:
+    path:     /annonce/activer/{id}
+    defaults: { _controller: CoachAnnonceBundle:Annonce:activer }    
+coach_send_message_annonce:
+    path:     /sendMessage/{ann}
+    defaults: { _controller: CoachAnnonceBundle:Annonce:sendMessage }
+coach_annonce_ajouter:
+    path:     /annonce/add
+    defaults: { _controller: CoachAnnonceBundle:Annonce:add }   
+coach_annonce_deposez:
+    path:     /annonce/step1/{ordre}
+    defaults: { _controller: CoachAnnonceBundle:Annonce:deposer }
+coach_annonce_photos:
+    path:     /annonce/step2-{annonce}
+    defaults: { _controller: CoachAnnonceBundle:Annonce:addPhotos }
+coach_annonce_deposez_ajouter:
+    path:     /deposez-annonce/ajouter
+    defaults: { _controller: CoachAnnonceBundle:Annonce:ajouterAnnonce }
+coach_annonce_details:
+    path:     /annonce/details/{id}-{titre}
+    defaults: { _controller: CoachAnnonceBundle:Annonce:details }   
+coach_annonce_verification:
+    path:     /annonce/verification/{id}
+    defaults: { _controller: CoachAnnonceBundle:Annonce:verification } 
+coach_annonce_confirmation:
+    path:     /annonce/confirmation/{id}-{reference}
+    defaults: { _controller: CoachAnnonceBundle:Annonce:confirmation }     
+coach_annonce_paiement:
+    path:     /annonce/paiement/{id}
+    defaults: { _controller: CoachAnnonceBundle:Annonce:paiement }
+coach_commande_success:
+    path:     /transaction/success
+    defaults: { _controller: CoachAnnonceBundle:Commande:success }
+coach_commande_failed:
+    path:     /transaction/failed
+    defaults: { _controller: CoachAnnonceBundle:Commande:failed }
+coach_annonce_delete:
+    path:     /annonce/delete/{id}
+    defaults: { _controller: CoachAnnonceBundle:Annonce:delete } 	
+coach_annonce_editer:
+    path:     /annonce/edit/{id}
+    defaults: { _controller: CoachAnnonceBundle:Annonce:editAnnonce } 
+coach_annonce_deposez_modifier:
+    path:     /annonce/modifier/{id}
+    defaults: { _controller: CoachAnnonceBundle:Annonce:modifierAnnonce }    
+coach_annonce_search:
+    path:     /recherche-appartement-ou-maison
+    defaults: { _controller: CoachAnnonceBundle:Annonce:searchPage }
+coach_annonce_search_filter:
+    path:     /annonce-immobilier-result-filter/{filter}
+    defaults: { _controller: CoachAnnonceBundle:Annonce:searchAjax }
+    requirements:
+        _method:  POST       
+    
+coach_annonce_search_result:
+    path:     /annonce-immobilier-result
+    defaults: { _controller: CoachAnnonceBundle:Annonce:search }
+    requirements:
+        _method:  POST    

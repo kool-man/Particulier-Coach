@@ -1,0 +1,6 @@
+coach_front_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: CoachFrontBundle:Default:index }
+coach_front_info:
+    path:     /infophp
+    defaults: { _controller: CoachFrontBundle:Default:info }

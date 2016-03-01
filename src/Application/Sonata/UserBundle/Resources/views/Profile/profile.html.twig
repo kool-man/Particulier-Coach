@@ -1,0 +1,328 @@
+{% extends '::layout.html.twig' %}
+{% block body %}
+    <div class="row">
+    <div class="col-md-12">
+        <h3 class="title-page">Mon compte</h3>
+    </div>
+    <!-- RESULTAT DUNE RECHERCHE-->
+    <div class="col-md-12">
+        <div role="tabpanel">
+
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+			  
+                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-bullhorn"></i>&nbsp;&nbsp;Mes annonces</a></li>
+                <li role="presentation"><a href="#likes" {%if tabmsg is defined %} class="active" {%endif%} aria-controls="likes" role="tab" data-toggle="tab"><i class="fa fa-thumbs-o-up"></i>&nbsp;&nbsp;Messages Envoyées</a></li>
+                <li role="presentation"><a href="#recus" {%if tabmsg is defined %} class="active" {%endif%} aria-controls="likes" role="tab" data-toggle="tab"><i class="fa fa-thumbs-o-up"></i>&nbsp;&nbsp;Messages Reçus</a></li>
+                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Informations</a></li>
+                <li role="presentation"><a href="#panneaux" aria-controls="panneaux" role="tab" data-toggle="tab">Mes panneaux</a></li>
+                
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="home">
+          
+			  <div class="col-md-12">
+				<div class="results">
+					<div class="row">
+						<div class="col-md-12">
+					 {%for annonce in annonces %}
+						   
+                                             
+                                             
+                    <div class="table-responsive mrg-t-20">
+                        <table class="table table-hover">
+                           
+                            <tbody>
+                                <tr class="media">
+                                    
+                                       
+                                           <td>
+									<a class="media-left" href="#">
+                                                                             {%for image in annonce.mesImages |slice(0,1) %}
+										<img src="{{asset('bundles/coachannonce/')~image.getWebPath() }}" width="100%" height="100%" alt=""> 
+                                                                            {%endfor%}
+                                                                        </a>
+                                                                        
+									<div class="media-body" >
+										<h4 class="media-heading"><a href="{{path('coach_annonce_details',{'id' : annonce.id,'titre':annonce.titre|replace({ (' '): '-' })})}}">{{annonce.titre}}</a></h4>
+										<p class="col-md-12">{{annonce.description}}</p>
+										<div class="divider">
+											<div class="row">
+												<div class="col-md-3">
+													<strong>Espace : </strong>{{annonce.surface ~ " m² "}}  
+												</div>
+												<div class="col-md-3">
+													<strong>Pièces :</strong> {{annonce.nbPieces}}
+												</div>
+												<div class="col-md-3">
+													<strong> Prix :</strong> {{annonce.prix}} €
+												</div>
+                                                                                                <div class="col-md-3">
+													<strong> Date de publication :</strong> {{annonce.createdAt|date('d/m/Y')}}
+												</div>
+											</div>
+										</div>
+									</div>
+                                                                        
+                                              </td>                           
+                            
+                                        
+                                        
+                                   
+                                    <td>
+                                        
+                                       <div class="row media_right">
+                                            <div class="col-md-10" style="left:9%; bottom: -22%;">
+                                                    <a href="{{path('coach_annonce_editer',{'id': annonce.id})}}" class="btn btn-success pull-right" style="width: 75% ;" title="Editer"> Editer </a>
+                                            </div>
+                                            <div class="col-md-8"></div>
+                                            <div class="col-md-8"></div>
+                                            <div class="col-md-8"></div>
+                                            <div class="col-md-8"></div>
+                                            <div class="col-md-10" style="left:9%; bottom: -22%;">
+                                                    <a href="{{path('coach_annonce_photos',{'annonce': annonce.id})}}" class="btn btn-success pull-right" style="width: 75% ;" title="Ajouter photos"> Ajouter des photos </a>
+                                            </div>
+                                            <div class="col-md-8"></div>
+                                            <div class="col-md-8"></div>
+                                            <div class="col-md-8"></div>
+                                            <div class="col-md-8"></div>
+                                            {% if(annonce.vendu == false) %}        
+                                            <div class="col-md-10"  style="left:9%; bottom: -40% !important;"> 
+                                                    <a href="{{path('coach_annonce_delete',{'id':annonce.id})}}" class="btn btn-success pull-right" style="width: 75% ;" title="Vendu">Vendu</a>
+                                            </div>
+                                            {% else %}
+                                            <div class="col-md-10"  style="left:9%; bottom: -40% !important;"> 
+                                                <a href="#" class="btn pull-right" style="width: 75% ;background-color:#FF0000" title="Vendu">Vendu</a>
+                                            </div>
+                                            {% endif %}
+                                                                        
+                                                                        
+                                        </div> 
+                                        
+                                    </td>
+                                     
+                                    
+                                </tr>		   
+							   
+							   
+                            </tbody>
+                        </table>
+                                             
+                    </div>                    
+                                             
+                                             
+                                             
+                                             
+                                             
+                                                                
+							
+						   {%endfor%}
+								
+						</div>   
+					</div>
+				</div>   
+			</div>
+					
+					 <div class="mrg-t-20 row">
+                        <div class="col-md-4 col-md-offset-8">
+                            <a href="{{path('coach_pack')}}" class="btn btn-success pull-right">Publier une nouvelle annonce</a>
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="likes">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="table-responsive mrg-t-20">
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th width='40%'>Messages</th>
+                                            <th width='20%'>Email</th>
+                                            <th width='20%'>Date de reception</th>
+					    <th width='20%'>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {%for message in mesmessages %} 
+										<tr>
+                                            <td>{{message.message}}</td>
+                                            <td><a href="">{{message.email}}</a></td>
+                                            <td>{{message.createdAt|date('d/m/Y')}}</td>
+											<td>
+                                        <div class="dropdown">
+                                            <a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+                                                Actions
+                                                <span class="caret"></span>
+                                            </a>
+
+                                            <ul class="dropdown-menu icons" role="menu" aria-labelledby="dLabel">
+                                                <li><a href=""><i class="fa fa-pencil"></i>Répondre</a></li>
+                                                <li><a href="{{path('coach_message_delete',{id:message.id})}}"><i class="fa fa-times"></i>Supprimer</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                             </tr>
+                                       {%endfor%} 
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="recus">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="table-responsive mrg-t-40">
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th width='40%'>Messages</th>
+                                            <th width='20%'>Email</th>
+                                            <th width='20%'>Date de reception</th>
+					    <th width='20%'>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {%for message in messages_recu %} 
+										<tr>
+                                            <td>{{message.message}}</td>
+                                            <td><a href="">{{message.email}}</a></td>
+                                            <td>{{message.createdAt|date('d/m/Y')}}</td>
+											<td>
+                                        <div class="dropdown">
+                                            <a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+                                                Actions
+                                                <span class="caret"></span>
+                                            </a>
+
+                                            <ul class="dropdown-menu icons" role="menu" aria-labelledby="dLabel">
+                                                <li><a href=""><i class="fa fa-pencil"></i>Répondre</a></li>
+                                                <li><a href="{{path('coach_message_delete',{id:message.id})}}"><i class="fa fa-times"></i>Supprimer</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                             </tr>
+                                       {%endfor%} 
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>                    
+                <div role="tabpanel" class="tab-pane" id="messages">
+				
+		{{ render(controller('ApplicationSonataUserBundle:Profile:edit')) }}				
+				
+	       </div>
+               <div role="tabpanel" class="tab-pane" id="panneaux">
+                        <div class="row">
+                                <div class="col-md-4 small-panneau">
+                                        <div class="panneau-creation mrg-tb-20">
+                                                <div class="space-1">
+                                                        A VENDRE
+                                                        <i class="fa fa-circle-o c-left animated bounceIn"></i>
+                                                        <i class="fa fa-circle-o c-right  animated bounceIn"></i>
+                                                </div>
+                                                <div class="space-2">
+                                                        Villa avec piscine S+4 2 salles de bains
+                                                </div>
+                                                <div class="space-3">
+                                                        Tél : 0033 2514 2226 22
+                                                </div>
+
+                                                <div class="space-4">
+                                                        www.particulier-coach.com
+                                                </div>
+
+                                        </div>
+                                </div>
+
+                                <div class="col-md-4 small-panneau">
+                                        <div class="panneau-creation mrg-tb-20">
+                                                <div class="space-1">
+                                                        A VENDRE
+                                                        <i class="fa fa-circle-o c-left animated bounceIn"></i>
+                                                        <i class="fa fa-circle-o c-right  animated bounceIn"></i>
+                                                </div>
+                                                <div class="space-2">
+                                                        Villa avec piscine S+4 2 salles de bains
+                                                </div>
+                                                <div class="space-3">
+                                                        Tél : 0033 2514 2226 22
+                                                </div>
+
+                                                <div class="space-4">
+                                                        www.particulier-coach.com
+                                                </div>
+
+                                        </div>
+                                </div>
+
+                                <div class="col-md-4 small-panneau">
+                                        <div class="panneau-creation mrg-tb-20">
+                                                <div class="space-1">
+                                                        A VENDRE
+                                                        <i class="fa fa-circle-o c-left animated bounceIn"></i>
+                                                        <i class="fa fa-circle-o c-right  animated bounceIn"></i>
+                                                </div>
+                                                <div class="space-2">
+                                                        Villa avec piscine S+4 2 salles de bains
+                                                </div>
+                                                <div class="space-3">
+                                                        Tél : 0033 2514 2226 22
+                                                </div>
+
+                                                <div class="space-4">
+                                                        www.particulier-coach.com
+                                                </div>
+
+                                        </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-md-offset-4 col-md-4">
+                                        <a href="panneau-creation.php" class="btn btn-success btn-block mrg-tb-20">Créer un autre panneau</a>
+                                </div>
+
+
+                        </div>
+                </div> 
+            </div>
+            
+        </div>
+        <div class="mrg-tb-20">
+            <div class="col-md-12 ">
+                <div class="row wells">
+                    <div class="col-md-6">
+                        <a href=""><img src="{{ asset('bundles/coachfront/images/pub/annonces-banner.jpg')}}" class="img-responsive"></a>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="pub-img panneau nmrg">
+                            <a href=""><img src="{{ asset('bundles/coachfront/images/pub/avendre-banner.jpg')}}" class="img-responsive"></a>
+                            <img src="{{ asset('bundles/coachfront/images/pub/avendre-btn.jpg')}}" alt="" class="btn-img wow bounceIn" style="left:25px; bottom: 28px;">
+                            <img src="{{ asset('bundles/coachfront/images/pub/avendre-btn.jpg')}}" alt="" class="btn-img wow bounceIn" data-wow-delay="0.5s" style="left:95px; bottom: 48px;">
+                            <img src="{{ asset('bundles/coachfront/images/pub/avendre-btn.jpg')}}" alt="" class="btn-img wow bounceIn" data-wow-delay="1s" style="left:145px; bottom: 30px;">
+                            <img src="{{ asset('bundles/coachfront/images/pub/avendre-btn.jpg')}}" alt="" class="btn-img wow bounceIn" data-wow-delay="1.5s" style="left:210px; bottom: 35px;">
+                            <p class="center banner wow fadeInLeft" data-wow-delay="2s" >Je commande mon panneau</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--END RESULTAT DUNE RECHERCHE-->
+
+
+
+</div>
+<br>
+<br>
+<!--Animation plugin-->
+<script src="{{ asset('bundles/coachfront/js/js-animation/wow.min.js')}}"></script>
+<!--init plugin-->
+<script>
+new WOW().init();
+</script>
+{% endblock %} 
